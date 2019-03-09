@@ -2,10 +2,20 @@
 %html{ lang: "en-GB", prefix: "og: http://ogp.me/ns#" }
   = render partial: "lib/global/head"
   %body
+    /* Notifications */
+    - if alert || notice
+      .universal.notifications
+        .universal-box
+          .universal-item
+            - if alert
+              %p.alert= alert
+            - if notice
+              %p.notice= notice
     /* Header */
     %header.universal.header
       .universal-box
         .universal-item
+          = render partial: "lib/components/session"
     /* Main */
     %main.universal.main
       .universal-box

@@ -1,8 +1,6 @@
 exclude_paths:
   - bin
   - db
-  - spec
-  - test
   - vendor
 
 detectors:
