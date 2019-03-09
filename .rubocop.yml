@@ -1,0 +1,44 @@
+AllCops:
+  TargetRubyVersion: 2.5
+
+  Exclude:
+    - bin/**/*
+    - db/**/*
+    - spec/**/*
+    - test/**/*
+    - vendor/**/*
+
+## Base
+Rails:
+  Enabled: true
+
+Documentation:
+  Enabled: false
+
+## Metrics
+Metrics/AbcSize:
+  Max: 32
+
+Metrics/BlockLength:
+  Max: 64
+  CountComments: false
+
+Metrics/LineLength:
+  Max: 160
+
+Metrics/MethodLength:
+  Max: 32
+
+Metrics/ModuleLength:
+  Max: 64
+  CountComments: false
+
+## Style
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/SymbolArray:
+  EnforcedStyle: brackets
+
+Style/EmptyMethod:
+  EnforcedStyle: expanded

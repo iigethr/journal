@@ -1,0 +1,11 @@
+/** Head **/
+%head
+  %meta{ content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type" }/
+  %meta{ content: "width=device-width, initial-scale=1.0", name: "viewport" }/
+  %meta{ content: "IE=Edge", "http-equiv" => "X-UA-Compatible" }/
+  = render "lib/global/meta_tags"
+  = render "lib/global/favicon"
+  = csrf_meta_tags
+  = csp_meta_tag
+  = stylesheet_link_tag "application", media: "all", "data-turbolinks-track": "reload"
+  = javascript_include_tag "application", "data-turbolinks-track": "reload", defer: Rails.env.production?

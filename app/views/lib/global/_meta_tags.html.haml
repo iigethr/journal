@@ -1,0 +1,17 @@
+/* Base */
+%title= application_configuration["title"].to_s
+%meta{ content: application_configuration["description"].to_s,        name: "description" }/
+%link{ href: "#{ENV["CANONICAL_HOST"]}",                              rel: "canonical" }/
+/* Open graph */
+%meta{ content: application_configuration["title"].to_s,              property: "og:title" }/
+%meta{ content: application_configuration["description"].to_s,        property: "og:description" }/
+%meta{ content: "website",                                            property: "og:type" }/
+%meta{ content: "#{ENV["CANONICAL_HOST"]}",                           property: "og:url" }/
+%meta{ content: image_url("opengraph/default.png"),                   property: "og:image" }/
+/* Twitter cards */
+%meta{ content: "summary_large_image",                                name: "twitter:card" }/
+%meta{ content: application_configuration["twitter_username"].to_s,   name: "twitter:site" }/
+%meta{ content: application_configuration["twitter_username"].to_s,   name: "twitter:creator" }/
+%meta{ content: application_configuration["title"].to_s,              name: "twitter:title" }/
+%meta{ content: application_configuration["description"].to_s,        name: "twitter:description" }/
+%meta{ content: image_url("opengraph/default.png"),                   name: "twitter:image" }/

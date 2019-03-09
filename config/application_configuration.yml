@@ -1,0 +1,15 @@
+# Application configuration
+
+default: &default
+  title: "JOURNAL"
+  description: "Spread the Word from One Source to the World."
+  twitter_username: "@iigethr"
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+production:
+  <<: *default

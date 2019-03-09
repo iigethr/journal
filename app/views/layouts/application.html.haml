@@ -1,0 +1,17 @@
+!!!
+%html{ lang: "en-GB", prefix: "og: http://ogp.me/ns#" }
+  = render partial: "lib/global/head"
+  %body
+    /* Header */
+    %header.universal.header
+      .universal-box
+        .universal-item
+    /* Main */
+    %main.universal.main
+      .universal-box
+        .universal-item
+          = yield
+    /* Footer */
+    %footer.universal.footer
+      .universal-box
+        .universal-item
