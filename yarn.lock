@@ -2,3 +2,21 @@
 # yarn lockfile v1
 
 
+altai_center@^0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/altai_center/-/altai_center-0.0.3.tgz#83c3a30aa6519e6b663bc0b2db99645f36a8da21"
+  integrity sha512-X+WnrGat9HsQ+dw25ADvPLC10yE0xhLnRDbg+8e7iuLakQtLISksnb/gOnMVmqw02gIo57xk9Ul5nSt4UjX0jw==
+  dependencies:
+    jquery "^3.0"
+
+altai_off@^1.0:
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/altai_off/-/altai_off-1.1.4.tgz#64e8d6af8f4c3b4bfd98c53f02fd9aac6fd9314d"
+  integrity sha512-ofY67auWOlF8XprxRtwsjanDu0UflpQ0TcUoDjgaDetjs4Pu7vTotZsKT4zAE5sLgNQwu6eqMg70d8lRnOz13w==
+  dependencies:
+    jquery "^3.0"
+
+jquery@^3.0:
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.3.1.tgz#958ce29e81c9790f31be7792df5d4d95fc57fbca"
+  integrity sha512-Ubldcmxp5np52/ENotGxlLe6aGMvmF4R8S6tZjsP6Knsaxd/xp3Zrh50cG93lR6nPXyUFwzN3ZSOQI0wRJNdGg==

@@ -1,5 +1,9 @@
 {
   "name": "journal",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "altai_off": "^1.0",
+    "altai_center": "^0.0.3",
+    "jquery": "^3.0"
+  }
 }

@@ -1,0 +1,28 @@
+/* Form New */
+
+= form_for resource, as: resource_name, url: session_path(resource_name) do |f|
+  %fieldset
+    .form-row
+      %legend Login
+    .form-row
+      .field
+        = f.label :email
+        .input
+          = f.email_field :email, autofocus: true, autocomplete: "email"
+    .field-row
+      .field
+        = f.label :password
+        .input
+          = f.password_field :password, autocomplete: "current-password"
+    .form-row
+      - if devise_mapping.rememberable?
+        .field
+          .checkbox
+            = f.check_box :remember_me
+            = f.label :remember_me
+    .field-row
+      .field
+        .submit
+          = f.submit "Log in", class: "button extra-large blue wide"
+    .field-row
+      = render "users/shared/links"

@@ -13,4 +13,7 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
-//= require_tree .
+//= require jquery/dist/jquery
+//= require altai_off/dist/altai_off
+//= require altai_center/dist/altai_center
+//= require initializer
