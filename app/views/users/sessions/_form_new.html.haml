@@ -23,6 +23,6 @@
     .field-row
       .field
         .submit
-          = f.submit "Log in", class: "button extra-large blue wide"
+          = f.button "Log in", data: { disable_with: "Connecting..." }, class: "button extra-large blue wide"
     .field-row
       = render "users/shared/links"

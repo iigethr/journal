@@ -1,6 +1,8 @@
 exclude_paths:
   - bin
   - db
+  - lib/tasks
+  - spec
   - vendor
 
 detectors:

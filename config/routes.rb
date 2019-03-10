@@ -10,6 +10,10 @@ Rails.application.routes.draw do
     sessions: "users/sessions",
     unlocks: "users/unlocks"
   }
+
+  # Publications
+  resources :publications
+
   # Root
   root "home#index"
   resources :home

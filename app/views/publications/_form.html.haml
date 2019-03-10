@@ -1,0 +1,26 @@
+/* Form */
+
+= form_with model: @publication, local: true do |f|
+  = f.hidden_field :user_id, value: 1
+  %fieldset
+    .form-row
+      %legend New Publication
+    .form-row
+      .field
+        = f.label :title
+        .input
+          = f.text_field :title
+    .form-row
+      .field
+        = f.label :description
+        .textarea
+          = f.text_area :description
+    .form-row
+      .field
+        .checkbox
+          = f.check_box :published
+          = f.label :published
+    .form-row
+      .field
+        .submit
+          = f.button "Save", data: { disable_with: "Connecting..." }, class: "button extra-large blue wide"
