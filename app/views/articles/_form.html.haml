@@ -1,10 +1,6 @@
-/* Form */
-
-= form_with model: @publication, local: true do |f|
-  = f.hidden_field :user_id, value: current_user.id
+= form_with model: [@publication, @article], local: true do |f|
+  = f.hidden_field :publication_id, value: @publication.id
   %fieldset
-    .form-row
-      %legend New Publication
     .form-row
       .field
         = f.label :title

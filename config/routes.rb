@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   }
 
   # Publications
-  resources :publications
+  resources :publications do
+    resources :articles
+  end
 
   # Root
   root "home#index"

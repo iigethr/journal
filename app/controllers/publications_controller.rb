@@ -20,38 +20,27 @@ class PublicationsController < ApplicationController
   def create
     @publication = Publication.new(publication_params)
 
-    respond_to do |format|
-      if @publication.save
-        format.html {
-          redirect_to publication_path(@publication)
-          flash[:notice] = "Publication was successfully created."
-        }
-        format.json { render :show, status: :created, location: @publication }
-      else
-        format.html { render :new }
-        format.json { render json: @publication.errors, status: :unprocessable_entity }
-      end
+    if @publication.save
+      flash[:notice] = "Publication was successfully created."
+      redirect_to publication_path(@publication)
+    else
+      render :new
     end
   end
 
   def update
-    respond_to do |format|
-      if @publication.update(publication_params)
-        format.html { redirect_to @publication, notice: "Publication was successfully updated." }
-        format.json { render :show, status: :ok, location: @publication }
-      else
-        format.html { render :edit }
-        format.json { render json: @publication.errors, status: :unprocessable_entity }
-      end
+    if @publication.update(publication_params)
+      flash[:notice] = "Publication was successfully updated."
+      redirect_to @publication
+    else
+      render :edit
     end
   end
 
   def destroy
     @publication.destroy
-    respond_to do |format|
-      format.html { redirect_to publications_url, notice: "Publication was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    flash[:notice] = "Publication was successfully destroyed."
+    redirect_to publications_url
   end
 
   private
