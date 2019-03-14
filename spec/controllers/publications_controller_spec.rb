@@ -12,11 +12,4 @@ RSpec.describe PublicationsController do
       expect(response.status).to be(200)
     end
   end
-
-  describe "GET #new" do
-    it "returns status ok" do
-      get :new
-      expect(response.status).to be(200)
-    end
-  end
 end
