@@ -4,7 +4,6 @@ AllCops:
   Exclude:
     - bin/**/*
     - db/**/*
-    - lib/tasks/**/*
     - spec/**/*
     - vendor/**/*
 

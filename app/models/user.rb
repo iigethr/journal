@@ -3,6 +3,7 @@
 class User < ApplicationRecord
   # Relationships
   has_many :publications, dependent: :destroy
+  accepts_nested_attributes_for :publications
 
   # Include default devise modules. Others available are:
   # :lockable and :timeoutable
@@ -16,5 +17,4 @@ class User < ApplicationRecord
           :validatable
 
   # Class Methods
-  accepts_nested_attributes_for :publications
 end

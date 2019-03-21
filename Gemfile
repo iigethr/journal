@@ -51,9 +51,16 @@ gem "name_of_person", "~> 1.0"
 # gem "mies", "0.0.1.alpha", github: "iigethr/mies"
 gem "mies", "0.0.1.alpha", path: "/Users/tonydefaria/Box Sync/iigethr/gems/mies"
 
+# gem "faker", "~> 1.9", ">= 1.9.3"
+gem "faker", github: "stympy/faker", branch: "master"
+
 group :development, :test do
   # Call "byebug" anywhere in the code to stop execution and get a debugger console
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
+  # Rspec suite
+  gem "capybara", ">= 2.15"
+  gem "factory_bot_rails", "~> 5.0", ">= 5.0.1"
+  gem "rspec-rails", "~> 3.8", ">= 3.8.2"
 end
 
 group :development do
@@ -68,20 +75,10 @@ group :development do
 end
 
 group :test do
-  gem "cucumber-rails", require: false
-  gem "database_cleaner", "~> 1.7"
-  gem "email_spec", "~> 2.2"
-  gem "factory_bot_rails", "~> 5.0", ">= 5.0.1"
-  gem "faker", "~> 1.9", ">= 1.9.3"
-  gem "rails-controller-testing", "~> 1.0", ">= 1.0.4"
-  gem "rspec-rails", "~> 3.8", ">= 3.8.2"
-  gem "shoulda-matchers", "~> 4.0", ">= 4.0.1"
-
-  # Adds support for Capybara system testing and selenium driver
-  gem "capybara", ">= 2.15"
-  gem "selenium-webdriver"
-  # Easy installation and use of chromedriver to run system tests with Chrome
   gem "chromedriver-helper"
+  gem "database_cleaner", "~> 1.7"
+  gem "selenium-webdriver"
+  gem "shoulda-matchers", "~> 4.0", ">= 4.0.1"
 end
 
 # Reduces boot times through caching; required in config/boot.rb
@@ -95,3 +92,4 @@ gem "haml_lint", require: false
 gem "reek", require: false
 gem "rubocop", require: false
 gem "scss_lint", require: false
+gem "simplecov", require: false
