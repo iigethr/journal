@@ -1,31 +1,16 @@
 # frozen_string_literal: true
 
 class PublicationsController < ApplicationController
-  before_action :set_publication, only: [:show, :edit, :update, :destroy]
+  before_action :publications, only: [:index]
+  before_action :publication, only: [:show, :edit, :update, :destroy]
 
   def index
-    @publications = Publication.includes(:user).all
   end
 
   def show
   end
 
-  def new
-    @publication = Publication.new
-  end
-
   def edit
-  end
-
-  def create
-    @publication = Publication.new(publication_params)
-
-    if @publication.save
-      flash[:notice] = "Publication was successfully created."
-      redirect_to publication_path(@publication)
-    else
-      render :new
-    end
   end
 
   def update
@@ -43,10 +28,29 @@ class PublicationsController < ApplicationController
     redirect_to publications_url
   end
 
+  def new
+    @publication = Publication.new
+  end
+
+  def create
+    @publication = Publication.new(publication_params)
+
+    if @publication.save
+      flash[:notice] = "Publication was successfully created."
+      redirect_to publication_path(@publication)
+    else
+      render :new
+    end
+  end
+
   private
 
-  def set_publication
+  def publication
     @publication = Publication.find(params[:id])
+  end
+
+  def publications
+    @publications = Publication.includes(:user).all
   end
 
   def publication_params

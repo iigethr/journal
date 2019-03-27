@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
 FactoryBot.define do
-  factory :publication, class: Publication do
-    association :user, factory: :user
+  factory :article, class: Article do
+    association :publication, factory: :publication
     title       { Faker::Book.title }
     description { Faker::Lorem.sentence(4) }
   end
 
-  factory :invalid_publication, class: Publication do
-    association :user, factory: :user
+  factory :invalid_article, class: Article do
+    association :publication, factory: :publication
     title       { "" }
     description { Faker::Lorem.sentence(4) }
   end
