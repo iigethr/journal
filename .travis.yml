@@ -1,52 +1,5 @@
 # Setting up Travis CI:
 
-# 1. Go to https://travis-ci.org
-# 2. Click the Sign Up/Sign in with GitHub button and give Travis CI permission
-#    to access your GitHub repositories.
-# 3. Create a file like this one you're reading at `your-rails-app/.travis.yml`:
-#
-# language: ruby
-# rvm:
-#   - 2.6.2
-#
-# addons:
-#   postgresql: 10
-#   chrome: stable
-#
-# script:
-#   - rails db:migrate RAILS_ENV=test
-#   - bin/rake
-
-# single test suite, non-parallel build.
-
-# env:
-#   global:
-#     - CC_TEST_REPORTER_ID=ABC123
-
-# language: ruby
-
-# rvm:
-#   - 2.6.2
-
-# before_install:
-#   - gem update --system
-#   - gem install bundler -v 2.0.1
-
-# before_script:
-#   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-#   - chmod +x ./cc-test-reporter
-#   - ./cc-test-reporter before-build
-
-# addons:
-#   postgresql: 10
-#   chrome: stable
-
-# script:
-#   - bundle exec rspec
-
-# after_script:
-#   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
-
 env:
   global:
     - CC_TEST_REPORTER_ID=d5da423f019d821eee552ff26ab55cc7b71965b0a27af0350942702d9114dc6f
@@ -57,10 +10,8 @@ rvm:
   - 2.6.2
 
 addons:
-  # postgresql: 10
+  postgresql: 10
   chrome: stable
-  # code_climate:
-  #     repo_token: d5da423f019d821eee552ff26ab55cc7b71965b0a27af0350942702d9114dc6f
 
 before_install:
   - gem update --system
