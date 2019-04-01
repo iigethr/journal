@@ -6,12 +6,17 @@ env:
 
 language: ruby
 
+cache:
+  bundler: true
+  directories:
+    - node_modules
+
 rvm:
   - 2.6.2
 
 addons:
-  postgresql: 10
   chrome: stable
+  # postgresql: 10
 
 before_install:
   - gem update --system
