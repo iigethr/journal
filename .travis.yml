@@ -53,7 +53,7 @@ rvm:
   - 2.6.2
 
 addons:
-  postgresql: 10
+  # postgresql: 10
   chrome: stable
   code_climate:
       repo_token: d5da423f019d821eee552ff26ab55cc7b71965b0a27af0350942702d9114dc6f
@@ -66,6 +66,7 @@ before_install:
   - gem install bundler -v 2.0.1
 
 script:
-  - bundle exec rails db:create
+  - bundle install — jobs=3 — retry=3
+  - bundle exec rails db:create:all
   - bundle exec rails db:migrate RAILS_ENV=test
   - bundle exec rspec

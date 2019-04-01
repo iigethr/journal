@@ -54,6 +54,7 @@ gem "mies", "0.0.1.alpha", github: "iigethr/mies"
 # gem "faker", "~> 1.9", ">= 1.9.3"
 gem "faker", github: "stympy/faker", branch: "master"
 
+gem 'travis', '~> 1.8', '>= 1.8.9'
 group :development, :test do
   # Call "byebug" anywhere in the code to stop execution and get a debugger console
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
