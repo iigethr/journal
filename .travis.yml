@@ -66,7 +66,6 @@ before_install:
   - gem install bundler -v 2.0.1
 
 script:
-  - bundle install — jobs=3 — retry=3
-  - bundle exec rails db:create:all
+  - bundle exec rails db:create
   - bundle exec rails db:migrate RAILS_ENV=test
   - bundle exec rspec
