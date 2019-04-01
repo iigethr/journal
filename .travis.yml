@@ -47,6 +47,10 @@
 # after_script:
 #   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 
+env:
+  global:
+    - CC_TEST_REPORTER_ID=d5da423f019d821eee552ff26ab55cc7b71965b0a27af0350942702d9114dc6f
+
 language: ruby
 
 rvm:
@@ -55,17 +59,22 @@ rvm:
 addons:
   # postgresql: 10
   chrome: stable
-  code_climate:
-      repo_token: d5da423f019d821eee552ff26ab55cc7b71965b0a27af0350942702d9114dc6f
-
-after_success:
-  - bundle exec codeclimate-test-reporter
+  # code_climate:
+  #     repo_token: d5da423f019d821eee552ff26ab55cc7b71965b0a27af0350942702d9114dc6f
 
 before_install:
   - gem update --system
   - gem install bundler -v 2.0.1
 
+before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
+
 script:
   - bundle exec rails db:create
   - bundle exec rails db:migrate RAILS_ENV=test
   - bundle exec rspec
+
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
