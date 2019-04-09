@@ -3,6 +3,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
+# Ruby version
 ruby "2.6.2"
 
 # See https://github.com/rails/execjs#readme for more supported runtimes
@@ -62,8 +63,8 @@ group :development, :test do
   gem "factory_bot_rails", "~> 5.0", ">= 5.0.1"
   gem "rspec-rails", "~> 3.8", ">= 3.8.2"
   # Continuous Integration
-  gem "travis", "~> 1.8", ">= 1.8.9"
   gem "codeclimate-test-reporter", "~> 1.0", ">= 1.0.9"
+  gem "travis", "~> 1.8", ">= 1.8.9"
 end
 
 group :development do
@@ -91,8 +92,9 @@ gem "bootsnap", ">= 1.1.0", require: false
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Linters
+gem "coffeelint", require: false
 gem "haml_lint", require: false
 gem "reek", require: false
 gem "rubocop", require: false
+gem "rubocop-performance", require: false
 gem "scss_lint", require: false
-gem "simplecov", require: false

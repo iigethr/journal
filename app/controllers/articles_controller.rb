@@ -1,32 +1,20 @@
 # frozen_string_literal: true
 
 class ArticlesController < ApplicationController
+  # Callbacks
   before_action :set_publication
   before_action :set_article, only: [:show, :edit, :update, :destroy]
+  before_action :set_agents, only: [:show]
 
   def index
-    @articles = @publication.articles.all
+    @articles = Article.includes(:publication).all
   end
 
   def show
-  end
-
-  def new
-    @article = @publication.articles.new
+    @agents = @article.agents.all
   end
 
   def edit
-  end
-
-  def create
-    @article = @publication.articles.new(article_params)
-
-    if @article.save
-      flash[:notice] = "Article was successfully created."
-      redirect_to publication_article_path(@publication, @article)
-    else
-      render :new
-    end
   end
 
   def update
@@ -44,14 +32,33 @@ class ArticlesController < ApplicationController
     redirect_to publication_articles_path(@publication)
   end
 
+  def new
+    @article = @publication.articles.new
+  end
+
+  def create
+    @article = @publication.articles.new(article_params)
+
+    if @article.save
+      flash[:notice] = "Article was successfully created."
+      redirect_to publication_article_path(@publication, @article)
+    else
+      render :new
+    end
+  end
+
   private
 
   def set_publication
-    @publication = Publication.find_by(id: params[:publication_id])
+    @publication = Publication.find_by(slug: params[:publication_id])
   end
 
   def set_article
-    @article = @publication.articles.find(params[:id])
+    @article = Article.find_by(slug: params[:id])
+  end
+
+  def set_agents
+    @agents = @article.agents.all
   end
 
   def article_params

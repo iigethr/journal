@@ -2,6 +2,10 @@
 
 class User < ApplicationRecord
   # Relationships
+  # Profile
+  has_one :profile, dependent: :destroy, autosave: true
+  accepts_nested_attributes_for :profile
+  # Publications
   has_many :publications, dependent: :destroy
   accepts_nested_attributes_for :publications
 

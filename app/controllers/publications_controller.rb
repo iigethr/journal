@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class PublicationsController < ApplicationController
+  # Callbacks
   before_action :publications, only: [:index]
   before_action :publication, only: [:show, :edit, :update, :destroy]
 
@@ -46,7 +47,7 @@ class PublicationsController < ApplicationController
   private
 
   def publication
-    @publication = Publication.find(params[:id])
+    @publication = Publication.find_by(slug: params[:id])
   end
 
   def publications
@@ -58,7 +59,8 @@ class PublicationsController < ApplicationController
       :user_id,
       :title,
       :description,
-      :published
+      :published,
+      :position
     )
   end
 end

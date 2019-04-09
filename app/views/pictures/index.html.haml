@@ -1,0 +1,14 @@
+%h1 Listing pictures
+
+%table
+  %thead
+    %tr
+      %th Type
+
+  %tbody
+    - @agents.each do |agent|
+      %tr
+        %td= agent.act_type
+%br
+
+= link_to 'New Picture', new_article_picture_path(@article)

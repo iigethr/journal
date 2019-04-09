@@ -1,0 +1,10 @@
+%p
+  %b Body:
+  = @text.body
+%p
+  %b Position:
+  = @text.position
+
+= link_to 'Edit', edit_text_path(@text)
+\|
+= link_to 'Back', texts_path

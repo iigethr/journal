@@ -10,11 +10,33 @@ Rails.application.routes.draw do
     sessions: "users/sessions",
     unlocks: "users/unlocks"
   }
+  # Profiles
+  resource :profile, only: [:show, :edit, :update]
 
   # Publications
   resources :publications do
-    resources :articles
+    resources :articles do
+      resources :galleries
+      resources :pictures
+      resources :videos
+      resources :texts
+      resources :documents
+    end
   end
+
+  resources :articles do
+    resources :galleries
+    resources :pictures
+    resources :videos
+    resources :texts
+    resources :documents
+  end
+
+  resources :galleries
+  resources :pictures
+  resources :videos
+  resources :texts
+  resources :documents
 
   # Root
   root "home#index"

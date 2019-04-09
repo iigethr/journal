@@ -4,6 +4,14 @@
   %fieldset
     .form-row
       %legend Sign up
+
+    = f.fields_for :profile do |item|
+      .form-row
+        .field.col-extra-small-1-1
+          = item.label :name
+          .input
+            = item.text_field :name, autofocus: true
+
     .form-row
       .field
         = f.label :email

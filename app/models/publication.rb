@@ -2,7 +2,9 @@
 
 class Publication < ApplicationRecord
   # Relationships
+  # User
   belongs_to :user
+  # Articles
   has_many :articles, dependent: :destroy
   accepts_nested_attributes_for :articles
 

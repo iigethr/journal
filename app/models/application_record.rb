@@ -2,4 +2,7 @@
 
 class ApplicationRecord < ActiveRecord::Base
   self.abstract_class = true
+
+  # Concerns
+  include Slug
 end

@@ -1,0 +1,10 @@
+%p
+  %b Caption:
+  = @gallery.caption
+%p
+  %b Position:
+  = @gallery.position
+
+= link_to 'Edit', edit_gallery_path(@gallery)
+\|
+= link_to 'Back', galleries_path

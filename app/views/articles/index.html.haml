@@ -20,10 +20,12 @@
         %td= article.description
         %td= article.published
         %td= article.position
-        %td= link_to "Show", publication_article_path(@publication, article)
-        %td= link_to "Edit", edit_publication_article_path(@publication, article)
-        %td= link_to "Destroy", publication_article_path(@publication, article), method: :delete, data: { confirm: "Are you sure?" }
+        - if params[:publication_id]
+          %td= link_to "Show", publication_article_path(@publication, article)
+          %td= link_to "Edit", edit_publication_article_path(@publication, article)
+          %td= link_to "Destroy", publication_article_path(@publication, article), method: :delete, data: { confirm: "Are you sure?" }
 
 %br
 
-= link_to "New Article", new_publication_article_path(@publication)
+- if params[:publication_id]
+  = link_to "New Article", new_publication_article_path(@publication)
