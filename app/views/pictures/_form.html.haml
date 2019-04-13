@@ -1,17 +1,7 @@
 = form_for [@article, @picture] do |f|
-  - if @picture.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@picture.errors.count, "error")} prohibited this picture from being saved:"
-      %ul
-        - @picture.errors.full_messages.each do |message|
-          %li= message
-
   .field
     = f.label :upload
     = f.file_field :upload
-  .field
-    = f.label :uploads
-    = f.file_field :uploads, multiple: true
   .field
     = f.label :caption
     = f.text_field :caption

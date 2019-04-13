@@ -5,11 +5,11 @@ class TextsController < ApplicationController
   include Act
 
   # Callbacks
-  before_action :set_article
-  before_action :set_text, only: [:show, :edit, :update, :destroy]
+  before_action :article
+  before_action :text, only: [:show, :edit, :update, :destroy]
 
   def index
-    @texts = Text.all
+    redirect_to article_path(@article)
   end
 
   def show
@@ -19,18 +19,18 @@ class TextsController < ApplicationController
   end
 
   def update
-    if @text.update(text_params)
+    if text.update(text_params)
       flash[:notice] = "Text was successfully updated."
-      redirect_to article_text_path(@article, @text)
+      redirect_to article_text_path(article, text)
     else
       render :edit
     end
   end
 
   def destroy
-    @text.destroy
+    text.destroy
     flash[:notice] = "Text was successfully destroyed."
-    redirect_to article_texts_path(@article)
+    redirect_to article_texts_path(article)
   end
 
   def new
@@ -51,11 +51,11 @@ class TextsController < ApplicationController
 
   private
 
-  def set_article
+  def article
     @article = Article.find_by(slug: params[:article_id])
   end
 
-  def set_text
+  def text
     @text = Text.find_by(slug: params[:id])
   end
 

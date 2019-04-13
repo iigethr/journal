@@ -9,8 +9,9 @@ class PicturesController < ApplicationController
   before_action :set_picture, only: [:show, :edit, :update, :destroy]
 
   def index
-    @pictures = Picture.all
-    @agents = Agent.where(article_id: @article.id, act: @pictures)
+    redirect_to article_path(@article)
+    # @pictures = Picture.all
+    # @agents = Agent.where(article_id: @article.id, act: @pictures)
   end
 
   def show

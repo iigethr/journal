@@ -46,12 +46,12 @@ class PublicationsController < ApplicationController
 
   private
 
-  def publication
-    @publication = Publication.find_by(slug: params[:id])
+  def publications
+    @publications ||= Publication.includes(:user).all
   end
 
-  def publications
-    @publications = Publication.includes(:user).all
+  def publication
+    @publication = Publication.find_by(slug: params[:id])
   end
 
   def publication_params

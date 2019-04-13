@@ -1,6 +1,6 @@
 %p
   %b Publication:
-  = @article.publication
+  = @article.publication.title
 %p
   %b Title:
   = @article.title
@@ -23,4 +23,5 @@
   - @agents.each do |item|
     = render_agent(item)
 
+= link_to "Text", new_article_text_path(@article)
 = link_to "Image", new_article_picture_path(@article)
