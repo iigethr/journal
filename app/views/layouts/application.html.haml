@@ -1,28 +1,10 @@
+/* Application */
+
 !!!
 %html{ lang: "en-GB", prefix: "og: http://ogp.me/ns#" }
   = render partial: "lib/global/head"
-  %body
-    /* Notifications */
-    - if alert || notice
-      .universal.notifications
-        .universal-box
-          .universal-item
-            - if alert
-              %p.alert= alert
-            - if notice
-              %p.notice= notice
-    /* Header */
-    %header.universal.header
-      .universal-box
-        .universal-item
-          = render partial: "lib/components/menu"
-          = render partial: "lib/components/session"
-    /* Main */
-    %main.universal.main
-      .universal-box
-        .universal-item
-          = yield
-    /* Footer */
-    %footer.universal.footer
-      .universal-box
-        .universal-item
+  %body{ "data-controller" => "application" }
+    = render partial: "lib/global/notifications"
+    = render partial: "lib/global/header"
+    = render partial: "lib/global/main"
+    = render partial: "lib/global/footer"

@@ -1,7 +1,8 @@
-= form_for [@article, @picture] do |f|
-  .field
-    = f.label :upload
-    = f.file_field :upload
+= form_for [parent, picture] do |f|
+  - if !picture.upload.presence
+    .field
+      = f.label :upload
+      = f.file_field :upload
   .field
     = f.label :caption
     = f.text_field :caption

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class CreateAgents < ActiveRecord::Migration[5.2]
+class CreateAgents < ActiveRecord::Migration[6.0]
   def change
     create_table :agents do |t|
       t.string     :slug, unique: true, index: true

@@ -5,13 +5,11 @@ class PicturesController < ApplicationController
   include Act
 
   # Callbacks
-  before_action :set_article
-  before_action :set_picture, only: [:show, :edit, :update, :destroy]
+  before_action :article
+  before_action :picture, only: [:show, :edit, :update, :destroy]
 
   def index
-    redirect_to article_path(@article)
-    # @pictures = Picture.all
-    # @agents = Agent.where(article_id: @article.id, act: @pictures)
+    redirect_to article_path(article)
   end
 
   def show
@@ -21,18 +19,18 @@ class PicturesController < ApplicationController
   end
 
   def update
-    if @picture.update(picture_params)
+    if picture.update(picture_params)
       flash[:notice] = "Picture was successfully updated."
-      redirect_to @picture
+      redirect_to article_picture_path(article)
     else
       render :edit
     end
   end
 
   def destroy
-    @picture.destroy
+    picture.destroy
     flash[:notice] = "Picture was successfully destroyed."
-    redirect_to pictures_url
+    redirect_to article_path(article)
   end
 
   def new
@@ -53,11 +51,11 @@ class PicturesController < ApplicationController
 
   private
 
-  def set_article
+  def article
     @article = Article.find_by(slug: params[:article_id])
   end
 
-  def set_picture
+  def picture
     @picture = Picture.find_by(slug: params[:id])
   end
 

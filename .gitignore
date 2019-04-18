@@ -22,9 +22,6 @@ coverage/*
 /storage/*
 /public/uploads/*
 
-/node_modules
-/yarn-error.log
-
 .byebug_history
 
 # Ignore master key for decrypting credentials and more.
@@ -33,3 +30,10 @@ coverage/*
 # Development & Testing Notes
 NOTES.md
 STORY.md
+
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity

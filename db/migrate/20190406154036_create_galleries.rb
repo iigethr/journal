@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class CreateGalleries < ActiveRecord::Migration[5.2]
+class CreateGalleries < ActiveRecord::Migration[6.0]
   def change
     create_table :galleries do |t|
       t.string  :slug, unique: true, index: true

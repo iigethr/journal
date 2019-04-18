@@ -1,6 +1,15 @@
 # frozen_string_literal: true
 
+# require "simplecov"
+# SimpleCov.start "rails" do
+#   add_filter "/app/controllers/users/"
+#   add_filter "/bin/"
+#   add_filter "/db/"
+#   add_filter "/spec/" # for rspec
+# end
+
 # This file is copied to spec/ when you run "rails generate rspec:install"
+
 require "spec_helper"
 ENV["RAILS_ENV"] ||= "test"
 require File.expand_path("../../config/environment", __FILE__)
@@ -11,8 +20,11 @@ require "rspec/rails"
 
 # Add additional requires below this line. Rails is not loaded until this point!
 
-require "shoulda/matchers"
 require "devise"
+require "shoulda/matchers"
+require "support/database_cleaner"
+require "support/devise"
+require "support/factory_bot"
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching "spec/**/*_spec.rb" are
@@ -29,10 +41,6 @@ require "devise"
 #
 
 # Dir[Rails.root.join("spec", "support", "**", "*.rb")].each { |f| require f }
-
-require "support/database_cleaner"
-require "support/devise"
-require "support/factory_bot"
 
 # Checks for pending migrations and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove these lines.

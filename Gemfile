@@ -10,47 +10,50 @@ ruby "2.6.2"
 gem "mini_racer", platforms: :ruby
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails"
-gem "rails", "~> 5.2.2"
-# Use postgresql as the database for Active Record
-gem "pg", ">= 0.18", "< 2.0"
-# Use Puma as the app server
-gem "puma", "~> 3.11"
-# Use SCSS for stylesheets
-gem "sass-rails", "~> 5.0"
-# Use Uglifier as compressor for JavaScript assets
-gem "uglifier", ">= 1.3.0"
+# gem "rails", "~> 5.2.2"
+gem "rails", "6.0.0.beta3", github: "rails/rails"
 
-# Use CoffeeScript for .coffee assets and views
-gem "coffee-rails", "~> 4.2"
+# Use postgresql as the database for Active Record
+gem "pg", ">= 1.0", "< 2.0"
+
+# Use Puma as the app server
+gem "puma", "~> 3.12"
+# Use Uglifier as compressor for JavaScript assets
+gem "uglifier", "~> 4.1"
+
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-gem "turbolinks", "~> 5"
+gem "turbolinks", "~> 5.2"
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem "jbuilder", "~> 2.5"
+gem "jbuilder", "~> 2.8"
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
 # Use ActiveStorage variant
-gem "mini_magick", "~> 4.0"
+gem "image_processing"
+gem "mini_magick", "~> 4.9"
 
 # Use ActiveModel has_secure_password.
-gem "bcrypt", "~> 3.0"
+gem "bcrypt", "~> 3.1"
 # Flexible authentication solution for Rails with Warden.
-gem "devise", "~> 4.6", ">= 4.6.1"
+gem "devise", "~> 4.6", ">= 4.6.2"
+
+# Use webpack to manage app-like JavaScript modules in Rails
+gem "webpacker", "~> 4.0"
 
 # Rack-based asset packaging system.
 gem "sprockets", "~> 4.0.0.beta8"
 # Haml (HTML Abstraction Markup Language) is a layer on top of HTML or XML.
 gem "haml", "~> 5.0"
-gem "haml-rails", "~> 1.0"
+gem "haml-rails", "~> 2.0"
 # Use SCSS for stylesheets
 gem "sassc-rails", "~> 2.0"
-
-# Presenting names of people in full, familiar, abbreviated, and initialized forms.
-gem "name_of_person", "~> 1.0"
 
 # Load Mies
 # gem "mies", "0.0.1.alpha", github: "iigethr/mies"
 gem "mies", "0.0.1.alpha", path: "/Users/tonydefaria/Box Sync/iigethr/gems/mies"
+
+# Presenting names of people in full, familiar, abbreviated, and initialized forms.
+gem "name_of_person", "~> 1.0"
 
 # gem "faker", "~> 1.9", ">= 1.9.3"
 gem "faker", github: "stympy/faker", branch: "master"
@@ -69,7 +72,7 @@ end
 
 group :development do
   # Kill N+1 queries and unused eager loading.
-  gem "bullet", "~> 5.9"
+  # gem "bullet", "~> 5.9"
   # Access an interactive console on exception pages or by calling "console" anywhere in the code.
   gem "listen", ">= 3.0.5", "< 3.2"
   gem "web-console", ">= 3.3.0"
@@ -83,6 +86,7 @@ group :test do
   gem "database_cleaner", "~> 1.7"
   gem "selenium-webdriver"
   gem "shoulda-matchers", "~> 4.0", ">= 4.0.1"
+  gem "simplecov", require: false
 end
 
 # Reduces boot times through caching; required in config/boot.rb

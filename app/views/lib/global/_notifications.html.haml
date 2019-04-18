@@ -1,0 +1,10 @@
+/* Notifications */
+
+- if alert || notice
+  .universal.notifications
+    .universal-box
+      .universal-item
+        - if alert
+          %p.alert= alert
+        - if notice
+          %p.notice= notice

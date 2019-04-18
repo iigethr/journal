@@ -1,6 +1,5 @@
 = form_for [@article, @text] do |f|
   .field
-    = f.label :body
-    = f.text_area :body
+    = f.rich_text_area :body
   .actions
     = f.submit 'Save'

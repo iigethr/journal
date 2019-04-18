@@ -2,6 +2,6 @@
 
 = render "form"
 
-= link_to "Show", publication_article_path(@publication, @article)
+= link_to "Show", article_path(@article)
 \|
-= link_to "Back", publication_articles_path(@publication)
+= link_to "Back", publication_articles_path(@article.publication.slug)

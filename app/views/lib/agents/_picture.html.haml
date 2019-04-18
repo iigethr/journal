@@ -1,0 +1,15 @@
+/* Picture */
+
+- if picture.presence
+  %figure
+    = image_tag picture.upload.representation(resize_to_limit: [ 960, 540 ])
+    %figcaption
+      - if caption = picture.try(:caption)
+        %span= caption
+      - else
+        %span= picture.upload.filename
+        %span= number_to_human_size picture.upload.byte_size
+  = link_to article_picture_path(parent, picture) do
+    Edit
+  = link_to article_picture_path(parent, picture), method: :delete, data: { confirm: "Are you sure?" } do
+    Destroy

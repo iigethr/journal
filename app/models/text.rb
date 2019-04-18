@@ -5,4 +5,7 @@ class Text < ApplicationRecord
   # Agents
   has_many :agents, as: :act, dependent: :destroy
   accepts_nested_attributes_for :agents
+
+  # Trix
+  has_rich_text :body
 end

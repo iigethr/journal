@@ -14,9 +14,6 @@
 # the additional setup, and require it from the spec files that actually need
 # it.
 
-require "capybara/rspec"
-require "simplecov"
-
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
@@ -98,11 +95,4 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
-end
-
-SimpleCov.start "rails" do
-  add_filter "/app/controllers/users/"
-  add_filter "/bin/"
-  add_filter "/db/"
-  add_filter "/spec/" # for rspec
 end

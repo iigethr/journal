@@ -1,3 +1,5 @@
+= link_to "back", publication_articles_path(@article.publication.slug)
+
 %p
   %b Publication:
   = @article.publication.title
@@ -10,9 +12,6 @@
 %p
   %b Published:
   = @article.published
-%p
-  %b Position:
-  = @article.position
 
 - if params[:publication_id]
   = link_to "Edit", edit_publication_article_path(@publication, @article)
@@ -21,7 +20,7 @@
 
 %ul
   - @agents.each do |item|
-    = render_agent(item)
+    = render_agent(@article, item)
 
 = link_to "Text", new_article_text_path(@article)
 = link_to "Image", new_article_picture_path(@article)

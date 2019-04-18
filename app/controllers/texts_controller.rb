@@ -13,6 +13,7 @@ class TextsController < ApplicationController
   end
 
   def show
+    redirect_to article_path(@article)
   end
 
   def edit
@@ -21,7 +22,7 @@ class TextsController < ApplicationController
   def update
     if text.update(text_params)
       flash[:notice] = "Text was successfully updated."
-      redirect_to article_text_path(article, text)
+      redirect_to article_path(article)
     else
       render :edit
     end

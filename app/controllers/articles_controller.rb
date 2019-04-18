@@ -11,7 +11,7 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @agents = @article.agents.all
+    @objects = Agent.all
   end
 
   def edit

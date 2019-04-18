@@ -1,11 +1,13 @@
 AllCops:
-  TargetRubyVersion: 2.5.3
+  TargetRubyVersion: 2.6.2
 
   Exclude:
     - bin/**/*
     - db/**/*
     - spec/**/*
     - vendor/**/*
+    - vendor/**/*
+    - node_modules/**/*
 
 ## Base
 Rails:
