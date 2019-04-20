@@ -1,0 +1,135 @@
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// File:    Article
+// Project: Mies by IIGETHR
+// -------------------------------------------------------------
+
+$class: "article";
+
+.#{$class} {
+  @include border-box;
+  float: left;
+  width: 100%;
+  .#{$class}-box {
+    @include border-box;
+    float: left;
+    width: 100%;
+    .#{$class}-item {
+      @include border-box;
+      float: left;
+      padding: 8px;
+      width: 100%;
+      .#{$class}-top {
+        @include border-box;
+        background-color: $gray-100;
+        float: left;
+        padding: 16px 16px 0;
+        width: 100%;
+      }
+      .#{$class}-middle {
+        @include border-box;
+        background-color: $gray-100;
+        float: left;
+        padding: 16px;
+        width: 100%;
+        .#{$class}-left {
+          @include border-box;
+          background-color: $gray-300;
+          float: left;
+          height: 48px;
+          margin: 0 16px 0 0;
+          width: 48px;
+        }
+        .#{$class}-center {
+          @include border-box;
+          float: left;
+          min-height: 48px;
+          width: 608px;
+        }
+      }
+      .#{$class}-bottom {
+        @include border-box;
+        background-color: $gray-100;
+        float: left;
+        padding: 0 16px 16px;
+        width: 100%;
+      }
+    }
+  }
+}
+
+// Media Query 240px
+// -------------------------------------------------------------
+@media #{$double-extra-small} {
+  .#{$class} {
+    .#{$class}-box {
+      .#{$class}-item {
+      }
+    }
+  }
+}
+
+// Media Query 360px
+// ------------------------------------------------------------
+@media #{$extra-small} {
+  .#{$class} {
+    .#{$class}-box {
+      .#{$class}-item {
+      }
+    }
+  }
+}
+
+// Media Query 480px
+// -------------------------------------------------------------
+@media #{$small} {
+  .#{$class} {
+    .#{$class}-box {
+      .#{$class}-item {
+      }
+    }
+  }
+}
+
+// Media Query 720px
+// -------------------------------------------------------------
+@media #{$medium} {
+  .#{$class} {
+    .#{$class}-box {
+      .#{$class}-item {
+      }
+    }
+  }
+}
+
+// Media Query 960px
+// -------------------------------------------------------------
+@media #{$large} {
+  .#{$class} {
+    .#{$class}-box {
+      .#{$class}-item {
+      }
+    }
+  }
+}
+
+// Media Query 1440px
+// -------------------------------------------------------------
+@media #{$extra-large} {
+  .#{$class} {
+    .#{$class}-box {
+      .#{$class}-item {
+      }
+    }
+  }
+}
+
+// Media Query 1920px
+// -------------------------------------------------------------
+@media #{$double-extra-large} {
+  .#{$class} {
+    .#{$class}-box {
+      .#{$class}-item {
+      }
+    }
+  }
+}

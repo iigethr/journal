@@ -1,28 +1,14 @@
-%h1 Publications
+/* Index */
 
-%table
-  %thead
-    %tr
-      %th User
-      %th Title
-      %th Description
-      %th Published
-      %th
-      %th
-      %th
-
-  %tbody
-    - @publications.each do |publication|
-      %tr
-        %td= publication.user
-        %td= publication.title
-        %td= publication.description
-        %td= publication.published
-        %td= link_to 'Show', publication
-        %td= link_to 'Edit', edit_publication_path(publication)
-        %td= link_to 'Destroy', publication, method: :delete, data: { confirm: 'Are you sure?' }
-
-%br
-
-= link_to 'New Publication', new_publication_path, class: "button extra-large green"
-= link_to 'Back', publications_path
+.container-top
+  = breadcrumbs(root_path)
+  .primary-actions
+    .primary-actions-box
+      .primary-actions-item
+        = link_to "New Publication", new_publication_path, class: "button extra-large purple"
+.container-middle
+  .board-medium.altai-center
+    .publication
+      .publication-box.sortable{ "data-url": sortable_publications_path }
+        = render partial: "publication", collection: @publications
+.container-bottom

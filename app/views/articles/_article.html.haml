@@ -1,0 +1,18 @@
+/* Article */
+
+.article-item{ id: "article_#{article.id}" }
+  .article-top
+    %p.left.auto
+      %strong Published:
+      = article.published?
+    %p.right.auto
+      %strong Agents:
+      = article.agents.count
+  .article-middle
+    .article-left
+      = link_to "#", class: "altai-off link double-extra-large handle" do
+        %span.icon
+          = inline_svg "icons/swap_vert.svg"
+    .article-center
+      = link_to article_path(article), class: "link blue double-extra-large wide" do
+        = article.title

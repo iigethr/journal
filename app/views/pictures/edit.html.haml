@@ -1,7 +1,7 @@
 %h1 Editing picture
 
-= render 'form'
+= render "form", parent: @article, picture: @picture
 
-= link_to 'Show', @picture
+= link_to "Show"
 \|
-= link_to 'Back', pictures_path
+= link_to "Back", pictures_path

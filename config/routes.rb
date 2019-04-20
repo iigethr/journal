@@ -21,6 +21,12 @@ Rails.application.routes.draw do
       resources :videos
       resources :texts
       resources :documents
+      collection do
+        patch :sortable
+      end
+    end
+    collection do
+      patch :sortable
     end
   end
 

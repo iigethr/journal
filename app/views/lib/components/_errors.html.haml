@@ -1,0 +1,8 @@
+/* Errors */
+
+- if object.errors.presence
+  .errors
+    %ul.errors-box
+      - object.errors.full_messages.each do |message|
+        %li.errors-item
+          %p= message

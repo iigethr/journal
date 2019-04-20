@@ -12,6 +12,7 @@ class PublicationsController < ApplicationController
   end
 
   def edit
+    redirect_to publication_path(publication)
   end
 
   def update
@@ -34,7 +35,10 @@ class PublicationsController < ApplicationController
   end
 
   def create
+    order = Publication.pluck(:position).compact
     @publication = Publication.new(publication_params)
+    order << 0
+    @publication.position = (order.min - 1)
 
     if @publication.save
       flash[:notice] = "Publication was successfully created."
@@ -44,10 +48,15 @@ class PublicationsController < ApplicationController
     end
   end
 
+  def sortable
+    Publication.sort_position(params[:publication])
+    head :ok
+  end
+
   private
 
   def publications
-    @publications ||= Publication.includes(:user).all
+    @publications ||= Publication.includes(:user, :articles).order(position: :asc)
   end
 
   def publication

@@ -1,27 +1,14 @@
-%h1 Listing articles
+/* Index */
 
-%table
-  %thead
-    %tr
-      %th Title
-      %th Description
-      %th Published
-      %th Position
-      %th
-      %th
-      %th
-
-  %tbody
-    - @articles.each do |article|
-      %tr
-        %td= article.title
-        %td= article.description
-        %td= article.published
-        %td= article.position
-        - if params[:publication_id]
-          %td= link_to "Show", article_path(article)
-          %td= link_to "Edit", edit_article_path(article)
-          %td= link_to "Destroy", article_path(article), method: :delete, data: { confirm: "Are you sure?" }
-
-- if params[:publication_id]
-  = link_to "New Article", new_publication_article_path(@publication)
+.container-top
+  = breadcrumbs(publication_path(@publication))
+  .primary-actions
+    .primary-actions-box
+      .primary-actions-item
+        = link_to "New Article", new_publication_article_path(@publication), class: "button extra-large purple"
+.container-middle
+  .board-medium.altai-center
+    .article
+      .article-box.sortable{ "data-url": sortable_publication_articles_path(@publication) }
+        = render partial: "article", collection: @articles
+.container-bottom

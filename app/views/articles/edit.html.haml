@@ -1,7 +1,8 @@
-%h1 Editing article
+/* Edit */
 
-= render "form"
-
-= link_to "Show", article_path(@article)
-\|
-= link_to "Back", publication_articles_path(@article.publication.slug)
+.container-top
+  = breadcrumbs(publication_articles_path(@article.publication.slug))
+.container-middle.altai-center
+  .board-medium
+    = render "form", parent: @publication, object: @article
+.container-bottom

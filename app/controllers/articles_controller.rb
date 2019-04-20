@@ -2,12 +2,12 @@
 
 class ArticlesController < ApplicationController
   # Callbacks
-  before_action :set_publication
-  before_action :set_article, only: [:show, :edit, :update, :destroy]
-  before_action :set_agents, only: [:show]
+  before_action :publication
+  before_action :article, only: [:show, :edit, :update, :destroy]
+  before_action :agents, only: [:show]
 
   def index
-    @articles = Article.includes(:publication).all
+    @articles = @publication.articles.order(position: :asc)
   end
 
   def show
@@ -37,7 +37,10 @@ class ArticlesController < ApplicationController
   end
 
   def create
+    order = @publication.articles.pluck(:position).compact
     @article = @publication.articles.new(article_params)
+    order << 0
+    @article.position = (order.min - 1)
 
     if @article.save
       flash[:notice] = "Article was successfully created."
@@ -47,17 +50,22 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def sortable
+    @publication.articles.sort_position(params[:article])
+    head :ok
+  end
+
   private
 
-  def set_publication
+  def publication
     @publication = Publication.find_by(slug: params[:publication_id])
   end
 
-  def set_article
+  def article
     @article = Article.find_by(slug: params[:id])
   end
 
-  def set_agents
+  def agents
     @agents = @article.agents.all
   end
 

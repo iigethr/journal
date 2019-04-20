@@ -41,7 +41,8 @@ gem "devise", "~> 4.6", ">= 4.6.2"
 gem "webpacker", "~> 4.0"
 
 # Rack-based asset packaging system.
-gem "sprockets", "~> 4.0.0.beta8"
+# gem "sprockets", "~> 4.0.0.beta8"
+# gem "sprockets"
 # Haml (HTML Abstraction Markup Language) is a layer on top of HTML or XML.
 gem "haml", "~> 5.0"
 gem "haml-rails", "~> 2.0"

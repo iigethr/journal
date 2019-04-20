@@ -1,23 +1,25 @@
-= form_with model: [@publication, @article], local: true do |f|
+/* Form */
+
+= form_with model: [parent, object], local: true do |form|
+  = errors(object)
   - if params[:action] == "new" || params[:action] == "create"
-    = f.hidden_field :publication_id, value: @publication.id
+    = form.hidden_field :publication_id, value: @publication.id
   %fieldset
     .form-row
-      .field
-        = f.label :title
-        .input
-          = f.text_field :title
+      %legend Article
     .form-row
       .field
-        = f.label :description
+        = form.label :title
+        .input
+          = form.text_field :title
+    .form-row
+      .field
+        = form.label :description
         .textarea
-          = f.text_area :description
+          = form.text_area :description
     .form-row
       .field
         .checkbox
-          = f.check_box :published
-          = f.label :published
-    .form-row
-      .field
-        .submit
-          = f.button "Save", data: { disable_with: "Connecting..." }, class: "button extra-large blue wide"
+          = form.check_box :published
+          = form.label :published
+    = submit_button(form, "Save")

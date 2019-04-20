@@ -1,17 +1,12 @@
-%p
-  %b User:
-  = @publication.user
-%p
-  %b Title:
-  = @publication.title
-%p
-  %b Description:
-  = @publication.description
-%p
-  %b Published:
-  = @publication.published
+/* Show */
 
-= link_to 'Edit', edit_publication_path(@publication), class: "link extra-large left"
-= link_to 'Back', publications_path, class: "link extra-large left"
-
-= link_to "articles", publication_articles_path(@publication)
+.container-top
+  = breadcrumbs(publications_path)
+  .primary-actions
+    .primary-actions-box
+      .primary-actions-item
+        = link_to "Articles", publication_articles_path(@publication), class: "button extra-large purple"
+.container-middle.altai-center
+  .board-medium
+    = render "form", object: @publication
+.container-bottom

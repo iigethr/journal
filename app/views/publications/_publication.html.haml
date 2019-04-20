@@ -1,0 +1,22 @@
+/* Publication */
+
+.publication-item{ id: "publication_#{publication.id}" }
+  .publication-top
+    %p.left.auto
+      %strong Published:
+      = publication.published?
+    %p.right.auto
+      %strong Articles:
+      = publication.articles.count
+  .publication-middle
+    .publication-left
+      = link_to "#", class: "altai-off link double-extra-large handle" do
+        %span.icon
+          = inline_svg "icons/swap_vert.svg"
+    .publication-center
+      = link_to publication_path(publication), class: "link blue double-extra-large wide" do
+        = publication.title
+  .publication-bottom
+    %p.left.auto
+      %strong Created:
+      = publication.created_at
