@@ -1,14 +1,21 @@
 /* Text */
 
-.agent-top
-.agent-middle
-  = text.try(:body)
-.agent-bottom
-  .secondary-actions
-    .secondary-actions-box
-      .secondary-actions-item
-        = link_to article_text_path(parent, text), method: :delete, data: { confirm: "Are you sure?" }, class: "button small red" do
-          Destroy
-      .secondary-actions-item
-        = link_to edit_article_text_path(parent, text), class: "button small yellow" do
-          Edit Agent
+- if text.presence
+  .agent-item{ id: "agent_#{agent.id}" }
+    .agent-top
+      = link_to "#", class: "altai-off link medium handle" do
+        Sort
+      %p.right.right.auto
+        %strong Type:
+        Text
+    .agent-middle.toggle
+      = text.try(:body)
+    .agent-bottom
+      .secondary-actions
+        .secondary-actions-box
+          .secondary-actions-item
+            = link_to article_text_path(parent, text), method: :delete, data: { confirm: "Are you sure?" }, class: "link small red hover-underline" do
+              Destroy
+          .secondary-actions-item
+            = link_to edit_article_text_path(parent, text), class: "button small yellow" do
+              Edit Agent

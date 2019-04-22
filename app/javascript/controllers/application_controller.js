@@ -15,6 +15,9 @@ export default class extends Controller {
     $(".altai-center").altaiCenter()
     $(".altai-off").altaiOff()
     $(".sortable").altaiSortable()
+    $( ".toggle-btn" ).click(function() {
+      $( ".toggle" ).slideToggle( "slow" );
+    })
     Turbolinks.clearCache()
   }
 }

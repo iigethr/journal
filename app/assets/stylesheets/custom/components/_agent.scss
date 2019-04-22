@@ -22,21 +22,21 @@ $class: "agent";
         @include border-box;
         background-color: $gray-100;
         float: left;
-        padding: 16px;
+        padding: 8px;
         width: 100%;
       }
       .#{$class}-middle {
         @include border-box;
         background-color: $gray-100;
         float: left;
-        padding: 16px;
+        padding: 0 16px;
         width: 100%;
       }
       .#{$class}-bottom {
         @include border-box;
         background-color: $gray-100;
         float: left;
-        padding: 16px;
+        padding: 8px;
         width: 100%;
       }
     }

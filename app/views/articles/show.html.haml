@@ -5,6 +5,8 @@
   .primary-actions
     .primary-actions-box
       .primary-actions-item
+        = link_to "Preview", preview_article_path(@article), class: "button extra-large blue"
+      .primary-actions-item
         = link_to "Text", new_article_text_path(@article), class: "button extra-large purple"
       .primary-actions-item
         = link_to "Image", new_article_picture_path(@article), class: "button extra-large purple"
@@ -14,9 +16,9 @@
       .content-box
         .content-item
           %h1= @article.title
+          = link_to "toggle", "#", class: "altai-off toggle-btn"
     .agent
-      .agent-box
+      .agent-box.sortable{ "data-url": sortable_article_agents_path(@article) }
         - @agents.each do |agent|
-          .agent-item
-            = render_agent(@article, agent)
+          = render_agent(@article, agent)
 .container-bottom

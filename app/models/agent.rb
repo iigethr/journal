@@ -2,8 +2,11 @@
 
 class Agent < ApplicationRecord
   # Relationships
+  # belongs_to :article
   # Act
   belongs_to :act, polymorphic: true
+  # Sortable position
+  include SortablePosition
 
   # Validations
 

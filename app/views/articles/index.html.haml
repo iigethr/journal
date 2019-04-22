@@ -8,6 +8,12 @@
         = link_to "New Article", new_publication_article_path(@publication), class: "button extra-large purple"
 .container-middle
   .board-medium.altai-center
+    .content
+      .content-box
+        .content-item
+          = link_to publication_path(@publication), class: "link purple wide bold" do
+            = @publication.title
+          %h3.left.lighter Articles
     .article
       .article-box.sortable{ "data-url": sortable_publication_articles_path(@publication) }
         = render partial: "article", collection: @articles

@@ -3,15 +3,17 @@
 class ArticlesController < ApplicationController
   # Callbacks
   before_action :publication
-  before_action :article, only: [:show, :edit, :update, :destroy]
-  before_action :agents, only: [:show]
+  before_action :article, only: [:show, :edit, :update, :destroy, :preview]
+  before_action :agents, only: [:show, :preview]
 
   def index
     @articles = @publication.articles.order(position: :asc)
   end
 
   def show
-    @objects = Agent.all
+  end
+
+  def preview
   end
 
   def edit
@@ -54,6 +56,11 @@ class ArticlesController < ApplicationController
     @publication.articles.sort_position(params[:article])
     head :ok
   end
+
+  # def sortable_agent
+  #   @agents.sort_position(params[:agent_id])
+  #   head :ok
+  # end
 
   private
 
