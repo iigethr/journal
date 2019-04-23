@@ -43,7 +43,7 @@ class PicturesController < ApplicationController
     if @picture.save
       create_agent(@article, @picture)
       flash[:notice] = "Picture was successfully created."
-      redirect_to article_picture_path(@article, @picture)
+      redirect_to article_path(@article)
     else
       render :new
     end

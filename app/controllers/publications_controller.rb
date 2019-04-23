@@ -3,12 +3,19 @@
 class PublicationsController < ApplicationController
   # Callbacks
   before_action :publications, only: [:index]
-  before_action :publication, only: [:show, :edit, :update, :destroy]
+  before_action :publication, only: [:show, :edit, :update, :destroy, :preview]
+  before_action :articles, only: [:show, :preview]
+
+  # Layout
+  layout "application_preview", only: [:preview]
 
   def index
   end
 
   def show
+  end
+
+  def preview
   end
 
   def edit
@@ -61,6 +68,10 @@ class PublicationsController < ApplicationController
 
   def publication
     @publication = Publication.find_by(slug: params[:id])
+  end
+
+  def articles
+    @articles = @publication.articles.order(position: :asc)
   end
 
   def publication_params

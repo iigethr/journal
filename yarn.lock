@@ -3639,6 +3639,11 @@ isstream@~0.1.2:
   resolved "https://registry.yarnpkg.com/isstream/-/isstream-0.1.2.tgz#47e63f7af55afa6f92e1500e690eb8b8529c099a"
   integrity sha1-R+Y/evVa+m+S4VAOaQ64uFKcCZo=
 
+jquery-popup-overlay@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/jquery-popup-overlay/-/jquery-popup-overlay-2.1.1.tgz#879e75f62ce275f47aa65c67303e071deffd1a40"
+  integrity sha512-7GzV5qc8nvgPqusIXyBKRtVyb5Y18VQTjpGvoOzWzpJt+L5DJOu5q+Ej+KnE6ny85KaQBV6i5f6P6cIQTOJfgg==
+
 jquery-ui@^1.0, jquery-ui@^1.12:
   version "1.12.1"
   resolved "https://registry.yarnpkg.com/jquery-ui/-/jquery-ui-1.12.1.tgz#bcb4045c8dd0539c134bc1488cdd3e768a7a9e51"

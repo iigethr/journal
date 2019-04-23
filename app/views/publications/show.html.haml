@@ -5,6 +5,8 @@
   .primary-actions
     .primary-actions-box
       .primary-actions-item
+        = link_to "Preview", preview_publication_path(@publication), class: "button extra-large blue"
+      .primary-actions-item
         = link_to "Articles", publication_articles_path(@publication), class: "button extra-large purple"
 .container-middle.altai-center
   .board-medium

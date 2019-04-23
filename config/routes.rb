@@ -28,6 +28,9 @@ Rails.application.routes.draw do
     collection do
       patch :sortable
     end
+    member do
+      get "preview"
+    end
   end
 
   resources :articles do

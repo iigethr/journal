@@ -1,5 +1,5 @@
 // Visit The Stimulus Handbook for more details
-// https://stimulusjs.org/handbook/introduction //
+// https://stimulusjs.org/handbook/introduction
 
 import { Controller } from "stimulus"
 import $ from "jquery"
@@ -8,6 +8,7 @@ import altaiAutosize from "altai_autosize"
 import altaiCenter from "altai_center"
 import altaiOff from "altai_off"
 import altaiSortable from "altai_sortable"
+import popup from "jquery-popup-overlay"
 
 export default class extends Controller {
   initialize() {
@@ -16,8 +17,9 @@ export default class extends Controller {
     $(".altai-off").altaiOff()
     $(".sortable").altaiSortable()
     $( ".toggle-btn" ).click(function() {
-      $( ".toggle" ).slideToggle( "slow" );
+      $( ".toggle" ).slideToggle( "slow" )
     })
+    $('#JPO').popup()
     Turbolinks.clearCache()
   }
 }

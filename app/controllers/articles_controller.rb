@@ -6,6 +6,9 @@ class ArticlesController < ApplicationController
   before_action :article, only: [:show, :edit, :update, :destroy, :preview]
   before_action :agents, only: [:show, :preview]
 
+  # Layout
+  layout "application_preview", only: [:preview]
+
   def index
     @articles = @publication.articles.order(position: :asc)
   end

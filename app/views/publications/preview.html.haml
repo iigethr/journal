@@ -1,0 +1,28 @@
+/* Show */
+
+.container-top
+  = breadcrumbs(publication_path(@publication))
+  .right
+    = link_to "Overlay", "#", class: "JPO_open link"
+.container-middle
+  .board-large.altai-center
+    .content
+      .content-box
+        .content-item
+          %h1= @publication.title
+        .separator.small
+    .preview
+      .preview-box.sortable
+        - @articles.each do |article|
+          .preview-item
+            %h3= article.title
+          - article.agents.each do |agent|
+            = render_preview_agent(article, agent)
+.container-bottom
+
+#JPO
+  .overlay-menu
+    .overlay-menu-box
+      - @articles.each do |article|
+        .overlay-menu-item
+          = link_to article.title, "#", class: "link small blue wide"

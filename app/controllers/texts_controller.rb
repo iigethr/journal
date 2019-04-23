@@ -31,7 +31,7 @@ class TextsController < ApplicationController
   def destroy
     text.destroy
     flash[:notice] = "Text was successfully destroyed."
-    redirect_to article_texts_path(article)
+    redirect_to aarticle_path(article)
   end
 
   def new
@@ -44,7 +44,7 @@ class TextsController < ApplicationController
     if @text.save
       create_agent(@article, @text)
       flash[:notice] = "Text was successfully created."
-      redirect_to article_text_path(@article, @text)
+      redirect_to article_path(@article)
     else
       render :new
     end
