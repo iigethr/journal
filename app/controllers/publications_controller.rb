@@ -3,11 +3,11 @@
 class PublicationsController < ApplicationController
   # Callbacks
   before_action :publications, only: [:index]
-  before_action :publication, only: [:show, :edit, :update, :destroy, :preview]
-  before_action :articles, only: [:show, :preview]
+  before_action :publication, only: [:show, :edit, :update, :destroy, :preview, :toc]
+  before_action :articles, only: [:show, :preview, :toc]
 
   # Layout
-  layout "application_preview", only: [:preview]
+  layout "application_preview", only: [:preview, :toc]
 
   def index
   end
@@ -16,6 +16,9 @@ class PublicationsController < ApplicationController
   end
 
   def preview
+  end
+
+  def toc
   end
 
   def edit

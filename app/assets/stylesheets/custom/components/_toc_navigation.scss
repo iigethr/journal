@@ -1,20 +1,23 @@
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-// File:    Menu
+// File:    Toc Navigation
 // Project: Mies by IIGETHR
 // -------------------------------------------------------------
 
-$class: "menu";
+$class: "toc-navigation";
 
 .#{$class} {
   @include border-box;
   float: left;
+  width: 100%;
   .#{$class}-box {
     @include border-box;
     float: left;
+    width: 100%;
     .#{$class}-item {
       @include border-box;
       float: left;
       padding: 8px;
+      width: 100%;
     }
   }
 }

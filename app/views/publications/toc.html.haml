@@ -1,0 +1,17 @@
+/* Show */
+
+.container-top
+  = breadcrumbs(preview_publication_path(@publication))
+.container-middle
+  .board-large.altai-center
+    .content
+      .content-box
+        .content-item
+          %h1= @publication.title
+        .separator.small
+    .toc-navigation
+      .toc-navigation-box
+        - @articles.each do |article|
+          .toc-navigation-item
+            = link_to article.title, preview_publication_path(@publication, anchor: "#{article.slug}"), class: "link small blue wide"
+.container-bottom

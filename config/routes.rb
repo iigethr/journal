@@ -30,6 +30,7 @@ Rails.application.routes.draw do
     end
     member do
       get "preview"
+      get "toc"
     end
   end
 

@@ -2,8 +2,10 @@
 
 .container-top
   = breadcrumbs(publication_path(@publication))
-  .right
-    = link_to "Overlay", "#", class: "JPO_open link"
+  .primary-actions
+    .primary-actions-box
+      .primary-actions-item
+        = link_to "Table of Contents", toc_publication_path(@publication), class: "button extra-large blue"
 .container-middle
   .board-large.altai-center
     .content
@@ -15,7 +17,7 @@
       .preview-box.sortable
         - @articles.each do |article|
           .preview-item
-            %h3= article.title
+            %h3{ id: "#{article.slug}" }= article.title
           - article.agents.each do |agent|
             = render_preview_agent(article, agent)
 .container-bottom
