@@ -72,7 +72,7 @@ class ArticlesController < ApplicationController
   end
 
   def article
-    @article = current_user.articles.find_by(slug: params[:id])
+    @article = @publication.articles.find_by(slug: params[:id])
   end
 
   def agents
