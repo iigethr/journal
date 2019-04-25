@@ -9,6 +9,8 @@ AllCops:
     - vendor/**/*
     - node_modules/**/*
 
+require: rubocop-performance
+
 ## Base
 Rails:
   Enabled: true

@@ -997,10 +997,10 @@ altai_off@^1.0:
   dependencies:
     jquery "^3.0"
 
-altai_sortable@^1.0:
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/altai_sortable/-/altai_sortable-1.0.6.tgz#d650a5c965bfac7082be09dac9bf24a27ccbcbb0"
-  integrity sha512-cnNq1W+9+gSMw43lnRbRQMzoiEVfNKTnPP/l0hQTVMolKu4zXkVXMEzZF9M+5gHser4SHIhGckPP9RlL0BJ7Ag==
+altai_sortable@^1.0.7:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/altai_sortable/-/altai_sortable-1.0.7.tgz#41e9d00aff07eebbf7e3faaec4deb43237b8a9ca"
+  integrity sha512-JOVm5MjeDhtO3SUbSLEH2HqEHVT25CqHFNU0h7lhdvs1xGM6vqtdpqH+Y7zGw/qF6i28lnlC3nc4eRVdoF4zxQ==
   dependencies:
     jquery "^3.0"
     jquery-ui "^1.0"

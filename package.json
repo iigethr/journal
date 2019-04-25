@@ -10,7 +10,7 @@
     "altai_autosize": "^1.0",
     "altai_center": "^0.0",
     "altai_off": "^1.0",
-    "altai_sortable": "^1.0",
+    "altai_sortable": "^1.0.7",
     "autosize": "^4.0.2",
     "expose-loader": "^0.7.5",
     "jquery": "^3.0",
