@@ -11,15 +11,11 @@ gem "mini_racer", platforms: :ruby
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails"
 # gem "rails", "~> 5.2.2"
-gem "rails", "6.0.0.beta3", github: "rails/rails"
-
+gem "rails", "6.0.0.rc1"
 # Use postgresql as the database for Active Record
 gem "pg", ">= 1.0", "< 2.0"
-
 # Use Puma as the app server
 gem "puma", "~> 3.12"
-# Use Uglifier as compressor for JavaScript assets
-gem "uglifier", "~> 4.1"
 
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem "turbolinks", "~> 5.2"
@@ -39,7 +35,6 @@ gem "devise", "~> 4.6", ">= 4.6.2"
 
 # Use webpack to manage app-like JavaScript modules in Rails
 gem "webpacker", "~> 4.0"
-
 # Rack-based asset packaging system.
 # gem "sprockets", "~> 4.0.0.beta8"
 gem "sprockets"
@@ -50,14 +45,11 @@ gem "haml-rails", "~> 2.0"
 gem "sassc-rails", "~> 2.0"
 
 # Load Mies
-# gem "mies", "0.0.1.alpha", github: "iigethr/mies"
-gem "mies", "0.0.1.alpha", path: "/Users/tonydefaria/Box Sync/iigethr/gems/mies"
+gem "mies", "0.0.1.alpha", github: "iigethr/mies"
+# gem "mies", "0.0.1.alpha", path: "/Users/tonydefaria/Box Sync/iigethr/gems/mies"
 
 # Presenting names of people in full, familiar, abbreviated, and initialized forms.
 gem "name_of_person", "~> 1.0"
-
-# gem "faker", "~> 1.9", ">= 1.9.3"
-gem "faker", github: "stympy/faker", branch: "master"
 
 group :development, :test do
   # Call "byebug" anywhere in the code to stop execution and get a debugger console
@@ -85,6 +77,7 @@ end
 group :test do
   gem "chromedriver-helper"
   gem "database_cleaner", "~> 1.7"
+  gem "faker", github: "stympy/faker", branch: "master"
   gem "selenium-webdriver"
   gem "shoulda-matchers", "~> 4.0", ">= 4.0.1"
   gem "simplecov", require: false

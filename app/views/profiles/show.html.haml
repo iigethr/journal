@@ -1,14 +1,8 @@
-%p
-  %b Email:
-  = @profile.user.email
-%p
-  %b Name:
-  = @profile.name
-%p
-  %b Middle name:
-  = @profile.middle_name
-%p
-  %b Last name:
-  = @profile.last_name
+/* Show */
 
-= link_to 'Edit', edit_profile_path
+.container-top
+  = breadcrumbs(root_path)
+.container-middle.altai-center
+  .board-extra-small.altai-center
+    = render "form", object: @profile
+.container-bottom

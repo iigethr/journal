@@ -1,0 +1,100 @@
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+// File:    Notifications
+// Project: Mies by IIGETHR
+// -------------------------------------------------------------
+
+$class: "notifications";
+
+.#{$class} {
+  @include border-box;
+  right: 0;
+  left: 0;
+  top: 0;
+  position: fixed;
+  background-color: $white;
+  margin: 0;
+  padding: 24px 0;
+  .#{$class}-box {
+    @include border-box;
+    .#{$class}-item {
+      @include border-box;
+    }
+  }
+}
+
+// Media Query 240px
+// -------------------------------------------------------------
+@media #{$double-extra-small} {
+  .#{$class} {
+    .#{$class}-box {
+      .#{$class}-item {
+      }
+    }
+  }
+}
+
+// Media Query 360px
+// ------------------------------------------------------------
+@media #{$extra-small} {
+  .#{$class} {
+    .#{$class}-box {
+      .#{$class}-item {
+      }
+    }
+  }
+}
+
+// Media Query 480px
+// -------------------------------------------------------------
+@media #{$small} {
+  .#{$class} {
+    .#{$class}-box {
+      .#{$class}-item {
+      }
+    }
+  }
+}
+
+// Media Query 720px
+// -------------------------------------------------------------
+@media #{$medium} {
+  .#{$class} {
+    .#{$class}-box {
+      .#{$class}-item {
+      }
+    }
+  }
+}
+
+// Media Query 960px
+// -------------------------------------------------------------
+@media #{$large} {
+  .#{$class} {
+    .#{$class}-box {
+      .#{$class}-item {
+      }
+    }
+  }
+}
+
+// Media Query 1440px
+// -------------------------------------------------------------
+@media #{$extra-large} {
+  .#{$class} {
+    .#{$class}-box {
+      .#{$class}-item {
+      }
+    }
+  }
+}
+
+// Media Query 1920px
+// -------------------------------------------------------------
+@media #{$double-extra-large} {
+  .#{$class} {
+    .#{$class}-box {
+      .#{$class}-item {
+      }
+    }
+  }
+}

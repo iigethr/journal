@@ -1,18 +1,23 @@
-= form_for @profile do |f|
-  - if @profile.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@profile.errors.count, "error")} prohibited this profile from being saved:"
-      %ul
-        - @profile.errors.full_messages.each do |message|
-          %li= message
-  .field
-    = f.label :first_name
-    = f.text_field :first_name
-  .field
-    = f.label :middle_name
-    = f.text_field :middle_name
-  .field
-    = f.label :last_name
-    = f.text_field :last_name
-  .actions
-    = f.submit 'Save'
+/* Form */
+
+= form_with model: object, local: true do |form|
+  = errors(object)
+  %fieldset
+    .form-row
+      %legend Profile
+    .form-row
+      .field
+        = form.label :first_name
+        .input
+          = form.text_field :first_name
+    .form-row
+      .field
+        = form.label :middle_name
+        .input
+          = form.text_field :middle_name
+    .form-row
+      .field
+        = form.label :last_name
+        .input
+          = form.text_field :last_name
+    = submit_button(form, "Save")

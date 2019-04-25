@@ -1,3 +1,8 @@
-= render "form"
+/* New */
 
-= link_to "Back", article_path(@article)
+.container-top
+  = breadcrumbs(article_path(@article))
+.container-middle.altai-center
+  .board-medium
+    = render "form"
+.container-bottom
