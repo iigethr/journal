@@ -31,7 +31,8 @@ coverage/*
 NOTES.md
 STORY.md
 
-/public/packs
+/public/assets/
+/public/packs/
 /public/packs-test
 /node_modules
 /yarn-error.log
