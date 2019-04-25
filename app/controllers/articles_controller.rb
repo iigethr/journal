@@ -68,11 +68,11 @@ class ArticlesController < ApplicationController
   private
 
   def publication
-    @publication = Publication.find_by(slug: params[:publication_id])
+    @publication = current_user.publications.find_by(slug: params[:publication_id])
   end
 
   def article
-    @article = Article.find_by(slug: params[:id])
+    @article = current_user.articles.find_by(slug: params[:id])
   end
 
   def agents

@@ -66,7 +66,7 @@ class PublicationsController < ApplicationController
   private
 
   def publications
-    @publications ||= Publication.includes(:user, :articles).order(position: :asc)
+    @publications ||= current_user.publications.includes(:articles).order(position: :asc)
   end
 
   def publication
