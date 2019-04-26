@@ -5,8 +5,8 @@ class VideosController < ApplicationController
   include Act
 
   # Callbacks
-  before_action :set_article
-  before_action :set_video, only: [:show, :edit, :update, :destroy]
+  before_action :article
+  before_action :video, only: [:show, :edit, :update, :destroy]
 
   def index
     @videos = Video.all
@@ -51,16 +51,20 @@ class VideosController < ApplicationController
 
   private
 
-  def set_article
-    @article = Article.find_by(id: params[:article_id])
+  def article
+    @article = Article.find_by(slug: params[:article_id])
+    # Childs parent
+    publication = Publication.where(id: @article.publication_id).first
+    redirect_to root_path if publication.user_id != current_user.id
   end
 
-  def set_video
+  def video
     @video = Video.find(params[:id])
   end
 
   def video_params
     params.require(:video).permit(
+      :article_id,
       :caption,
       :position
     )

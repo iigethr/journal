@@ -1,10 +1,19 @@
-= form_for [parent, picture] do |f|
-  - if !picture.upload.presence
-    .field
-      = f.label :upload
-      = f.file_field :upload
-  .field
-    = f.label :caption
-    = f.text_field :caption
-  .actions
-    = f.submit 'Save'
+/* Form */
+
+= form_with model: [parent, picture], local: true do |form|
+  - if params[:action] == "new" || params[:action] == "create"
+    = form.hidden_field :article_id, value: parent.id
+  %fieldset
+    = errors(picture)
+    .form-row
+      .field
+        = form.label :image
+        .file
+          = form.file_field :upload, id: "upload"
+          = form.label :upload, for: "upload", class: "button extra-large blue wide"
+    .form-row
+      .field
+        = form.label :caption
+        .input
+          = form.text_field :caption
+    = submit_button(form, "Save")

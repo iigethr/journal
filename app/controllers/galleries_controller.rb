@@ -61,6 +61,7 @@ class GalleriesController < ApplicationController
 
   def gallery_params
     params.require(:gallery).permit(
+      :article_id,
       :caption,
       :position
     )

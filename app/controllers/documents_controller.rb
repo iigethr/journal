@@ -61,6 +61,7 @@ class DocumentsController < ApplicationController
 
   def document_params
     params.require(:document).permit(
+      :article_id,
       :caption,
       :position
     )

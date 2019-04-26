@@ -2,7 +2,7 @@
 
 class ArticlesController < ApplicationController
   # Callbacks
-  before_action :publication
+  before_action :publication, only: [:index, :new, :create, :sortable]
   before_action :article, only: [:show, :edit, :update, :destroy, :preview]
   before_action :agents, only: [:show, :preview]
 
@@ -11,6 +11,29 @@ class ArticlesController < ApplicationController
 
   def index
     @articles = @publication.articles.order(position: :asc)
+  end
+
+  def sortable
+    @publication.articles.sort_position(params[:article])
+    head :ok
+  end
+
+  def new
+    @article = @publication.articles.new
+  end
+
+  def create
+    order = @publication.articles.pluck(:position).compact
+    @article = @publication.articles.new(article_params)
+    order << 0
+    @article.position = (order.min - 1)
+
+    if @article.save
+      flash[:notice] = "Article was successfully created."
+      redirect_to article_path(@article)
+    else
+      render :new
+    end
   end
 
   def show
@@ -37,29 +60,6 @@ class ArticlesController < ApplicationController
     redirect_to publication_articles_path(@publication)
   end
 
-  def new
-    @article = @publication.articles.new
-  end
-
-  def create
-    order = @publication.articles.pluck(:position).compact
-    @article = @publication.articles.new(article_params)
-    order << 0
-    @article.position = (order.min - 1)
-
-    if @article.save
-      flash[:notice] = "Article was successfully created."
-      redirect_to article_path(@article)
-    else
-      render :new
-    end
-  end
-
-  def sortable
-    @publication.articles.sort_position(params[:article])
-    head :ok
-  end
-
   # def sortable_agent
   #   @agents.sort_position(params[:agent_id])
   #   head :ok
@@ -72,11 +72,15 @@ class ArticlesController < ApplicationController
   end
 
   def article
-    @article = @publication.articles.find_by(slug: params[:id])
+    # Find the child
+    @article = Article.find_by(slug: params[:id])
+    # Childs parent
+    publication = Publication.where(id: @article.publication_id).first
+    redirect_to root_path if publication.user_id != current_user.id
   end
 
   def agents
-    @agents = @article.agents.all
+    @agents = @article.agents.order(position: :asc)
   end
 
   def article_params

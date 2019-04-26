@@ -76,28 +76,34 @@ ActiveRecord::Schema.define(version: 2019_04_06_154647) do
 
   create_table "documents", force: :cascade do |t|
     t.string "slug"
+    t.bigint "article_id"
     t.string "caption"
     t.integer "position"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["article_id"], name: "index_documents_on_article_id"
     t.index ["slug"], name: "index_documents_on_slug"
   end
 
   create_table "galleries", force: :cascade do |t|
     t.string "slug"
+    t.bigint "article_id"
     t.string "caption"
     t.integer "position"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["article_id"], name: "index_galleries_on_article_id"
     t.index ["slug"], name: "index_galleries_on_slug"
   end
 
   create_table "pictures", force: :cascade do |t|
     t.string "slug"
+    t.bigint "article_id"
     t.string "caption"
     t.integer "position"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["article_id"], name: "index_pictures_on_article_id"
     t.index ["slug"], name: "index_pictures_on_slug"
   end
 
@@ -128,10 +134,12 @@ ActiveRecord::Schema.define(version: 2019_04_06_154647) do
 
   create_table "texts", force: :cascade do |t|
     t.string "slug"
+    t.bigint "article_id"
     t.text "body"
     t.integer "position"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["article_id"], name: "index_texts_on_article_id"
     t.index ["slug"], name: "index_texts_on_slug"
   end
 
@@ -161,16 +169,23 @@ ActiveRecord::Schema.define(version: 2019_04_06_154647) do
 
   create_table "videos", force: :cascade do |t|
     t.string "slug"
+    t.bigint "article_id"
     t.string "caption"
     t.integer "position"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["article_id"], name: "index_videos_on_article_id"
     t.index ["slug"], name: "index_videos_on_slug"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "agents", "articles"
   add_foreign_key "articles", "publications"
+  add_foreign_key "documents", "articles"
+  add_foreign_key "galleries", "articles"
+  add_foreign_key "pictures", "articles"
   add_foreign_key "profiles", "users"
   add_foreign_key "publications", "users"
+  add_foreign_key "texts", "articles"
+  add_foreign_key "videos", "articles"
 end

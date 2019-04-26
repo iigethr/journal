@@ -9,10 +9,11 @@ class PicturesController < ApplicationController
   before_action :picture, only: [:show, :edit, :update, :destroy]
 
   def index
-    redirect_to article_path(article)
+    redirect_to article_path(@article)
   end
 
   def show
+    redirect_to article_path(@article)
   end
 
   def edit
@@ -30,7 +31,7 @@ class PicturesController < ApplicationController
   def destroy
     picture.destroy
     flash[:notice] = "Picture was successfully destroyed."
-    redirect_to article_path(article)
+    redirect_to article_path(@article)
   end
 
   def new
@@ -53,6 +54,9 @@ class PicturesController < ApplicationController
 
   def article
     @article = Article.find_by(slug: params[:article_id])
+    # Childs parent
+    publication = Publication.where(id: @article.publication_id).first
+    redirect_to root_path if publication.user_id != current_user.id
   end
 
   def picture
@@ -61,6 +65,7 @@ class PicturesController < ApplicationController
 
   def picture_params
     params.require(:picture).permit(
+      :article_id,
       :caption,
       :upload
     )

@@ -22,7 +22,7 @@ class TextsController < ApplicationController
   def update
     if text.update(text_params)
       flash[:notice] = "Text was successfully updated."
-      redirect_to article_path(article)
+      redirect_to article_path(@article)
     else
       render :edit
     end
@@ -31,7 +31,7 @@ class TextsController < ApplicationController
   def destroy
     text.destroy
     flash[:notice] = "Text was successfully destroyed."
-    redirect_to aarticle_path(article)
+    redirect_to article_path(@article)
   end
 
   def new
@@ -54,14 +54,18 @@ class TextsController < ApplicationController
 
   def article
     @article = Article.find_by(slug: params[:article_id])
+    # Childs parent
+    publication = Publication.where(id: @article.publication_id).first
+    redirect_to root_path if publication.user_id != current_user.id
   end
 
   def text
-    @text = Text.find_by(slug: params[:id])
+    @text = @article.texts.find_by(slug: params[:id])
   end
 
   def text_params
     params.require(:text).permit(
+      :article_id,
       :body,
       :position
     )

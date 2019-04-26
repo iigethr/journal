@@ -3,9 +3,10 @@
 class CreateDocuments < ActiveRecord::Migration[6.0]
   def change
     create_table :documents do |t|
-      t.string  :slug, unique: true, index: true
-      t.string  :caption
-      t.integer :position
+      t.string      :slug, unique: true, index: true
+      t.references  :article, foreign_key: true
+      t.string      :caption
+      t.integer     :position
 
       t.timestamps
     end

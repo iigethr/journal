@@ -1,5 +1,15 @@
-= form_for [@article, @text] do |f|
-  .field
-    = f.rich_text_area :body
-  .actions
-    = f.submit 'Save'
+/* Form */
+
+= form_with model: [@article, @text], local: true do |form|
+  = errors(@text)
+  - if params[:action] == "new" || params[:action] == "create"
+    = form.hidden_field :article_id, value: @article.id
+  %fieldset
+    .form-row
+      %legend Text
+    .form-row
+      .field
+        = form.label :body
+        .textarea
+          = form.rich_text_area :body
+    = submit_button(form, "Save")
