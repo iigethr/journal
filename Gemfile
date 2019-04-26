@@ -25,6 +25,7 @@ gem "jbuilder", "~> 2.8"
 # gem "redis", "~> 4.0"
 
 # Use ActiveStorage variant
+gem "aws-sdk-s3", require: false
 gem "image_processing"
 gem "mini_magick", "~> 4.9"
 
