@@ -8,6 +8,11 @@ class Publication < ApplicationRecord
   # Relationships
   # User
   belongs_to :user
+  ## Organization Passkeys
+  ## NOTE: need to define if this will be nullified
+  has_many :passkeys, dependent: :destroy # :nullify
+  has_many :users, through: :passkeys
+  accepts_nested_attributes_for :passkeys
   # Articles
   has_many :articles, dependent: :destroy
   accepts_nested_attributes_for :articles

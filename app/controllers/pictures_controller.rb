@@ -2,7 +2,7 @@
 
 class PicturesController < ApplicationController
   # Concerns
-  include Act
+  include Acts
 
   # Callbacks
   before_action :article

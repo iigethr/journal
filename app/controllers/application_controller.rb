@@ -14,6 +14,7 @@ class ApplicationController < ActionController::Base
       :sign_up,
       keys: [
         :slug,
+        :active,
         :email,
         :password,
         :password_confirmation,

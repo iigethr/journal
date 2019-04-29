@@ -3,7 +3,9 @@
 class DeviseCreateUsers < ActiveRecord::Migration[6.0]
   def change
     create_table :users do |t|
-      t.string :slug, unique: true, index: true
+      t.string  :slug, default: "", null: false, unique: true, index: true
+      t.boolean :active, default: false
+
       ## Database authenticatable
       t.string :email, null: false, default: ""
       t.string :encrypted_password, null: false, default: ""

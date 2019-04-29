@@ -5,6 +5,9 @@ class User < ApplicationRecord
   # Profile
   has_one :profile, dependent: :destroy, autosave: true
   accepts_nested_attributes_for :profile
+  ## Passkeys
+  has_many :passkeys, dependent: :nullify
+  accepts_nested_attributes_for :passkeys, allow_destroy: false
   # Publications
   has_many :publications, dependent: :destroy
   accepts_nested_attributes_for :publications

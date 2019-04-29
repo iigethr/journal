@@ -2,11 +2,14 @@
 
 class TextsController < ApplicationController
   # Concerns
-  include Act
+  include Acts
+  include Passkeys
 
   # Callbacks
   before_action :article
   before_action :text, only: [:show, :edit, :update, :destroy]
+  before_action :publication
+  before_action :passkey
 
   def index
     redirect_to article_path(@article)
@@ -61,6 +64,10 @@ class TextsController < ApplicationController
 
   def text
     @text = @article.texts.find_by(slug: params[:id])
+  end
+
+  def publication
+    @publication = @article.publication
   end
 
   def text_params

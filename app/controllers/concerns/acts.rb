@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Act
+module Acts
   extend ActiveSupport::Concern
   included do
     def create_agent(parent = "", object = "")

@@ -1,9 +1,14 @@
 # frozen_string_literal: true
 
 class PublicationsController < ApplicationController
+  # Concerns
+  include Tokens
+  include Passkeys
+
   # Callbacks
   before_action :publications, only: [:index]
   before_action :publication, only: [:show, :edit, :update, :destroy, :preview, :toc]
+  before_action :passkey, only: [:show, :edit, :update, :destroy, :preview, :toc]
   before_action :articles, only: [:show, :preview, :toc]
 
   # Layout
@@ -51,6 +56,14 @@ class PublicationsController < ApplicationController
     @publication.position = (order.min - 1)
 
     if @publication.save
+      @passkey = Passkey.create(
+        active: true,
+        user_id: current_user.id,
+        publication_id: @publication.id,
+        role: "owner",
+        email: current_user.email,
+        token: generate_token(32)
+      )
       flash[:notice] = "Publication was successfully created."
       redirect_to publication_path(@publication)
     else
@@ -66,7 +79,13 @@ class PublicationsController < ApplicationController
   private
 
   def publications
-    @publications ||= current_user.publications.includes(:articles).order(position: :asc)
+    # find the passkeys with current user_id
+    @passkeys = current_user.passkeys
+    @publications = []
+    @passkeys.each do |passkey|
+      get_publications = Publication.where(user_id: passkey.user_id).all
+      @publications = get_publications if get_publications
+    end
   end
 
   def publication

@@ -1,10 +1,14 @@
 # frozen_string_literal: true
 
 class ArticlesController < ApplicationController
+  # Concerns
+  include Passkeys
+
   # Callbacks
-  before_action :publication, only: [:index, :new, :create, :sortable]
   before_action :article, only: [:show, :edit, :update, :destroy, :preview]
   before_action :agents, only: [:show, :preview]
+  before_action :publication
+  before_action :passkey
 
   # Layout
   layout "application_preview", only: [:preview]
@@ -67,10 +71,6 @@ class ArticlesController < ApplicationController
 
   private
 
-  def publication
-    @publication = current_user.publications.find_by(slug: params[:publication_id])
-  end
-
   def article
     # Find the child
     @article = Article.find_by(slug: params[:id])
@@ -81,6 +81,15 @@ class ArticlesController < ApplicationController
 
   def agents
     @agents = @article.agents.order(position: :asc)
+  end
+
+  def publication
+    @publication =
+      if params[:publication_id]
+        current_user.publications.find_by(slug: params[:publication_id])
+      else
+        @article.publication
+      end
   end
 
   def article_params

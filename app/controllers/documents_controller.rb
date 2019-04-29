@@ -2,7 +2,7 @@
 
 class DocumentsController < ApplicationController
   # Concerns
-  include Act
+  include Acts
 
   # Callbacks
   before_action :set_article

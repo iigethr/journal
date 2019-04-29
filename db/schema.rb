@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 2019_04_06_154647) do
   end
 
   create_table "agents", force: :cascade do |t|
-    t.string "slug"
+    t.string "slug", default: "", null: false
     t.bigint "article_id"
     t.string "act_type"
     t.bigint "act_id"
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 2019_04_06_154647) do
   end
 
   create_table "articles", force: :cascade do |t|
-    t.string "slug"
+    t.string "slug", default: "", null: false
     t.bigint "publication_id"
     t.string "title"
     t.text "description"
@@ -75,7 +75,7 @@ ActiveRecord::Schema.define(version: 2019_04_06_154647) do
   end
 
   create_table "documents", force: :cascade do |t|
-    t.string "slug"
+    t.string "slug", default: "", null: false
     t.bigint "article_id"
     t.string "caption"
     t.integer "position"
@@ -86,7 +86,7 @@ ActiveRecord::Schema.define(version: 2019_04_06_154647) do
   end
 
   create_table "galleries", force: :cascade do |t|
-    t.string "slug"
+    t.string "slug", default: "", null: false
     t.bigint "article_id"
     t.string "caption"
     t.integer "position"
@@ -96,8 +96,23 @@ ActiveRecord::Schema.define(version: 2019_04_06_154647) do
     t.index ["slug"], name: "index_galleries_on_slug"
   end
 
+  create_table "passkeys", force: :cascade do |t|
+    t.string "slug", default: "", null: false
+    t.boolean "active", default: false
+    t.bigint "user_id"
+    t.bigint "publication_id"
+    t.string "role", default: "collaborator"
+    t.string "email"
+    t.string "token"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["publication_id"], name: "index_passkeys_on_publication_id"
+    t.index ["slug"], name: "index_passkeys_on_slug"
+    t.index ["user_id"], name: "index_passkeys_on_user_id"
+  end
+
   create_table "pictures", force: :cascade do |t|
-    t.string "slug"
+    t.string "slug", default: "", null: false
     t.bigint "article_id"
     t.string "caption"
     t.integer "position"
@@ -108,7 +123,7 @@ ActiveRecord::Schema.define(version: 2019_04_06_154647) do
   end
 
   create_table "profiles", force: :cascade do |t|
-    t.string "slug"
+    t.string "slug", default: "", null: false
     t.bigint "user_id"
     t.string "first_name"
     t.string "middle_name"
@@ -119,8 +134,17 @@ ActiveRecord::Schema.define(version: 2019_04_06_154647) do
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
+  create_table "publication_settings", force: :cascade do |t|
+    t.string "slug", default: "", null: false
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["slug"], name: "index_publication_settings_on_slug"
+    t.index ["user_id"], name: "index_publication_settings_on_user_id"
+  end
+
   create_table "publications", force: :cascade do |t|
-    t.string "slug"
+    t.string "slug", default: "", null: false
     t.bigint "user_id"
     t.string "title"
     t.text "description"
@@ -133,7 +157,7 @@ ActiveRecord::Schema.define(version: 2019_04_06_154647) do
   end
 
   create_table "texts", force: :cascade do |t|
-    t.string "slug"
+    t.string "slug", default: "", null: false
     t.bigint "article_id"
     t.text "body"
     t.integer "position"
@@ -144,7 +168,8 @@ ActiveRecord::Schema.define(version: 2019_04_06_154647) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "slug"
+    t.string "slug", default: "", null: false
+    t.boolean "active", default: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -168,7 +193,7 @@ ActiveRecord::Schema.define(version: 2019_04_06_154647) do
   end
 
   create_table "videos", force: :cascade do |t|
-    t.string "slug"
+    t.string "slug", default: "", null: false
     t.bigint "article_id"
     t.string "caption"
     t.integer "position"
@@ -183,8 +208,11 @@ ActiveRecord::Schema.define(version: 2019_04_06_154647) do
   add_foreign_key "articles", "publications"
   add_foreign_key "documents", "articles"
   add_foreign_key "galleries", "articles"
+  add_foreign_key "passkeys", "publications"
+  add_foreign_key "passkeys", "users"
   add_foreign_key "pictures", "articles"
   add_foreign_key "profiles", "users"
+  add_foreign_key "publication_settings", "users"
   add_foreign_key "publications", "users"
   add_foreign_key "texts", "articles"
   add_foreign_key "videos", "articles"
