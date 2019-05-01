@@ -5,10 +5,9 @@
   %fieldset
     - if resource.presence
       .form-row
-        .field.col-medium-2-1
-          = link_to url_for(resource), target: :blank, class: "button extra-large black wide" do
-            View Cover
-        .field.col-medium-2-1
+        .field.col-medium-1-1
+          = image_tag url_for(resource), class: "altai-center"
+        .field.col-medium-2-1.altai-center
           = link_to destroy_cover_publication_path(publication, resource), method: :delete, data: { confirm: "Are you sure?" }, class: "button extra-large red wide" do
             Remove Cover
     - unless resource.presence

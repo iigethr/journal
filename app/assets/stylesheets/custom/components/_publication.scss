@@ -35,15 +35,15 @@ $class: "publication";
           @include border-box;
           background-color: $gray-300;
           float: left;
-          height: 48px;
+          height: 24px;
           margin: 0 16px 0 0;
-          width: 48px;
+          width: 24px;
         }
         .#{$class}-center {
           @include border-box;
           float: left;
-          min-height: 48px;
-          width: 608px;
+          min-height: 24px;
+          width: 632px;
         }
       }
       .#{$class}-bottom {

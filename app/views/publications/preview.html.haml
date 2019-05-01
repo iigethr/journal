@@ -2,29 +2,28 @@
 
 .container-top
   = breadcrumbs(publication_path(@publication))
-  .primary-actions
-    .primary-actions-box
-      .primary-actions-item
-        = link_to "Table of Contents", toc_publication_path(@publication), class: "button extra-large blue"
+  // .primary-actions
+  //   .primary-actions-box
+  //     .primary-actions-item
+  //       = link_to "Table of Contents", toc_publication_path(@publication), class: "button extra-large blue"
 .container-middle
   .board-large.altai-center
     .content
       .content-box
         .content-item
           %h1= @publication.title
-        .separator.small
-    .preview
-      .preview-box.sortable
-        - @articles.each do |article|
-          .preview-item
-            %h3{ id: "#{article.slug}" }= article.title
-          - article.agents.each do |agent|
-            = render_preview_agent(article, agent)
+        - if @publication.description.presence
+          .content-item
+            %p= @publication.description
+        - if @publication.cover.presence
+          .content-item
+            = image_tag url_for(@publication.cover), class: "altai-center"
+    - if @articles.presence
+      .preview
+        .preview-box.sortable
+          - @articles.each do |article|
+            .preview-item
+              %h3{ id: "#{article.slug}" }= article.title
+            - article.agents.each do |agent|
+              = render_preview_agent(article, agent)
 .container-bottom
-
-#JPO
-  .overlay-menu
-    .overlay-menu-box
-      - @articles.each do |article|
-        .overlay-menu-item
-          = link_to article.title, "#", class: "link small blue wide"

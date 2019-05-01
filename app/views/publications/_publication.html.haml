@@ -10,16 +10,16 @@
       = @passkey.role
   .publication-middle
     .publication-left
-      = link_to "#", class: "altai-off link large handle" do
+      = link_to "#", class: "altai-off link handle" do
         %span.icon
           = inline_svg "icons/swap_vert.svg"
     .publication-center
-      = link_to publication_path(publication), class: "link blue large wide" do
+      = link_to publication_path(publication), class: "link blue wide" do
         = publication.title
   .publication-bottom
-    %p.left.auto
+    %p.small.left.auto
       %strong Created:
-      = publication.created_at
-    %p.right.auto
+      = publication.created_at.strftime("%B %d, %Y")
+    %p.small.right.auto.gray-500-cl
       %strong Articles:
       = publication.articles.count

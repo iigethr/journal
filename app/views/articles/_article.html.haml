@@ -10,9 +10,16 @@
       = article.agents.count
   .article-middle
     .article-left
-      = link_to "#", class: "altai-off link double-extra-large handle" do
+      = link_to "#", class: "altai-off link handle" do
         %span.icon
           = inline_svg "icons/swap_vert.svg"
     .article-center
-      = link_to article_path(article), class: "link blue double-extra-large wide" do
+      = link_to article_path(article), class: "link blue wide" do
         = article.title
+  .article-bottom
+    %p.small.left.auto
+      %strong Created:
+      = article.created_at.strftime("%B %d, %Y")
+    %p.small.right.auto.gray-500-cl
+      %strong Agents:
+      = article.agents.count
