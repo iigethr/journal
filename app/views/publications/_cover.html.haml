@@ -1,0 +1,20 @@
+/* Form */
+
+= form_with model: publication, local: true do |form|
+  = errors(publication)
+  %fieldset
+    - if resource.presence
+      .form-row
+        .field.col-medium-2-1
+          = link_to url_for(resource), target: :blank, class: "button extra-large black wide" do
+            View Cover
+        .field.col-medium-2-1
+          = link_to destroy_cover_publication_path(publication, resource), method: :delete, data: { confirm: "Are you sure?" }, class: "button extra-large red wide" do
+            Remove Cover
+    - unless resource.presence
+      .form-row
+        .field
+          .file
+            = form.file_field :cover, id: "upload"
+            = form.label :cover, "Upload Cover", for: "upload", class: "button extra-large blue wide"
+      = submit_button(form, "Save")

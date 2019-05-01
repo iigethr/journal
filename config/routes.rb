@@ -31,6 +31,8 @@ Rails.application.routes.draw do
     member do
       get "preview"
       get "toc"
+      delete :destroy_cover
+      delete :destroy_thumb
     end
   end
 

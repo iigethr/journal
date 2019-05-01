@@ -32,7 +32,8 @@ gem "mini_magick", "~> 4.9"
 # Use ActiveModel has_secure_password.
 gem "bcrypt", "~> 3.1"
 # Flexible authentication solution for Rails with Warden.
-gem "devise", "~> 4.6", ">= 4.6.2"
+# gem "devise", "~> 4.6", ">= 4.6.2"
+gem "devise", github: "plataformatec/devise", branch: "master"
 
 # Use webpack to manage app-like JavaScript modules in Rails
 gem "webpacker", "~> 4.0"
@@ -89,6 +90,7 @@ gem "bootsnap", ">= 1.1.0", require: false
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+gem "libv8"
 # Linters
 gem "coffeelint", require: false
 gem "haml_lint", require: false

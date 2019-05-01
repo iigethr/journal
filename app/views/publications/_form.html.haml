@@ -1,11 +1,12 @@
 /* Form */
 
-= form_with model: object, local: true do |form|
+= form_with model: publication, local: true do |form|
   = form.hidden_field :user_id, value: current_user.id
-  = errors(object)
+  = errors(publication)
   %fieldset
-    .form-row
-      %legend Publication
+    - if params[:action] == "new" || params[:action] == "create"
+      .form-row
+        %legend New Publication
     .form-row
       .field
         = form.label :title

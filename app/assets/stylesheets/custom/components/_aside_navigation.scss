@@ -1,20 +1,26 @@
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-// File:    Breadcrumbs
+// File:    Aside navigation
 // Project: Mies by IIGETHR
 // -------------------------------------------------------------
 
-$class: "breadcrumbs";
+$class: "aside-navigation";
 
 .#{$class} {
   @include border-box;
   float: left;
+  padding: 8px;
+  width: 100%;
   .#{$class}-box {
     @include border-box;
+    background-color: $gray-000;
     float: left;
+    padding: 16px;
+    width: 100%;
     .#{$class}-item {
       @include border-box;
       float: left;
-      padding: 10px 8px;
+      padding: 4px;
+      width: 100%;
     }
   }
 }

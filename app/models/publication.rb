@@ -20,5 +20,7 @@ class Publication < ApplicationRecord
   # Validations
   validates :title, presence: true
 
-  # Class Methods
+  # Active storage
+  has_one_attached :cover
+  has_one_attached :thumb
 end

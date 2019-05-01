@@ -7,7 +7,18 @@ class PublicationsController < ApplicationController
 
   # Callbacks
   before_action :publications, only: [:index]
-  before_action :publication, only: [:show, :edit, :update, :destroy, :preview, :toc]
+
+  before_action :publication, only: [
+    :show,
+    :edit,
+    :update,
+    :destroy,
+    :destroy_cover,
+    :destroy_thumb,
+    :preview,
+    :toc
+  ]
+
   before_action :passkey, only: [:show, :edit, :update, :destroy, :preview, :toc]
   before_action :articles, only: [:show, :preview, :toc]
 
@@ -43,6 +54,18 @@ class PublicationsController < ApplicationController
     @publication.destroy
     flash[:notice] = "Publication was successfully destroyed."
     redirect_to publications_url
+  end
+
+  def destroy_cover
+    @attachment = @publication.cover
+    @attachment.purge
+    redirect_to publication_path(@publication, cover: :true)
+  end
+
+  def destroy_thumb
+    @attachment = @publication.thumb
+    @attachment.purge
+    redirect_to publication_path(@publication, thumb: :true)
   end
 
   def new
@@ -85,6 +108,7 @@ class PublicationsController < ApplicationController
     @passkeys.each do |passkey|
       get_publications = Publication.where(user_id: passkey.user_id).all
       @publications = get_publications if get_publications
+      @passkey = passkey
     end
   end
 
@@ -102,7 +126,9 @@ class PublicationsController < ApplicationController
       :title,
       :description,
       :published,
-      :position
+      :position,
+      :cover,
+      :thumb
     )
   end
 end

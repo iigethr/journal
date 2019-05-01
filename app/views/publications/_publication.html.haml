@@ -6,8 +6,8 @@
       %strong Published:
       = publication.published?
     %p.right.auto
-      %strong Articles:
-      = publication.articles.count
+      %strong Role:
+      = @passkey.role
   .publication-middle
     .publication-left
       = link_to "#", class: "altai-off link large handle" do
@@ -20,3 +20,6 @@
     %p.left.auto
       %strong Created:
       = publication.created_at
+    %p.right.auto
+      %strong Articles:
+      = publication.articles.count
