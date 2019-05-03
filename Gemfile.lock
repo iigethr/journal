@@ -22,7 +22,7 @@ GIT
 
 GIT
   remote: https://github.com/stympy/faker.git
-  revision: 000cd9158d8cabe29a3b2c39a720cbe3f30086a7
+  revision: cc9f09e287fea252339c485046fe99a9ff41df07
   branch: master
   specs:
     faker (1.9.3)
@@ -98,13 +98,13 @@ GEM
     autoprefixer-rails (9.5.1)
       execjs
     aws-eventstream (1.0.3)
-    aws-partitions (1.156.0)
+    aws-partitions (1.157.0)
     aws-sdk-core (3.49.0)
       aws-eventstream (~> 1.0, >= 1.0.2)
       aws-partitions (~> 1.0)
       aws-sigv4 (~> 1.1)
       jmespath (~> 1.0)
-    aws-sdk-kms (1.17.0)
+    aws-sdk-kms (1.18.0)
       aws-sdk-core (~> 3, >= 3.48.2)
       aws-sigv4 (~> 1.1)
     aws-sdk-s3 (1.36.1)
@@ -193,7 +193,7 @@ GEM
       haml (>= 4.0.6, < 6.0)
       html2haml (>= 1.0.1)
       railties (>= 5.1)
-    haml_lint (0.28.0)
+    haml_lint (0.29.0)
       haml (>= 4.0, < 5.1)
       rainbow
       rake (>= 10, < 13)
@@ -360,7 +360,7 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    scss_lint (0.57.1)
+    scss_lint (0.58.0)
       rake (>= 0.9, < 13)
       sass (~> 3.5, >= 3.5.5)
     selenium-webdriver (3.142.0)

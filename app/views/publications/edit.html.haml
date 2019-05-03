@@ -1,4 +1,4 @@
-/* Show */
+/* Edit */
 
 .container-top
   .wrap.wide
@@ -16,10 +16,13 @@
   .board-double-extra-small
     = render "aside_navigation", publication: @publication
   .board-medium
-    .content
-      .content-box
-        .content-item
-          %h3.lighter= @publication.title
-        .content-item
-          = @publication.description
+    - if @passkey.role == "owner"
+      - if params[:main] == "true"
+        = render "form", publication: @publication
+      - elsif params[:cover] == "true"
+        = render "cover", publication: @publication, resource: @publication.cover
+      - elsif params[:thumb] == "true"
+        = render "thumb", publication: @publication, resource: @publication.thumb
+      - else
+        = render "form", publication: @publication
 .container-bottom

@@ -38,7 +38,7 @@ class PublicationsController < ApplicationController
   end
 
   def edit
-    redirect_to publication_path(publication)
+    # redirect_to publication_path(publication)
   end
 
   def update
@@ -59,13 +59,13 @@ class PublicationsController < ApplicationController
   def destroy_cover
     @attachment = @publication.cover
     @attachment.purge
-    redirect_to publication_path(@publication, cover: :true)
+    redirect_to edit_publication_path(@publication, cover: :true)
   end
 
   def destroy_thumb
     @attachment = @publication.thumb
     @attachment.purge
-    redirect_to publication_path(@publication, thumb: :true)
+    redirect_to edit_publication_path(@publication, thumb: :true)
   end
 
   def new
@@ -97,6 +97,12 @@ class PublicationsController < ApplicationController
   def sortable
     Publication.sort_position(params[:publication])
     head :ok
+  end
+
+  # NOTE: Research send_data & send_file
+  def publications_json
+    data = Publication.all
+    send_data data
   end
 
   private

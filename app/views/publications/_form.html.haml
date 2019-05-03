@@ -17,9 +17,4 @@
         = form.label :description
         .textarea
           = form.text_area :description, class: "altai-autosize"
-    .form-row
-      .field
-        .checkbox
-          = form.check_box :published
-          = form.label :published
-    = submit_button(form, "Save")
+    = submit_and_published(form, "Save")
