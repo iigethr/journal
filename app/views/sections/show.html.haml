@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Slug:
+  = @section.slug
+%p
+  %b Publication:
+  = @section.publication
+%p
+  %b Title:
+  = @section.title
+%p
+  %b Description:
+  = @section.description
+%p
+  %b Published:
+  = @section.published
+%p
+  %b Position:
+  = @section.position
+
+= link_to 'Edit', edit_section_path(@section)
+\|
+= link_to 'Back', sections_path

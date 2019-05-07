@@ -1,0 +1,20 @@
+/* Index */
+
+.container-top
+  = breadcrumbs(publication_path(@publication))
+  .primary-actions
+    .primary-actions-box
+      .primary-actions-item
+        = link_to "New Section", new_publication_section_path(@publication), class: "button purple"
+.container-middle
+  .board-medium.altai-center
+    .content
+      .content-box
+        .content-item
+          = link_to publication_path(@publication), class: "link purple wide bold" do
+            = @publication.title
+          %h3.left.lighter Sections
+    .section
+      .section-box.sortable{ "data-url": sortable_publication_sections_path(@publication) }
+        = render partial: "section", collection: @sections
+.container-bottom

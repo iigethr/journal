@@ -16,6 +16,9 @@ class Publication < ApplicationRecord
   # Articles
   has_many :articles, dependent: :destroy
   accepts_nested_attributes_for :articles
+  # Sections
+  has_many :sections, dependent: :destroy
+  accepts_nested_attributes_for :sections
 
   # Validations
   validates :title, presence: true

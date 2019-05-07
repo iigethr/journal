@@ -1,0 +1,21 @@
+/* Form */
+
+= form_with model: [parent, object], local: true do |form|
+  = errors(object)
+  - if params[:action] == "new" || params[:action] == "create"
+    = form.hidden_field :publication_id, value: @publication.id
+  %fieldset
+    - if params[:action] == "new" || params[:action] == "create"
+      .form-row
+        %legend New Article
+    .form-row
+      .field
+        = form.label :title
+        .input
+          = form.text_field :title
+    .form-row
+      .field
+        = form.label :description
+        .textarea
+          = form.text_area :description
+    = submit_and_published(form, "Save")

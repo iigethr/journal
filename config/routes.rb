@@ -15,6 +15,11 @@ Rails.application.routes.draw do
 
   # Publications
   resources :publications do
+    resources :sections do
+      collection do
+        patch :sortable
+      end
+    end
     resources :articles do
       resources :galleries
       resources :pictures
@@ -47,6 +52,12 @@ Rails.application.routes.draw do
         patch :sortable
       end
     end
+    member do
+      get "preview"
+    end
+  end
+
+  resources :sections do
     member do
       get "preview"
     end

@@ -1,0 +1,25 @@
+/* section */
+
+.section-item{ id: "section_#{section.id}" }
+  .section-top
+    %p.left.auto
+      %strong Published:
+      = section.published?
+    %p.right.auto
+      %strong Agents:
+      // = section.agents.count
+  .section-middle
+    .section-left
+      = link_to "#", class: "altai-off link handle" do
+        %span.icon
+          = inline_svg "icons/swap_vert.svg"
+    .section-center
+      = link_to section_path(section), class: "link blue wide" do
+        = section.title
+  .section-bottom
+    %p.small.left.auto
+      %strong Created:
+      = section.created_at.strftime("%B %d, %Y")
+    %p.small.right.auto.gray-500-cl
+      %strong Agents:
+      // = section.agents.count
