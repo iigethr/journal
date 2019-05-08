@@ -27,7 +27,7 @@ gem "jbuilder", "~> 2.8"
 # Use ActiveStorage variant
 gem "aws-sdk-s3", require: false
 gem "image_processing"
-gem "mini_magick", "~> 4.9"
+gem "mini_magick"
 
 # Use ActiveModel has_secure_password.
 gem "bcrypt", "~> 3.1"
@@ -66,7 +66,7 @@ end
 
 group :development do
   # Kill N+1 queries and unused eager loading.
-  # gem "bullet", "~> 5.9"
+  gem "bullet", "~> 6.0"
   # Access an interactive console on exception pages or by calling "console" anywhere in the code.
   gem "listen", ">= 3.0.5", "< 3.2"
   gem "web-console", ">= 3.3.0"

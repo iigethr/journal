@@ -83,7 +83,7 @@ class ArticlesController < ApplicationController
 
   def agents
     @article = Article.find_by(slug: params[:id])
-    @agents = Agent.where(union_id: @article.union).order(position: :asc)
+    @agents = Agent.includes(act: :rich_text_body ).where(union_id: @article.union).order(position: :asc)
   end
 
   def publication
