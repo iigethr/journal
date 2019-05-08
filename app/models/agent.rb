@@ -1,12 +1,13 @@
 # frozen_string_literal: true
 
 class Agent < ApplicationRecord
-  # Relationships
-  # belongs_to :article
-  # Act
-  belongs_to :act, polymorphic: true
+  # Concerns
   # Sortable position
   include SortablePosition
+
+  # Relationships
+  # Act
+  belongs_to :act, polymorphic: true
 
   # Validations
 

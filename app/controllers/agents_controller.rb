@@ -17,7 +17,8 @@ class AgentsController < ApplicationController
   end
 
   def agents
-    @agents = @article.agents.all
+    @agents = Agent.where(union_id: @article.union).order(position: :asc)
+    # @agents = Agent.where(union_id: @article.union).order(position: :asc)
   end
 
   def agent_params

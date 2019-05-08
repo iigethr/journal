@@ -2,8 +2,6 @@
 
 = form_with model: [@article, @text], local: true do |form|
   = errors(@text)
-  - if params[:action] == "new" || params[:action] == "create"
-    = form.hidden_field :article_id, value: @article.id
   %fieldset
     .form-row
       %legend Text

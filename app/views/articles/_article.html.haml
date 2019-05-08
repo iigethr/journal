@@ -7,7 +7,7 @@
       = article.published?
     %p.right.auto
       %strong Agents:
-      = article.agents.count
+      // = article.agents.count
   .article-middle
     .article-left
       = link_to "#", class: "altai-off link handle" do
@@ -22,4 +22,4 @@
       = article.created_at.strftime("%B %d, %Y")
     %p.small.right.auto.gray-500-cl
       %strong Agents:
-      = article.agents.count
+      // = article.agents.count

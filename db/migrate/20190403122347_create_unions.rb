@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-class CreateGalleries < ActiveRecord::Migration[6.0]
+class CreateUnions < ActiveRecord::Migration[6.0]
   def change
-    create_table :galleries do |t|
+    create_table :unions do |t|
       t.string      :slug, default: "", null: false, unique: true, index: true
-      t.string      :caption
+      t.references  :member, null: false, polymorphic: true, index: false
       t.integer     :position
 
       t.timestamps

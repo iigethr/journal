@@ -17,6 +17,9 @@
       .content-box
         .content-item
           %h1.lighter= @article.title
+          = @article.id
+          - if @article.union.presence
+            = @article.union.id
     .agent
       .agent-box.sortable{ "data-url": sortable_article_agents_path(@article) }
         - @agents.each do |agent|

@@ -2,6 +2,7 @@
 
 class ArticlesController < ApplicationController
   # Concerns
+  include Members
   include Passkeys
 
   # Callbacks
@@ -33,6 +34,7 @@ class ArticlesController < ApplicationController
     @article.position = (order.min - 1)
 
     if @article.save
+      create_member(@article)
       flash[:notice] = "Article was successfully created."
       redirect_to article_path(@article)
     else
@@ -80,7 +82,8 @@ class ArticlesController < ApplicationController
   end
 
   def agents
-    @agents = @article.agents.order(position: :asc)
+    @article = Article.find_by(slug: params[:id])
+    @agents = Agent.where(union_id: @article.union).order(position: :asc)
   end
 
   def publication

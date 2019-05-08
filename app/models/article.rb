@@ -8,20 +8,9 @@ class Article < ApplicationRecord
   # Relationships
   # Publication
   belongs_to :publication
-
-  has_many :pictures
-  accepts_nested_attributes_for :pictures
-  has_many :texts
-  accepts_nested_attributes_for :texts
-  has_many :documents
-  accepts_nested_attributes_for :documents
-  has_many :galleries
-  accepts_nested_attributes_for :galleries
-  has_many :videos
-  accepts_nested_attributes_for :videos
-  # Agents
-  has_many :agents, dependent: :destroy
-  accepts_nested_attributes_for :agents
+  # Unions
+  has_one :union, as: :member, dependent: :destroy
+  accepts_nested_attributes_for :union
 
   # Validations
   validates :title, presence: true
