@@ -7,18 +7,7 @@ class PublicationsController < ApplicationController
 
   # Callbacks
   before_action :publications, only: [:index]
-
-  before_action :publication, only: [
-    :show,
-    :edit,
-    :update,
-    :destroy,
-    :destroy_cover,
-    :destroy_thumb,
-    :preview,
-    :toc
-  ]
-
+  before_action :publication, only: [:show, :edit, :update, :destroy, :destroy_cover, :destroy_thumb, :preview, :toc]
   before_action :passkey, only: [:show, :edit, :update, :destroy, :preview, :toc]
   before_action :articles, only: [:show, :preview, :toc]
 
