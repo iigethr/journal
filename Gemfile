@@ -52,6 +52,9 @@ gem "mies", "0.0.1.alpha", github: "iigethr/mies"
 # Presenting names of people in full, familiar, abbreviated, and initialized forms.
 gem "name_of_person", "~> 1.0"
 
+# Skylight is a smart profiler for Rails, Sinatra, and other Ruby apps.
+gem "skylight"
+
 group :development, :test do
   # Call "byebug" anywhere in the code to stop execution and get a debugger console
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]

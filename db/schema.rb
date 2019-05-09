@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_03_130604) do
+ActiveRecord::Schema.define(version: 2019_04_06_154647) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 2019_05_03_130604) do
 
   create_table "agents", force: :cascade do |t|
     t.string "slug", default: "", null: false
-    t.bigint "union_id"
+    t.bigint "union_id", null: false
     t.string "act_type", null: false
     t.bigint "act_id", null: false
     t.integer "position"
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 2019_05_03_130604) do
 
   create_table "articles", force: :cascade do |t|
     t.string "slug", default: "", null: false
-    t.bigint "publication_id"
+    t.bigint "publication_id", null: false
     t.string "title"
     t.text "description"
     t.boolean "published", default: false
@@ -93,9 +93,9 @@ ActiveRecord::Schema.define(version: 2019_05_03_130604) do
 
   create_table "passkeys", force: :cascade do |t|
     t.string "slug", default: "", null: false
+    t.bigint "user_id", null: false
+    t.bigint "publication_id", null: false
     t.boolean "active", default: false
-    t.bigint "user_id"
-    t.bigint "publication_id"
     t.string "role", default: "collaborator"
     t.string "email"
     t.string "token"
@@ -142,7 +142,7 @@ ActiveRecord::Schema.define(version: 2019_05_03_130604) do
 
   create_table "sections", force: :cascade do |t|
     t.string "slug", default: "", null: false
-    t.bigint "publication_id"
+    t.bigint "publication_id", null: false
     t.string "title"
     t.text "description"
     t.boolean "published", default: false
