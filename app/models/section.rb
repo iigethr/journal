@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Section < ApplicationRecord
   # Concerns
   # Sortable position
@@ -6,4 +8,12 @@ class Section < ApplicationRecord
   # Relationships
   # Publication
   belongs_to :publication
+  # Unions
+  has_one :union, as: :member, dependent: :destroy
+  accepts_nested_attributes_for :union
+
+  # Validations
+  validates :title, presence: true
+
+  # Class Methods
 end

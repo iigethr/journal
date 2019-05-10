@@ -1,8 +1,6 @@
 /* Form */
 
 = form_with model: [parent, picture], local: true do |form|
-  - if params[:action] == "new" || params[:action] == "create"
-    = form.hidden_field :article_id, value: parent.id
   %fieldset
     = errors(picture)
     .form-row

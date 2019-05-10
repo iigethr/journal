@@ -1,11 +1,13 @@
 class SectionsController < ApplicationController
   # Concerns
+  include Members
   include Passkeys
 
   # Callbacks
   before_action :section, only: [:show, :edit, :update, :destroy]
   before_action :publication
   before_action :passkey
+  before_action :agents, only: [:show, :preview]
 
   def index
     @sections = @publication.sections.order(position: :asc)
@@ -35,14 +37,12 @@ class SectionsController < ApplicationController
   def create
     @section = Section.new(section_params)
 
-    respond_to do |format|
-      if @section.save
-        format.html { redirect_to @section, notice: 'Section was successfully created.' }
-        format.json { render :show, status: :created, location: @section }
-      else
-        format.html { render :new }
-        format.json { render json: @section.errors, status: :unprocessable_entity }
-      end
+    if @section.save
+      create_member(@section)
+      flash[:notice] = "Section was successfully created."
+      redirect_to section_path(@section)
+    else
+      render :new
     end
   end
 
@@ -88,6 +88,11 @@ class SectionsController < ApplicationController
       else
         @section.publication
       end
+  end
+
+  def agents
+    @section = Section.find_by(slug: params[:id])
+    @agents = Agent.includes(act: :rich_text_body ).where(union_id: @section.union).order(position: :asc)
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

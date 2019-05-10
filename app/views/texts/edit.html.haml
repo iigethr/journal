@@ -1,7 +1,8 @@
-%h1 Editing text
+/* New */
 
-= render 'form'
-
-= link_to 'Show', @text
-\|
-= link_to 'Back', texts_path
+.container-top
+  = breadcrumbs(@parent)
+.container-middle.altai-center
+  .board-medium
+    = render "form", parent: @parent, text: @text
+.container-bottom

@@ -58,6 +58,16 @@ Rails.application.routes.draw do
   end
 
   resources :sections do
+    resources :galleries
+    resources :pictures
+    resources :videos
+    resources :texts
+    resources :documents
+    resources :agents do
+      collection do
+        patch :sortable
+      end
+    end
     member do
       get "preview"
     end

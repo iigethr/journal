@@ -1,8 +1,8 @@
 /* New */
 
 .container-top
-  // = breadcrumbs(article_path(@article))
+  = breadcrumbs(@parent)
 .container-middle.altai-center
   .board-medium
-    = render "form"
+    = render "form", parent: @parent, text: @text
 .container-bottom

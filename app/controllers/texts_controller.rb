@@ -1,23 +1,8 @@
 # frozen_string_literal: true
 
-class TextsController < ApplicationController
-  # Concerns
-  include Acts
-  include Passkeys
-
+class TextsController < AgentsController
   # Callbacks
-  before_action :article
-  before_action :text, only: [:show, :edit, :update, :destroy]
-  # before_action :publication
-  # before_action :passkey
-
-  def index
-    redirect_to article_path(@article)
-  end
-
-  def show
-    redirect_to article_path(@article)
-  end
+  before_action :text, only: [:edit, :update, :destroy]
 
   def edit
   end
@@ -25,7 +10,7 @@ class TextsController < ApplicationController
   def update
     if text.update(text_params)
       flash[:notice] = "Text was successfully updated."
-      redirect_to article_path(@article)
+      redirect_to @parent
     else
       render :edit
     end
@@ -34,22 +19,20 @@ class TextsController < ApplicationController
   def destroy
     text.destroy
     flash[:notice] = "Text was successfully destroyed."
-    redirect_to article_path(@article)
+    redirect_to @parent
   end
 
   def new
-    @article = Article.find_by(slug: params[:article_id])
     @text = Text.new
   end
 
   def create
-    @article = Article.find_by(slug: params[:article_id])
     @text = Text.new(text_params)
 
     if @text.save
-      create_agent(@article, @text)
+      create_agent(@parent, @text)
       flash[:notice] = "Text was successfully created."
-      redirect_to root_path
+      redirect_to @parent
     else
       render :new
     end
@@ -57,24 +40,12 @@ class TextsController < ApplicationController
 
   private
 
-  def article
-    # @article = Article.find_by(slug: params[:article_id])
-    # Childs parent
-    # publication = Publication.where(id: @article.publication_id).first
-    # redirect_to root_path if publication.user_id != current_user.id
-  end
-
   def text
-    @text = @article.texts.find_by(slug: params[:id])
+    @text = Text.find_by(slug: params[:id])
   end
-
-  # def publication
-  #   @publication = @article.publication
-  # end
 
   def text_params
     params.require(:text).permit(
-      :article_id,
       :body,
       :position
     )

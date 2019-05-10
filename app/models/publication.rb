@@ -11,6 +11,7 @@ class Publication < ApplicationRecord
   ## Organization Passkeys
   ## NOTE: need to define if this will be nullified
   has_many :passkeys, dependent: :destroy # :nullify
+  # Users Note
   has_many :users, through: :passkeys
   accepts_nested_attributes_for :passkeys
   # Articles

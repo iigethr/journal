@@ -24,6 +24,4 @@
           - @articles.each do |article|
             .preview-item
               %h3{ id: "#{article.slug}" }= article.title
-            - article.agents.each do |agent|
-              = render_preview_agent(article, agent)
 .container-bottom

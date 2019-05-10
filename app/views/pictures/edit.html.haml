@@ -1,7 +1,8 @@
-%h1 Editing picture
+/* New */
 
-= render "form", parent: @article, picture: @picture
-
-= link_to "Show"
-\|
-= link_to "Back", pictures_path
+.container-top
+  = breadcrumbs(@parent)
+.container-middle.altai-center
+  .board-medium
+    = render "form", parent: @parent, picture: @picture
+.container-bottom
