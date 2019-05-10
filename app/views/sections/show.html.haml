@@ -12,14 +12,10 @@
   .board-double-extra-small
     = render "aside_navigation", section: @section
   .board-medium
-    // = render "form", parent: @publication, object: @section
     .content
       .content-box
         .content-item
           %h1.lighter= @section.title
-          = @section.id
-          - if @section.union.presence
-            = @section.union.id
     .agent
       .agent-box.sortable{ "data-url": sortable_section_agents_path(@section) }
         - @agents.each do |agent|

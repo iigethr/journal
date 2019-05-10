@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(version: 2019_04_06_154647) do
 
   create_table "documents", force: :cascade do |t|
     t.string "slug", default: "", null: false
+    t.string "label"
     t.string "caption"
     t.integer "position"
     t.datetime "created_at", precision: 6, null: false
@@ -84,6 +85,7 @@ ActiveRecord::Schema.define(version: 2019_04_06_154647) do
 
   create_table "galleries", force: :cascade do |t|
     t.string "slug", default: "", null: false
+    t.string "label"
     t.string "caption"
     t.integer "position"
     t.datetime "created_at", precision: 6, null: false
@@ -108,6 +110,7 @@ ActiveRecord::Schema.define(version: 2019_04_06_154647) do
 
   create_table "pictures", force: :cascade do |t|
     t.string "slug", default: "", null: false
+    t.string "label"
     t.string "caption"
     t.integer "position"
     t.datetime "created_at", precision: 6, null: false
@@ -129,7 +132,6 @@ ActiveRecord::Schema.define(version: 2019_04_06_154647) do
 
   create_table "publications", force: :cascade do |t|
     t.string "slug", default: "", null: false
-    t.bigint "user_id", null: false
     t.string "title"
     t.text "description"
     t.boolean "published", default: false
@@ -137,7 +139,6 @@ ActiveRecord::Schema.define(version: 2019_04_06_154647) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["slug"], name: "index_publications_on_slug"
-    t.index ["user_id"], name: "index_publications_on_user_id"
   end
 
   create_table "sections", force: :cascade do |t|
@@ -155,6 +156,7 @@ ActiveRecord::Schema.define(version: 2019_04_06_154647) do
 
   create_table "texts", force: :cascade do |t|
     t.string "slug", default: "", null: false
+    t.string "label"
     t.text "body"
     t.integer "position"
     t.datetime "created_at", precision: 6, null: false
@@ -199,6 +201,7 @@ ActiveRecord::Schema.define(version: 2019_04_06_154647) do
 
   create_table "videos", force: :cascade do |t|
     t.string "slug", default: "", null: false
+    t.string "label"
     t.string "caption"
     t.integer "position"
     t.datetime "created_at", precision: 6, null: false
@@ -212,6 +215,5 @@ ActiveRecord::Schema.define(version: 2019_04_06_154647) do
   add_foreign_key "passkeys", "publications"
   add_foreign_key "passkeys", "users"
   add_foreign_key "profiles", "users"
-  add_foreign_key "publications", "users"
   add_foreign_key "sections", "publications"
 end

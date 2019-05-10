@@ -7,7 +7,7 @@ class Union < ApplicationRecord
 
   # Relationships
   # Agents
-  has_many :agents
+  has_many :agents, dependent: :destroy
   accepts_nested_attributes_for :agents
   # Member
   belongs_to :member, polymorphic: true

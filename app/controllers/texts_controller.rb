@@ -46,6 +46,7 @@ class TextsController < AgentsController
 
   def text_params
     params.require(:text).permit(
+      :label,
       :body,
       :position
     )

@@ -101,7 +101,7 @@ class PublicationsController < ApplicationController
     @passkeys = current_user.passkeys
     @publications = []
     @passkeys.each do |passkey|
-      get_publications = Publication.where(user_id: passkey.user_id).all
+      get_publications = Publication.where(id: passkey.publication_id).all
       @publications = get_publications if get_publications
       @passkey = passkey
     end
@@ -117,7 +117,6 @@ class PublicationsController < ApplicationController
 
   def publication_params
     params.require(:publication).permit(
-      :user_id,
       :title,
       :description,
       :published,

@@ -46,6 +46,7 @@ class PicturesController < AgentsController
 
   def picture_params
     params.require(:picture).permit(
+      :label,
       :caption,
       :upload
     )

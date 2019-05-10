@@ -4,7 +4,6 @@ class CreatePublications < ActiveRecord::Migration[6.0]
   def change
     create_table :publications do |t|
       t.string      :slug, default: "", null: false, unique: true, index: true
-      t.references  :user, null: false, foreign_key: true, index: true
       t.string      :title
       t.text        :description
       t.boolean     :published, default: false

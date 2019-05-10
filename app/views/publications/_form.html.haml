@@ -1,7 +1,6 @@
 /* Form */
 
 = form_with model: publication, local: true do |form|
-  = form.hidden_field :user_id, value: current_user.id
   = errors(publication)
   %fieldset
     - if params[:action] == "new" || params[:action] == "create"

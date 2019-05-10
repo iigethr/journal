@@ -23,3 +23,5 @@
     %p.small.right.auto.gray-500-cl
       %strong Agents:
       // = section.agents.count
+      = link_to section_path(section), method: :delete, data: { confirm: "Are you sure?" }, class: "link small red hover-underline" do
+        Destroy

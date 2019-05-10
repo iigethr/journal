@@ -64,10 +64,8 @@ class SectionsController < ApplicationController
   # DELETE /sections/1.json
   def destroy
     @section.destroy
-    respond_to do |format|
-      format.html { redirect_to sections_url, notice: 'Section was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    flash[:notice] = 'Section was successfully destroyed.'
+    redirect_to publication_sections_path(publication)
   end
 
   private
@@ -76,15 +74,16 @@ class SectionsController < ApplicationController
   def section
     # Find the child
     @section = Section.find_by(slug: params[:id])
-    # Childs parent
-    publication = Publication.where(id: @section.publication_id).first
-    redirect_to root_path if publication.user_id != current_user.id
+
+    publication  = Publication.where(id: @section.publication_id).first
+    passkey      = Passkey.where(publication_id: publication.id, user_id: current_user.id).first
+    redirect_to root_path unless passkey
   end
 
   def publication
     @publication =
       if params[:publication_id]
-        current_user.publications.find_by(slug: params[:publication_id])
+        Publication.find_by(slug: params[:publication_id])
       else
         @section.publication
       end

@@ -4,6 +4,7 @@ class CreateVideos < ActiveRecord::Migration[6.0]
   def change
     create_table :videos do |t|
       t.string      :slug, default: "", null: false, unique: true, index: true
+      t.string      :label
       t.string      :caption
       t.integer     :position
 

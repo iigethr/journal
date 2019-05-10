@@ -32,8 +32,8 @@ gem "mini_magick"
 # Use ActiveModel has_secure_password.
 gem "bcrypt", "~> 3.1"
 # Flexible authentication solution for Rails with Warden.
-# gem "devise", "~> 4.6", ">= 4.6.2"
-gem "devise", github: "plataformatec/devise", branch: "master"
+gem "devise", "~> 4.6", ">= 4.6.2"
+# gem "devise", github: "plataformatec/devise", branch: "master"
 
 # Use webpack to manage app-like JavaScript modules in Rails
 gem "webpacker", "~> 4.0"

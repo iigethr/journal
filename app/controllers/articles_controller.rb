@@ -76,9 +76,10 @@ class ArticlesController < ApplicationController
   def article
     # Find the child
     @article = Article.find_by(slug: params[:id])
-    # Childs parent
-    publication = Publication.where(id: @article.publication_id).first
-    redirect_to root_path if publication.user_id != current_user.id
+
+    publication  = Publication.where(id: @article.publication_id).first
+    passkey      = Passkey.where(publication_id: publication.id, user_id: current_user.id).first
+    redirect_to root_path unless passkey
   end
 
   def agents
@@ -89,7 +90,7 @@ class ArticlesController < ApplicationController
   def publication
     @publication =
       if params[:publication_id]
-        current_user.publications.find_by(slug: params[:publication_id])
+        Publication.find_by(slug: params[:publication_id])
       else
         @article.publication
       end
