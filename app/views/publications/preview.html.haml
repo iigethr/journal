@@ -8,6 +8,7 @@
   //       = link_to "Table of Contents", toc_publication_path(@publication), class: "button extra-large blue"
 .container-middle
   .board-large.altai-center
+    // Content Block
     .content
       .content-box
         .content-item
@@ -18,10 +19,22 @@
         - if @publication.cover.presence
           .content-item
             = image_tag url_for(@publication.cover), class: "altai-center"
+
+    // Preview Block
     - if @articles.presence
+      .separator.small
       .preview
         .preview-box.sortable
           - @articles.each do |article|
             .preview-item
               %h3{ id: "#{article.slug}" }= article.title
+
+    // Preview Block
+    - if @sections.presence
+      .separator.small
+      .preview
+        .preview-box.sortable
+          - @sections.each do |section|
+            .preview-item
+              %h3{ id: "#{section.slug}" }= section.title
 .container-bottom

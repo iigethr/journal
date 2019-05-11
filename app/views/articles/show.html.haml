@@ -21,3 +21,7 @@
         - @agents.each do |agent|
           = render_agent(@article, agent)
 .container-bottom
+  .content
+    .content-box
+      .content-item.altai-center
+        = danger_zone("Article", article_path(@article))

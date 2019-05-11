@@ -25,3 +25,7 @@
         .content-item
           = @publication.description
 .container-bottom
+  .content
+    .content-box
+      .content-item.altai-center
+        = danger_zone("Publication", publication_path(@publication))

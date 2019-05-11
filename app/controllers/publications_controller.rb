@@ -6,15 +6,17 @@ class PublicationsController < ApplicationController
   include Passkeys
 
   # Callbacks
-  before_action :publications, only: [:index]
-  before_action :publication, only: [:show, :edit, :update, :destroy, :destroy_cover, :destroy_thumb, :preview, :toc]
-  before_action :passkey, only: [:show, :edit, :update, :destroy, :preview, :toc]
-  before_action :articles, only: [:show, :preview, :toc]
+  before_action :publication,   except: [:index, :new, :create]
+  before_action :passkey,       only:   [:show, :edit, :update, :destroy, :preview, :toc]
+  before_action :articles,      only:   [:preview, :toc]
+  before_action :sections,      only:   [:preview, :toc]
 
-  # Layout
+  # Layouts
   layout "application_preview", only: [:preview, :toc]
 
+  # Methods
   def index
+    publications
   end
 
   def show
@@ -27,7 +29,6 @@ class PublicationsController < ApplicationController
   end
 
   def edit
-    # redirect_to publication_path(publication)
   end
 
   def update
@@ -42,45 +43,19 @@ class PublicationsController < ApplicationController
   def destroy
     @publication.destroy
     flash[:notice] = "Publication was successfully destroyed."
-    redirect_to publications_url
+    redirect_to publications_path
   end
 
   def destroy_cover
     @attachment = @publication.cover
     @attachment.purge
-    redirect_to edit_publication_path(@publication, cover: :true)
+    redirect_to edit_publication_path(@publication, cover: true)
   end
 
   def destroy_thumb
     @attachment = @publication.thumb
     @attachment.purge
-    redirect_to edit_publication_path(@publication, thumb: :true)
-  end
-
-  def new
-    @publication = Publication.new
-  end
-
-  def create
-    order = Publication.pluck(:position).compact
-    @publication = Publication.new(publication_params)
-    order << 0
-    @publication.position = (order.min - 1)
-
-    if @publication.save
-      @passkey = Passkey.create(
-        active: true,
-        user_id: current_user.id,
-        publication_id: @publication.id,
-        role: "owner",
-        email: current_user.email,
-        token: generate_token(32)
-      )
-      flash[:notice] = "Publication was successfully created."
-      redirect_to publication_path(@publication)
-    else
-      render :new
-    end
+    redirect_to edit_publication_path(@publication, thumb: true)
   end
 
   def sortable
@@ -88,21 +63,31 @@ class PublicationsController < ApplicationController
     head :ok
   end
 
-  # NOTE: Research send_data & send_file
-  def publications_json
-    data = Publication.all
-    send_data data
+  def new
+    @publication = Publication.new
+  end
+
+  def create
+    @publication = Publication.new(publication_params)
+    order_publication(@publication)
+
+    if @publication.save
+      create_passkey(current_user, @publication)
+      flash[:notice] = "Publication was successfully created."
+      redirect_to publication_path(@publication)
+    else
+      render :new
+    end
   end
 
   private
 
   def publications
-    # find the passkeys with current user_id
     @passkeys = current_user.passkeys
     @publications = []
     @passkeys.each do |passkey|
       get_publications = Publication.where(id: passkey.publication_id).all
-      @publications = get_publications if get_publications
+      @publications += get_publications if get_publications
       @passkey = passkey
     end
   end
@@ -113,6 +98,10 @@ class PublicationsController < ApplicationController
 
   def articles
     @articles = @publication.articles.order(position: :asc)
+  end
+
+  def sections
+    @sections = @publication.sections.order(position: :asc)
   end
 
   def publication_params

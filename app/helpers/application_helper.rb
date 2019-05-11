@@ -16,6 +16,11 @@ module ApplicationHelper
     render "lib/components/blankslate"
   end
 
+  # Danger zone
+  def danger_zone(label = "", path = "")
+    render "lib/components/danger_zone", label: label, path: path
+  end
+
   # Active Link
   def active_class(options = {})
     name_of_controller = options[:controller] || nil

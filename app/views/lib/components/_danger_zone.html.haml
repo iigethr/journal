@@ -1,0 +1,11 @@
+/* Danger zone */
+
+.separator.extra-small
+.danger_zone.white-bg
+  .danger_zone-box
+    .danger_zone-item.pg-32
+      %h3.text-center Danger Zone
+      %p.text-center Once deleted, it will be gone forever. Please be certain.
+      .separator.extra-small
+      = link_to path, method: :delete, data: { confirm: "Are you sure?" }, class: "button large red altai-center" do
+        Destroy this #{label}
