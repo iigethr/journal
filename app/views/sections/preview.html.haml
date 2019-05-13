@@ -1,0 +1,16 @@
+/* Show */
+
+.container-top
+  = breadcrumbs(section_path(@section))
+.container-middle.altai-center
+  .board-large.altai-center
+    .content
+      .content-box
+        .content-item
+          %h1= @section.title
+        .separator.small
+    .preview
+      .preview-box.sortable
+        - @agents.each do |agent|
+          = render_preview_agent(@section, agent)
+.container-bottom

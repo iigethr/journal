@@ -4,7 +4,7 @@ class SectionsController < ApplicationController
   include Passkeys
 
   # Callbacks
-  before_action :section, only: [:show, :edit, :update, :destroy]
+  before_action :section, only: [:show, :preview, :edit, :update, :destroy]
   before_action :publication
   before_action :passkey
   before_action :agents, only: [:show, :preview]
@@ -18,36 +18,15 @@ class SectionsController < ApplicationController
     head :ok
   end
 
-  # GET /sections/1
-  # GET /sections/1.json
   def show
   end
 
-  # GET /sections/new
-  def new
-    @section = Section.new
+  def preview
   end
 
-  # GET /sections/1/edit
   def edit
   end
 
-  # POST /sections
-  # POST /sections.json
-  def create
-    @section = Section.new(section_params)
-
-    if @section.save
-      create_member(@section)
-      flash[:notice] = "Section was successfully created."
-      redirect_to section_path(@section)
-    else
-      render :new
-    end
-  end
-
-  # PATCH/PUT /sections/1
-  # PATCH/PUT /sections/1.json
   def update
     respond_to do |format|
       if @section.update(section_params)
@@ -60,12 +39,26 @@ class SectionsController < ApplicationController
     end
   end
 
-  # DELETE /sections/1
-  # DELETE /sections/1.json
   def destroy
     @section.destroy
     flash[:notice] = 'Section was successfully destroyed.'
     redirect_to publication_sections_path(publication)
+  end
+
+  def new
+    @section = Section.new
+  end
+
+  def create
+    @section = Section.new(section_params)
+
+    if @section.save
+      create_member(@section)
+      flash[:notice] = "Section was successfully created."
+      redirect_to section_path(@section)
+    else
+      render :new
+    end
   end
 
   private

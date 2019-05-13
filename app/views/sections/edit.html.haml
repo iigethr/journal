@@ -1,8 +1,19 @@
-/* Edit */
+/* Show */
 
 .container-top
-  = breadcrumbs(publication_sections_path(@section.publication.slug))
+  .wrap.wide
+    = breadcrumbs(publication_sections_path(@section.publication.slug))
+  .wrap.wide
+    .content
+      .content-box
+        .content-item
+          %h2.lighter Section
 .container-middle.altai-center
+  .board-double-extra-small
+    = render "aside_navigation", section: @section
   .board-medium
-    = render "form", parent: @publication, object: @section
+    - if params[:main] == "true"
+      = render "form", parent: @publication, object: @section
+    - else
+      = render "form", parent: @publication, object: @section
 .container-bottom

@@ -7,7 +7,7 @@
     .content
       .content-box
         .content-item
-          %h2.lighter section
+          %h3.lighter Section
 .container-middle.altai-center
   .board-double-extra-small
     = render "aside_navigation", section: @section
@@ -16,12 +16,15 @@
       .content-box
         .content-item
           %h1.lighter= @section.title
-    .agent
-      .agent-box.sortable{ "data-url": sortable_section_agents_path(@section) }
-        - @agents.each do |agent|
-          = render_agent(@section, agent)
+    - if @agents.presence
+      .agent
+        .agent-box.sortable{ "data-url": sortable_section_agents_path(@section) }
+          - @agents.each do |agent|
+            = render_agent(@section, agent)
+    - else
+      = blankslate
+    .content
+      .content-box
+        .content-item
+          = danger_zone("Section", section_path(@section))
 .container-bottom
-  .content
-    .content-box
-      .content-item.altai-center
-        = danger_zone("Section", section_path(@section))

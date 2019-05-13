@@ -13,19 +13,21 @@
     .content
       .content-box
         .content-item
-          %h2.lighter Publication
+          %h3.lighter Publication
 .container-middle
   .board-double-extra-small
     = render "aside_navigation", publication: @publication
   .board-medium
     .content
       .content-box
+        - if @publication.title.presence
+          .content-item
+            %h1.lighter= @publication.title
+        - if @publication.description.presence
+          .content-item
+            = @publication.description
+    .content
+      .content-box
         .content-item
-          %h3.lighter= @publication.title
-        .content-item
-          = @publication.description
+          = danger_zone("Publication", publication_path(@publication))
 .container-bottom
-  .content
-    .content-box
-      .content-item.altai-center
-        = danger_zone("Publication", publication_path(@publication))
