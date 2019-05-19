@@ -136,8 +136,12 @@ ActiveRecord::Schema.define(version: 2019_04_06_154647) do
     t.text "description"
     t.boolean "published", default: false
     t.integer "position"
+    t.string "access_id", default: "", null: false
+    t.string "access_token", default: "", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["access_id"], name: "index_publications_on_access_id"
+    t.index ["access_token"], name: "index_publications_on_access_token"
     t.index ["slug"], name: "index_publications_on_slug"
   end
 

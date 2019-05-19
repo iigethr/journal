@@ -6,16 +6,17 @@ class PublicationsController < ApplicationController
   include Passkeys
 
   # Callbacks
-  before_action :publication,   except: [:index, :new, :create]
-  before_action :passkey,       only:   [:show, :edit, :update, :destroy, :preview, :toc]
+  before_action :publication,   except: [:index, :new, :create, :sortable]
   before_action :articles,      only:   [:preview, :toc]
   before_action :sections,      only:   [:preview, :toc]
+  before_action :passkey,       only:   [:show, :edit, :update, :destroy, :preview, :toc]
 
   # Layouts
   layout "application_preview", only: [:preview, :toc]
 
   # Methods
   def index
+    # @publications = Publication.all
     publications
   end
 
@@ -23,6 +24,9 @@ class PublicationsController < ApplicationController
   end
 
   def preview
+    # options = {}
+    # options[:include] = [:articles, :sections, :union, :agents]
+    # render json: PublicationSerializer.new(@publication, options).serialized_json
   end
 
   def toc
@@ -86,7 +90,7 @@ class PublicationsController < ApplicationController
     @passkeys = current_user.passkeys
     @publications = []
     @passkeys.each do |passkey|
-      get_publications = Publication.where(id: passkey.publication_id).all
+      get_publications = Publication.where(id: passkey.publication_id)
       @publications += get_publications if get_publications
       @passkey = passkey
     end
@@ -94,6 +98,26 @@ class PublicationsController < ApplicationController
 
   def publication
     @publication = Publication.find_by(slug: params[:id])
+
+    @articles = []
+    get_articles = Article.includes(:union).where(publication_id: @publication.id)
+    @articles += get_articles if get_articles
+
+    @article_agents = []
+    @articles.each do |article|
+      get_article_agents = article.union.agents.includes(:act).order(position: :asc).all
+      @article_agents += get_article_agents if get_article_agents
+    end
+
+    @sections = []
+    get_sections = Section.includes(:union).where(publication_id: @publication.id)
+    @sections += get_sections if get_sections
+
+    @section_agents = []
+    @sections.each do |section|
+      get_section_agents = section.union.agents.includes(:act).order(position: :asc).all
+      @section_agents += get_section_agents if get_section_agents
+    end
   end
 
   def articles

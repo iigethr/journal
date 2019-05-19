@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 class Publication < ApplicationRecord
+  # Tokens
+  has_secure_token :access_id
+  has_secure_token :access_token
+
   # Concerns
   # Sortable position
   include SortablePosition

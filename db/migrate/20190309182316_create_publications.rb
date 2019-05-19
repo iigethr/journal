@@ -8,6 +8,9 @@ class CreatePublications < ActiveRecord::Migration[6.0]
       t.text        :description
       t.boolean     :published, default: false
       t.integer     :position
+      # Access
+      t.string      :access_id, default: "", null: false, unique: true, index: true
+      t.string      :access_token, default: "", null: false, unique: true, index: true
 
       t.timestamps
     end

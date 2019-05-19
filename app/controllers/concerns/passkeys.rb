@@ -9,9 +9,8 @@ module Passkeys
       publication.position = (order.min - 1)
     end
 
-
     def passkey
-      @passkey = Passkey.unlock(current_user, publication)
+      @passkey = Passkey.unlock(current_user, @publication)
       unless @passkey
         flash[:alert] = "Oops. Something went wrong!"
         redirect_to publications_path

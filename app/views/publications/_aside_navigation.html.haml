@@ -8,6 +8,9 @@
     .aside-navigation-item
       = link_to preview_publication_path(publication), class: "button white wide" do
         Preview
+    .aside-navigation-item
+      = link_to preview_publication_path(publication, format: "json"), class: "button white wide", target: :blank do
+        JSON Format
 
 - if @passkey.role == "owner"
   .aside-navigation

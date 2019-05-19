@@ -55,6 +55,12 @@ gem "name_of_person", "~> 1.0"
 # Skylight is a smart profiler for Rails, Sinatra, and other Ruby apps.
 gem "skylight"
 
+# ActiveModel::Serializers allows you to generate your JSON in an object-oriented and convention-driven manner.
+# gem "active_model_serializers", "~> 0.10"
+
+# JSON API(jsonapi.org) serializer that works with rails and can be used to serialize any kind of ruby objects
+gem "fast_jsonapi", "~> 1.5"
+
 group :development, :test do
   # Call "byebug" anywhere in the code to stop execution and get a debugger console
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]

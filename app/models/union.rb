@@ -6,11 +6,11 @@ class Union < ApplicationRecord
   include SortablePosition
 
   # Relationships
+  # Member
+  belongs_to :member, polymorphic: true
   # Agents
   has_many :agents, dependent: :destroy
   accepts_nested_attributes_for :agents
-  # Member
-  belongs_to :member, polymorphic: true
 
   # Validations
 

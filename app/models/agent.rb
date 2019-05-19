@@ -8,6 +8,7 @@ class Agent < ApplicationRecord
   # Relationships
   # Act
   belongs_to :act, polymorphic: true
+  belongs_to :union
 
   # Validations
 
