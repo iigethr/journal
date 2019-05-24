@@ -2,12 +2,27 @@
 
 class AgentsController < ApplicationController
   # Concerns
+  # --------
+
   include Acts
-  include Passkeys
+  # include Passkeys
+
+  # Helpers
+  # -------
+
+  include ParentsHelper
+  include AgentsHelper
 
   # Callbacks
+  # ---------
+
+  before_action :publication
+  # before_action :passkey
   before_action :parent
   before_action :agents
+
+  # Methods
+  # -------
 
   def index
     redirect_to @parent
@@ -24,6 +39,10 @@ class AgentsController < ApplicationController
 
   private
 
+  def publication
+    @publication = Publication.find_by(slug: params[:publication_id])
+  end
+
   def parent
     @parent =
       if params[:article_id]
@@ -31,9 +50,6 @@ class AgentsController < ApplicationController
       elsif params[:section_id]
         Section.find_by(slug: params[:section_id])
       end
-    publication  = Publication.where(id: @parent.publication_id).first
-    passkey      = Passkey.where(publication_id: publication.id, user_id: current_user.id).first
-    redirect_to root_path unless passkey
   end
 
   def agents

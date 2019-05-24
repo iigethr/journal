@@ -1,8 +1,8 @@
 /* New */
 
 .container-top
-  = breadcrumbs(@parent)
+  = breadcrumbs(render_parent_url(@parent))
 .container-middle.altai-center
   .board-medium
-    = render "form", parent: @parent, picture: @picture
+    = render partial: "form", locals: { parent: @parent, picture: @picture }
 .container-bottom

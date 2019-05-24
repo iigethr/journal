@@ -3,12 +3,7 @@
 module Passkeys
   extend ActiveSupport::Concern
   included do
-    def order_publication(publication)
-      order = Publication.pluck(:position).compact
-      order << 0
-      publication.position = (order.min - 1)
-    end
-
+    # Passkey
     def passkey
       @passkey = Passkey.unlock(current_user, @publication)
       unless @passkey
@@ -17,6 +12,7 @@ module Passkeys
       end
     end
 
+    # Create Passkey
     def create_passkey(user, publication)
       passkey = Passkey.create(
         active: true,

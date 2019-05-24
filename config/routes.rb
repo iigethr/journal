@@ -1,6 +1,36 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+
+  def articles
+    resources :articles do
+      resources :galleries
+      resources :pictures
+      resources :videos
+      resources :texts
+      resources :documents
+      resources :agents do
+        collection do
+          patch :sortable
+        end
+      end
+      member do
+        get "preview"
+      end
+      collection do
+        patch :sortable
+      end
+    end
+  end
+
+  def sections
+    resources :sections do
+      collection do
+        patch :sortable
+      end
+    end
+  end
+
   # Devise
   devise_for :users, path: "", controllers: {
     confirmations: "users/confirmations",
@@ -15,47 +45,24 @@ Rails.application.routes.draw do
 
   # Publications
   resources :publications do
-    resources :sections do
-      collection do
-        patch :sortable
-      end
-    end
-    resources :articles do
-      resources :galleries
-      resources :pictures
-      resources :videos
-      resources :texts
-      resources :documents
-      collection do
-        patch :sortable
-      end
-    end
-    collection do
-      patch :sortable
-    end
+    articles
+    sections
     member do
       get "preview"
       get "toc"
       delete :destroy_cover
       delete :destroy_thumb
     end
+    collection do
+      patch :sortable
+    end
   end
 
-  resources :articles do
-    resources :galleries
-    resources :pictures
-    resources :videos
-    resources :texts
-    resources :documents
-    resources :agents do
-      collection do
-        patch :sortable
-      end
-    end
-    member do
-      get "preview"
-    end
-  end
+  articles
+
+
+
+
 
   resources :sections do
     resources :galleries

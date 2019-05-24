@@ -1,23 +1,27 @@
 # frozen_string_literal: true
 
 module AgentsHelper
-  def render_agent(parent = "", object = "")
-    if object.text?
-      render "lib/agents/text", parent: parent, text: object.act, agent: object
-    elsif object.picture?
-      render "lib/agents/picture", parent: parent, picture: object.act, agent: object
-    elsif object.video?
-      object.act.try(:caption)
-    elsif object.document?
-      object.act.try(:caption)
+  # Render agent
+  def render_agent(parent, agent)
+    if agent.text?
+      render "lib/agents/text", parent: parent, agent: agent, act: agent.act
+    elsif agent.picture?
+      render "lib/agents/picture", parent: parent, agent: agent, act: agent.act
+    elsif agent.video?
+      render "lib/agents/video", parent: parent, agent: agent, act: agent.act
+    elsif agent.document?
+      render "lib/agents/document", parent: parent, agent: agent, act: agent.act
+    else
+      "Oops! Something went wrong."
     end
   end
 
-  def render_preview_agent(parent = "", object = "")
+  # Render preview agent
+  def render_preview_agent(object)
     if object.text?
-      render "lib/agents/preview/text", parent: parent, text: object.act, agent: object
+      render "lib/agents/preview/text", text: object.act, agent: object
     elsif object.picture?
-      render "lib/agents/preview/picture", parent: parent, picture: object.act, agent: object
+      render "lib/agents/preview/picture", picture: object.act, agent: object
     elsif object.video?
       object.act.try(:caption)
     elsif object.document?

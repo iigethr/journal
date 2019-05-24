@@ -16,5 +16,5 @@
           %h3.left.lighter Articles
     .article
       .article-box.sortable{ "data-url": sortable_publication_articles_path(@publication) }
-        = render partial: "article", collection: @articles
+        = render partial: "article", collection: @articles, locals: { publication: @publication }
 .container-bottom

@@ -10,7 +10,7 @@ class PicturesController < AgentsController
   def update
     if picture.update(picture_params)
       flash[:notice] = "Picture was successfully updated."
-      redirect_to @parent
+      redirect_to render_parent_url(@parent)
     else
       render :edit
     end
@@ -19,7 +19,7 @@ class PicturesController < AgentsController
   def destroy
     picture.destroy
     flash[:notice] = "Picture was successfully destroyed."
-    redirect_to @parent
+    redirect_to render_parent_url(@parent)
   end
 
   def new
@@ -32,7 +32,7 @@ class PicturesController < AgentsController
     if @picture.save
       create_agent(@parent, @picture)
       flash[:notice] = "Picture was successfully created."
-      redirect_to @parent
+      redirect_to render_parent_url(@parent)
     else
       render :new
     end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SectionsController < ApplicationController
   # Concerns
   include Members

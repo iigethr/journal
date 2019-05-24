@@ -7,29 +7,21 @@ class PublicationsController < ApplicationController
 
   # Callbacks
   before_action :publication,   except: [:index, :new, :create, :sortable]
+  before_action :passkey,       only:   [:show, :edit, :update, :destroy, :preview, :toc]
+
+
   before_action :articles,      only:   [:preview, :toc]
   before_action :sections,      only:   [:preview, :toc]
-  before_action :passkey,       only:   [:show, :edit, :update, :destroy, :preview, :toc]
 
   # Layouts
   layout "application_preview", only: [:preview, :toc]
 
   # Methods
   def index
-    # @publications = Publication.all
     publications
   end
 
   def show
-  end
-
-  def preview
-    # options = {}
-    # options[:include] = [:articles, :sections, :union, :agents]
-    # render json: PublicationSerializer.new(@publication, options).serialized_json
-  end
-
-  def toc
   end
 
   def edit
@@ -60,6 +52,12 @@ class PublicationsController < ApplicationController
     @attachment = @publication.thumb
     @attachment.purge
     redirect_to edit_publication_path(@publication, thumb: true)
+  end
+
+  def preview
+  end
+
+  def toc
   end
 
   def sortable
@@ -102,7 +100,6 @@ class PublicationsController < ApplicationController
     @articles = []
     get_articles = Article.includes(:union).where(publication_id: @publication.id)
     @articles += get_articles if get_articles
-
     @article_agents = []
     @articles.each do |article|
       get_article_agents = article.union.agents.includes(:act).order(position: :asc).all
@@ -112,7 +109,6 @@ class PublicationsController < ApplicationController
     @sections = []
     get_sections = Section.includes(:union).where(publication_id: @publication.id)
     @sections += get_sections if get_sections
-
     @section_agents = []
     @sections.each do |section|
       get_section_agents = section.union.agents.includes(:act).order(position: :asc).all
@@ -126,6 +122,12 @@ class PublicationsController < ApplicationController
 
   def sections
     @sections = @publication.sections.order(position: :asc)
+  end
+
+  def order_publication(publication)
+    order = Publication.pluck(:position).compact
+    order << 0
+    publication.position = (order.min - 1)
   end
 
   def publication_params

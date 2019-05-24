@@ -6,10 +6,11 @@ class ArticlesController < ApplicationController
   include Passkeys
 
   # Callbacks
-  before_action :article, only: [:show, :edit, :update, :destroy, :preview]
-  before_action :agents, only: [:show, :preview]
   before_action :publication
   before_action :passkey
+
+  before_action :article, only: [:show, :edit, :update, :destroy, :preview]
+  before_action :agents, only: [:show, :preview]
 
   # Layout
   layout "application_preview", only: [:preview]
@@ -36,7 +37,7 @@ class ArticlesController < ApplicationController
     if @article.save
       create_member(@article)
       flash[:notice] = "Article was successfully created."
-      redirect_to article_path(@article)
+      redirect_to publication_article_path(@publication, @article)
     else
       render :new
     end
@@ -54,7 +55,7 @@ class ArticlesController < ApplicationController
   def update
     if @article.update(article_params)
       flash[:notice] = "Article was successfully updated."
-      redirect_to article_path(@article)
+      redirect_to publication_article_path(@publication, @article)
     else
       render :edit
     end
@@ -66,34 +67,18 @@ class ArticlesController < ApplicationController
     redirect_to publication_articles_path(@publication)
   end
 
-  # def sortable_agent
-  #   @agents.sort_position(params[:agent_id])
-  #   head :ok
-  # end
-
   private
 
-  def article
-    # Find the child
-    @article = Article.find_by(slug: params[:id])
+  def publication
+    @publication = Publication.find_by(slug: params[:publication_id])
+  end
 
-    publication  = Publication.where(id: @article.publication_id).first
-    passkey      = Passkey.where(publication_id: publication.id, user_id: current_user.id).first
-    redirect_to root_path unless passkey
+  def article
+    @article = @publication.articles.find_by(slug: params[:id])
   end
 
   def agents
-    @article = Article.find_by(slug: params[:id])
     @agents = Agent.includes(act: :rich_text_body ).where(union_id: @article.union).order(position: :asc)
-  end
-
-  def publication
-    @publication =
-      if params[:publication_id]
-        Publication.find_by(slug: params[:publication_id])
-      else
-        @article.publication
-      end
   end
 
   def article_params
