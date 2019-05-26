@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-class CreateTexts < ActiveRecord::Migration[6.0]
+class CreatePieces < ActiveRecord::Migration[6.0]
   def change
-    create_table :texts do |t|
+    create_table :pieces do |t|
       t.string      :slug, default: "", null: false, unique: true, index: true
       t.string      :label
       t.text        :body

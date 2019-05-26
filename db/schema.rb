@@ -118,6 +118,16 @@ ActiveRecord::Schema.define(version: 2019_04_06_154647) do
     t.index ["slug"], name: "index_pictures_on_slug"
   end
 
+  create_table "pieces", force: :cascade do |t|
+    t.string "slug", default: "", null: false
+    t.string "label"
+    t.text "body"
+    t.integer "position"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["slug"], name: "index_pieces_on_slug"
+  end
+
   create_table "profiles", force: :cascade do |t|
     t.string "slug", default: "", null: false
     t.bigint "user_id", null: false
@@ -156,16 +166,6 @@ ActiveRecord::Schema.define(version: 2019_04_06_154647) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["publication_id"], name: "index_sections_on_publication_id"
     t.index ["slug"], name: "index_sections_on_slug"
-  end
-
-  create_table "texts", force: :cascade do |t|
-    t.string "slug", default: "", null: false
-    t.string "label"
-    t.text "body"
-    t.integer "position"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["slug"], name: "index_texts_on_slug"
   end
 
   create_table "unions", force: :cascade do |t|

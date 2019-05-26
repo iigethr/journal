@@ -18,15 +18,8 @@
           %h1.lighter= @article.title
     .agent
       .agent-box.sortable{ "data-url": sortable_publication_article_agents_path(@publication, @article) }
-        - @agents.each do |agent|
-          // = agent.act_type
-          - case agent.act_type
-          - when "Picture"
-            - @get_picture = Text.where(id: agent.act_id).first
-          - when "Text"
-            - @get_picture = Picture.where(id: agent.act_id).first
-          = @get_picture
-          // = render_agent(@article, agent)
+        - @assets.each do |asset|
+          = asset.agent.act_type
 .container-bottom
   .content
     .content-box

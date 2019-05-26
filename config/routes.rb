@@ -7,7 +7,7 @@ Rails.application.routes.draw do
       resources :galleries
       resources :pictures
       resources :videos
-      resources :texts
+      resources :pieces
       resources :documents
       resources :agents do
         collection do
@@ -68,7 +68,7 @@ Rails.application.routes.draw do
     resources :galleries
     resources :pictures
     resources :videos
-    resources :texts
+    resources :pieces
     resources :documents
     resources :agents do
       collection do
@@ -83,7 +83,7 @@ Rails.application.routes.draw do
   resources :galleries
   resources :pictures
   resources :videos
-  resources :texts
+  resources :pieces
   resources :documents
 
   # Root

@@ -79,38 +79,16 @@ class ArticlesController < ApplicationController
 
   def agents
     @agents = Agent.where(union_id: @article.union).order(position: :asc).all
-  end
-
-  def agents_rr
-    @texts = Agent.includes(act: {picture: [:upload_attachment]}).includes(act: :rich_text_body).where(union_id: @article.union, act_type: "Text").all
-    @set_pictures = Agent.where(union_id: @article.union, act_type: "Picture").all
-
-    @pictures = Picture.where(id: @set_pictures)
-
-    @set_agents = @texts + @pictures
-    @agents = @set_agents.sort_by { |h| h[:position] }.reverse!
-  end
-
-  def agents_rrr
-    @set_texts = Agent.where(union_id: @article.union, act_type: "Text").all
-    @set_pictures = Agent.where(union_id: @article.union, act_type: "Picture").all
-
-    @texts = []
-    @set_texts.each do |text|
-      get_texts = Text.where(id: text.act_id)
-      @texts += get_texts if get_texts
+    @assets = []
+    @agents.each do |agent|
+      if agent.act_type == "Picture"
+        asset = Picture.where(id: agent.act_id)
+      elsif agent.act_type == "Piece"
+        asset = Piece.where(id: agent.act_id)
+      end
+      @assets += asset if asset
     end
-
-    @pictures = []
-    @set_pictures.each do |picture|
-      get_pictures = Picture.where(id: picture.act_id)
-      @pictures += get_pictures if get_pictures
-    end
-
-    @set_agents = @texts + @pictures
-    @agents = @set_agents.sort_by { |h| h["agents.position"] }.reverse!
   end
-
 
   def article_params
     params.require(:article).permit(

@@ -2,8 +2,8 @@
 
 module AgentsHelper
   # Render agent
-  def render_agent(parent, agent)
-    if agent.text?
+  def render_agent(parent, act)
+    if act.text?
       render "lib/agents/text", parent: parent, agent: agent, act: agent.act
     elsif agent.picture?
       render "lib/agents/picture", parent: parent, agent: agent, act: agent.act

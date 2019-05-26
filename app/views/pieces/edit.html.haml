@@ -1,0 +1,8 @@
+/* Edit */
+
+.container-top
+  = breadcrumbs(parent_url(@parent))
+.container-middle.altai-center
+  .board-medium
+    = render partial: "form", locals: { parent: @parent, piece: @piece }
+.container-bottom

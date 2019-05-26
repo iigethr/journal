@@ -21,7 +21,7 @@
       .secondary-actions
         .secondary-actions-box
           .secondary-actions-item
-            = link_to article_text_path(parent, act), method: :delete, data: { confirm: "Are you sure?" }, class: "link small red hover-underline" do
+            = link_to article_picture_path(parent, act), method: :delete, data: { confirm: "Are you sure?" }, class: "link small red hover-underline" do
               Destroy
           .secondary-actions-item
-            = link_to "Edit Agent", edit_article_text_path(parent, act), class: "button small yellow"
+            = link_to "Edit Agent", edit_article_picture_path(parent, act), class: "button small yellow"
