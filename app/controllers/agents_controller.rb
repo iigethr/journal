@@ -25,11 +25,11 @@ class AgentsController < ApplicationController
   # -------
 
   def index
-    redirect_to @parent
+    redirect_to parent_url(@parent)
   end
 
   def show
-    redirect_to @parent
+    redirect_to parent_url(@parent)
   end
 
   def sortable

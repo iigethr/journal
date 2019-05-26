@@ -2,7 +2,12 @@
 
 class TextsController < AgentsController
   # Callbacks
+  # ---------
+
   before_action :text, only: [:edit, :update, :destroy]
+
+  # Methods
+  # -------
 
   def edit
   end
@@ -10,7 +15,7 @@ class TextsController < AgentsController
   def update
     if text.update(text_params)
       flash[:notice] = "Text was successfully updated."
-      redirect_to render_parent_url(@parent)
+      redirect_to parent_url(@parent)
     else
       render :edit
     end
@@ -19,7 +24,7 @@ class TextsController < AgentsController
   def destroy
     text.destroy
     flash[:notice] = "Text was successfully destroyed."
-    redirect_to render_parent_url(@parent)
+    redirect_to parent_url(@parent)
   end
 
   def new
@@ -32,7 +37,7 @@ class TextsController < AgentsController
     if @text.save
       create_agent(@parent, @text)
       flash[:notice] = "Text was successfully created."
-      redirect_to render_parent_url(@parent)
+      redirect_to parent_url(@parent)
     else
       render :new
     end
