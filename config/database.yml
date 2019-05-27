@@ -83,6 +83,3 @@ production:
   database: journal_production
   username: journal
   password: <%= ENV["JOURNAL_DATABASE_PASSWORD"] %>
-
-cucumber:
-  <<: *test

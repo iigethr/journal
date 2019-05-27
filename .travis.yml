@@ -14,6 +14,9 @@ cache:
 rvm:
   - 2.6.2
 
+services:
+  - postgresql
+
 addons:
   chrome: stable
   postgresql: 10
@@ -28,8 +31,8 @@ before_script:
   - ./cc-test-reporter before-build
 
 script:
-  - bundle exec rails db:create
-  - bundle exec rails db:migrate RAILS_ENV=test
+  # - bundle exec rails db:create
+  - bundle exec rails db:reset db:setup db:migrate RAILS_ENV=test
   - bundle exec rspec
 
 after_script:
