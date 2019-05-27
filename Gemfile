@@ -65,12 +65,13 @@ group :development, :test do
   # Call "byebug" anywhere in the code to stop execution and get a debugger console
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
   # Rspec suite
-  gem "capybara", ">= 2.15"
-  gem "factory_bot_rails", "~> 5.0", ">= 5.0.1"
-  gem "rspec-rails", "~> 3.8", ">= 3.8.2"
+  gem "capybara", "~> 3.21"
+  gem "factory_bot_rails", "~> 5.0", ">= 5.0.2"
+  # gem "rspec-rails", "~> 4.0"
+  gem "rspec-rails", git: "https://github.com/rspec/rspec-rails", branch: "4-0-dev"
   # Continuous Integration
   gem "codeclimate-test-reporter", "~> 1.0", ">= 1.0.9"
-  gem "travis", "~> 1.8", ">= 1.8.9"
+  gem "travis", "~> 1.8", ">= 1.8.10"
 end
 
 group :development do
@@ -89,7 +90,7 @@ group :test do
   gem "database_cleaner", "~> 1.7"
   gem "faker", github: "stympy/faker", branch: "master"
   gem "selenium-webdriver"
-  gem "shoulda-matchers", "~> 4.0", ">= 4.0.1"
+  gem "shoulda-matchers", "~> 4.0"
   gem "simplecov", require: false
 end
 
