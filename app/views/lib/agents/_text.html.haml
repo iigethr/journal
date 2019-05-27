@@ -1,7 +1,7 @@
 /* Text */
 
-- if act.presence
-  .agent-item{ id: "agent_#{agent.id}" }
+- if asset.presence
+  .agent-item{ id: "agent_#{asset.agent.id}" }
     .agent-top
       = link_to "#", class: "altai-off link medium handle" do
         Sort
@@ -9,12 +9,12 @@
         %strong Type:
         Text
     .agent-middle.toggle
-      = act.try(:body)
+      = asset.try(:body)
     .agent-bottom
       .secondary-actions
         .secondary-actions-box
           .secondary-actions-item
-            = link_to article_text_path(parent, act), method: :delete, data: { confirm: "Are you sure?" }, class: "link small red hover-underline" do
+            = link_to article_piece_path(@article, asset), method: :delete, data: { confirm: "Are you sure?" }, class: "link small red hover-underline" do
               Destroy
           .secondary-actions-item
-            = link_to "Edit Agent", edit_article_text_path(parent, act), class: "button small yellow"
+            = link_to "Edit Asset", edit_article_piece_path(@article, asset), class: "button small yellow"

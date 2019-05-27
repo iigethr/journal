@@ -1,7 +1,7 @@
 /* Edit */
 
 .container-top
-  = breadcrumbs(publication_articles_path(@article.publication.slug))
+  = breadcrumbs(publication_article_path(@publication, @article))
 .container-middle.altai-center
   .board-medium
     = render "form", parent: @publication, object: @article

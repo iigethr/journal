@@ -1,7 +1,7 @@
 /* Picture */
 
-- if act.presence
-  .agent-item{ id: "agent_#{agent.id}" }
+- if asset.presence
+  .agent-item{ id: "agent_#{asset.agent.id}" }
     .agent-top
       = link_to "#", class: "altai-off link medium handle" do
         Sort
@@ -10,18 +10,18 @@
         Picture
     .agent-middle.toggle
       %figure.left.altai-center
-        = image_tag act.upload.representation(resize_to_limit: [ 960, 540 ])
+        = image_tag asset.upload.representation(resize_to_limit: [ 960, 540 ])
         %figcaption
-          - if caption = act.try(:caption)
+          - if caption = asset.try(:caption)
             %span= caption
           - else
-            %span= act.upload.filename
-            %span= number_to_human_size act.upload.byte_size
+            %span= asset.upload.filename
+            %span= number_to_human_size asset.upload.byte_size
     .agent-bottom
       .secondary-actions
         .secondary-actions-box
           .secondary-actions-item
-            = link_to article_picture_path(parent, act), method: :delete, data: { confirm: "Are you sure?" }, class: "link small red hover-underline" do
+            = link_to article_picture_path(@article, asset), method: :delete, data: { confirm: "Are you sure?" }, class: "link small red hover-underline" do
               Destroy
           .secondary-actions-item
-            = link_to "Edit Agent", edit_article_picture_path(parent, act), class: "button small yellow"
+            = link_to "Edit Agent", edit_article_picture_path(@article, asset), class: "button small yellow"

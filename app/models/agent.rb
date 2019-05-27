@@ -13,8 +13,8 @@ class Agent < ApplicationRecord
   # Validations
 
   # Class Methods
-  def text?
-    act_type == "Text"
+  def piece?
+    act_type == "Piece"
   end
 
   def picture?
