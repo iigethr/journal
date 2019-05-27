@@ -9,7 +9,6 @@ class PublicationsController < ApplicationController
   before_action :publication,   except: [:index, :new, :create, :sortable]
   before_action :passkey,       only:   [:show, :edit, :update, :destroy, :preview, :toc]
 
-
   before_action :articles,      only:   [:preview, :toc]
   before_action :sections,      only:   [:preview, :toc]
 

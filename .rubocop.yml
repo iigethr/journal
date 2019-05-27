@@ -1,12 +1,14 @@
-## require: rubocop-performance
+require: rubocop-performance
 
 AllCops:
-  # TargetRubyVersion: 2.6
+  TargetRubyVersion: 2.6
 
   Exclude:
+    - app/serializers/**/*
     - bin/**/*
     - db/**/*
     - spec/**/*
+    - spec-backup/**/*
     - vendor/**/*
     - vendor/**/*
     - node_modules/**/*
@@ -25,6 +27,9 @@ Metrics/AbcSize:
 Metrics/BlockLength:
   Max: 64
   CountComments: false
+
+Metrics/ClassLength:
+  Max: 160
 
 Metrics/LineLength:
   Max: 160

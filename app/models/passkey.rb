@@ -11,7 +11,7 @@ class Passkey < ApplicationRecord
 
   # Unlock
   def self.unlock(user, publication)
-    where(user_id: user.id, publication_id: publication.id).first
+    find_by(user_id: user.id, publication_id: publication.id)
   end
 
   # Search

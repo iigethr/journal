@@ -6,15 +6,15 @@ module Passkeys
     # Passkey
     def passkey
       @passkey = Passkey.unlock(current_user, @publication)
-      unless @passkey
-        flash[:alert] = "Oops. Something went wrong!"
-        redirect_to publications_path
-      end
+      return if @passkey
+
+      flash[:alert] = "Oops. Something went wrong!"
+      redirect_to publications_path
     end
 
     # Create Passkey
     def create_passkey(user, publication)
-      passkey = Passkey.create(
+      Passkey.create(
         active: true,
         user_id: user.id,
         publication_id: publication.id,

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Preview
 
 json.publication do
@@ -23,8 +25,7 @@ json.publication do
       json.slug agent.act.slug
       if agent.text?
         json.body agent.act.body.body
-      end
-      if agent.picture?
+      elsif agent.picture?
         json.path polymorphic_url(agent.act.upload)
       end
     end

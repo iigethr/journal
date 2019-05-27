@@ -32,7 +32,7 @@ class SectionsController < ApplicationController
   def update
     respond_to do |format|
       if @section.update(section_params)
-        format.html { redirect_to @section, notice: 'Section was successfully updated.' }
+        format.html { redirect_to @section, notice: "Section was successfully updated." }
         format.json { render :show, status: :ok, location: @section }
       else
         format.html { render :edit }
@@ -43,7 +43,7 @@ class SectionsController < ApplicationController
 
   def destroy
     @section.destroy
-    flash[:notice] = 'Section was successfully destroyed.'
+    flash[:notice] = "Section was successfully destroyed."
     redirect_to publication_sections_path(publication)
   end
 
@@ -85,8 +85,16 @@ class SectionsController < ApplicationController
   end
 
   def agents
-    @section = Section.find_by(slug: params[:id])
-    @agents = Agent.includes(act: :rich_text_body ).where(union_id: @section.union).order(position: :asc)
+    @agents = Agent.where(union_id: @section.union).order(position: :asc).all
+    @assets = []
+    @agents.each do |agent|
+      if agent.act_type == "Picture"
+        asset = Picture.where(id: agent.act_id)
+      elsif agent.act_type == "Piece"
+        asset = Piece.where(id: agent.act_id)
+      end
+      @assets += asset if asset
+    end
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

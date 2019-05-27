@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-
+  # Articles
   def articles
     resources :articles do
       resources :galleries
@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     end
   end
 
+  # Sections
   def sections
     resources :sections do
       collection do
@@ -57,12 +58,6 @@ Rails.application.routes.draw do
       patch :sortable
     end
   end
-
-  articles
-
-
-
-
 
   resources :sections do
     resources :galleries
