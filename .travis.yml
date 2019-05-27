@@ -27,7 +27,7 @@ addons:
 
 env:
   global:
-  - PGPORT=5432
+  - PGPORT=5433
 
 before_install:
   - gem update --system
