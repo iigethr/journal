@@ -2,25 +2,29 @@
 
 class PublicationsController < ApplicationController
   # Concerns
-  include Tokens
+  # --------
   include Passkeys
+  include Publications
 
   # Callbacks
-  before_action :publication,   except: [:index, :new, :create, :sortable]
-  before_action :passkey,       only:   [:show, :edit, :update, :destroy, :preview, :toc]
-
-  before_action :articles,      only:   [:preview, :toc]
-  before_action :sections,      only:   [:preview, :toc]
+  # ---------
+  before_action :publications,  only: [:index]
+  before_action :publication,   only: [:show, :preview, :edit, :update, :destroy, :destroy_cover, :destroy_thumb]
+  before_action :passkey,       only: [:show, :preview, :edit, :update, :destroy, :destroy_cover, :destroy_thumb]
+  before_action :articles,      only: [:preview]
+  before_action :sections,      only: [:preview]
 
   # Layouts
-  layout "application_preview", only: [:preview, :toc]
+  # -------
+  layout "application_preview", only: [:preview]
 
-  # Methods
   def index
-    publications
   end
 
   def show
+  end
+
+  def preview
   end
 
   def edit
@@ -29,7 +33,7 @@ class PublicationsController < ApplicationController
   def update
     if @publication.update(publication_params)
       flash[:notice] = "Publication was successfully updated."
-      redirect_to @publication
+      redirect_to publication_path(@publication)
     else
       render :edit
     end
@@ -44,19 +48,15 @@ class PublicationsController < ApplicationController
   def destroy_cover
     @attachment = @publication.cover
     @attachment.purge
+    flash[:notice] = "Publication cover was successfully destroyed."
     redirect_to edit_publication_path(@publication, cover: true)
   end
 
   def destroy_thumb
     @attachment = @publication.thumb
     @attachment.purge
+    flash[:notice] = "Publication thumb was successfully destroyed."
     redirect_to edit_publication_path(@publication, thumb: true)
-  end
-
-  def preview
-  end
-
-  def toc
   end
 
   def sortable
@@ -70,7 +70,7 @@ class PublicationsController < ApplicationController
 
   def create
     @publication = Publication.new(publication_params)
-    order_publication(@publication)
+    order_list(@publication)
 
     if @publication.save
       create_passkey(current_user, @publication)
@@ -84,17 +84,24 @@ class PublicationsController < ApplicationController
   private
 
   def publications
-    @passkeys = current_user.passkeys
-    @publications = []
-    @passkeys.each do |passkey|
+    get_passkeys = current_user.passkeys
+    set_publications = []
+
+    get_passkeys.each do |passkey|
       get_publications = Publication.where(id: passkey.publication_id)
-      @publications += get_publications if get_publications
+      set_publications += get_publications if get_publications
+
+      @publications = set_publications.sort_by(&:position)
       @passkey = passkey
     end
   end
 
   def publication
     @publication = Publication.find_by(slug: params[:id])
+  end
+
+  def articles
+    # @articles = @publication.articles.order(position: :asc)
 
     @articles = []
     get_articles = Article.includes(:union).where(publication_id: @publication.id)
@@ -104,6 +111,10 @@ class PublicationsController < ApplicationController
       get_article_agents = article.union.agents.includes(:act).order(position: :asc).all
       @article_agents += get_article_agents if get_article_agents
     end
+  end
+
+  def sections
+    # @sections = @publication.sections.order(position: :asc)
 
     @sections = []
     get_sections = Section.includes(:union).where(publication_id: @publication.id)
@@ -113,20 +124,6 @@ class PublicationsController < ApplicationController
       get_section_agents = section.union.agents.includes(:act).order(position: :asc).all
       @section_agents += get_section_agents if get_section_agents
     end
-  end
-
-  def articles
-    @articles = @publication.articles.order(position: :asc)
-  end
-
-  def sections
-    @sections = @publication.sections.order(position: :asc)
-  end
-
-  def order_publication(publication)
-    order = Publication.pluck(:position).compact
-    order << 0
-    publication.position = (order.min - 1)
   end
 
   def publication_params

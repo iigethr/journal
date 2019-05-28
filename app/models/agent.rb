@@ -2,17 +2,22 @@
 
 class Agent < ApplicationRecord
   # Concerns
-  # Sortable position
+  # ----------------------------------------------------
+
   include SortablePosition
 
   # Relationships
-  # Act
+  # ----------------------------------------------------
+
   belongs_to :act, polymorphic: true
   belongs_to :union
 
   # Validations
+  # ----------------------------------------------------
 
-  # Class Methods
+  # Methods
+  # ----------------------------------------------------
+
   def piece?
     act_type == "Piece"
   end

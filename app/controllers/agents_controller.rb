@@ -4,8 +4,8 @@ class AgentsController < ApplicationController
   # Concerns
   # --------
 
-  include Acts
-  # include Passkeys
+  include Agents
+  include Passkeys
 
   # Helpers
   # -------
@@ -17,7 +17,7 @@ class AgentsController < ApplicationController
   # ---------
 
   before_action :publication
-  # before_action :passkey
+  before_action :passkey
   before_action :parent
   before_action :agents
 
@@ -40,7 +40,13 @@ class AgentsController < ApplicationController
   private
 
   def publication
-    @publication = Publication.find_by(slug: params[:publication_id])
+    @publication =
+      if (params[:publication_id] && params[:article_id]) || (params[:publication_id] && params[:section_id])
+        Publication.find_by(slug: params[:publication_id])
+      else
+        parent
+        @parent.publication
+      end
   end
 
   def parent

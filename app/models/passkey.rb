@@ -9,6 +9,9 @@ class Passkey < ApplicationRecord
   # Validations
   validates :user_id, uniqueness: { scope: :publication_id }, allow_blank: true
 
+  # Callbacks
+  has_secure_token :token
+
   # Unlock
   def self.unlock(user, publication)
     find_by(user_id: user.id, publication_id: publication.id)

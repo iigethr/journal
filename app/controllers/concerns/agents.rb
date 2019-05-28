@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
-module Acts
+module Agents
   extend ActiveSupport::Concern
   included do
-    def create_agent(parent = "", object = "")
+    # Create agent
+    def create_agent(parent, object)
       order = Agent.pluck(:position).compact
       order << 0
       Agent.create(

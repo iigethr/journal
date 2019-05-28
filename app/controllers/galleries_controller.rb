@@ -1,9 +1,6 @@
 # frozen_string_literal: true
 
 class GalleriesController < ApplicationController
-  # Concerns
-  include Acts
-
   # Callbacks
   before_action :set_article
   before_action :set_gallery, only: [:show, :edit, :update, :destroy]

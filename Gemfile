@@ -68,7 +68,8 @@ group :development, :test do
   gem "capybara", "~> 3.21"
   gem "factory_bot_rails", "~> 5.0", ">= 5.0.2"
   # gem "rspec-rails", "~> 4.0"
-  gem "rspec-rails", git: "https://github.com/rspec/rspec-rails", branch: "4-0-dev"
+  gem "rspec-rails", "~> 4.0.0.beta2"
+  # gem "rspec-rails", git: "https://github.com/rspec/rspec-rails", branch: "4-0-dev"
   # Continuous Integration
   gem "codeclimate-test-reporter", "~> 1.0", ">= 1.0.9"
   gem "travis", "~> 1.8", ">= 1.8.10"

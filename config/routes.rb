@@ -59,6 +59,8 @@ Rails.application.routes.draw do
     end
   end
 
+  articles
+
   resources :sections do
     resources :galleries
     resources :pictures

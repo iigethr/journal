@@ -3,7 +3,6 @@
 module Passkeys
   extend ActiveSupport::Concern
   included do
-    # Passkey
     def passkey
       @passkey = Passkey.unlock(current_user, @publication)
       return if @passkey
@@ -12,15 +11,13 @@ module Passkeys
       redirect_to publications_path
     end
 
-    # Create Passkey
     def create_passkey(user, publication)
       Passkey.create(
         active: true,
         user_id: user.id,
         publication_id: publication.id,
         role: "owner",
-        email: user.email,
-        token: generate_token(32)
+        email: user.email
       )
     end
   end

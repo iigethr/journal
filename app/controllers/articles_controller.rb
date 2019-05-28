@@ -2,8 +2,10 @@
 
 class ArticlesController < ApplicationController
   # Concerns
-  include Members
+  # --------
+
   include Passkeys
+  include Unions
 
   # Callbacks
   before_action :publication
@@ -35,7 +37,7 @@ class ArticlesController < ApplicationController
     @article.position = (order.min - 1)
 
     if @article.save
-      create_member(@article)
+      create_union(@article)
       flash[:notice] = "Article was successfully created."
       redirect_to publication_article_path(@publication, @article)
     else

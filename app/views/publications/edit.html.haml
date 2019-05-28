@@ -1,22 +1,8 @@
-/* Show */
+/* Edit */
 
 .container-top
-  .wrap.wide
-    = breadcrumbs(publications_path)
-    .primary-actions
-      .primary-actions-box
-        .primary-actions-item
-          = link_to "Sections", publication_sections_path(@publication), class: "button blue"
-        .primary-actions-item
-          = link_to "Articles", publication_articles_path(@publication), class: "button blue"
-  .wrap.wide
-    .content
-      .content-box
-        .content-item
-          %h2.lighter Publication
-.container-middle
-  .board-double-extra-small
-    = render "aside_navigation", publication: @publication
+  = breadcrumbs(publication_path(@publication))
+.container-middle.altai-center
   .board-medium
     - if params[:main] == "true"
       = render "form", publication: @publication

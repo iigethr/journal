@@ -28,6 +28,7 @@
           - @articles.each do |article|
             .preview-item
               %h3{ id: "#{article.slug}" }= article.title
+              = @article_agents
 
     // Preview Block
     - if @sections.presence

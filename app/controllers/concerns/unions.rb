@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-module Members
+module Unions
   extend ActiveSupport::Concern
   included do
-    def create_member(object = "")
+    def create_union(object = "")
       order = Union.pluck(:position).compact
       order << 0
       Union.create(

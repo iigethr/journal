@@ -2,8 +2,10 @@
 
 class SectionsController < ApplicationController
   # Concerns
-  include Members
+  # --------
+
   include Passkeys
+  include Unions
 
   # Callbacks
   before_action :section, only: [:show, :preview, :edit, :update, :destroy]
@@ -55,7 +57,7 @@ class SectionsController < ApplicationController
     @section = Section.new(section_params)
 
     if @section.save
-      create_member(@section)
+      create_union(@section)
       flash[:notice] = "Section was successfully created."
       redirect_to section_path(@section)
     else
