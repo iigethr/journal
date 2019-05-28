@@ -4,12 +4,10 @@ AllCops:
   TargetRubyVersion: 2.6
 
   Exclude:
-    - app/serializers/**/*
     - bin/**/*
     - db/**/*
     - spec/**/*
     - spec-backup/**/*
-    - vendor/**/*
     - vendor/**/*
     - node_modules/**/*
 
