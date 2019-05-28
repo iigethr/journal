@@ -26,6 +26,19 @@ Rails.application.routes.draw do
   # Sections
   def sections
     resources :sections do
+      resources :galleries
+      resources :pictures
+      resources :videos
+      resources :pieces
+      resources :documents
+      resources :agents do
+        collection do
+          patch :sortable
+        end
+      end
+      member do
+        get "preview"
+      end
       collection do
         patch :sortable
       end

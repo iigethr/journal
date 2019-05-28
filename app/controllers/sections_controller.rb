@@ -8,9 +8,10 @@ class SectionsController < ApplicationController
   include Unions
 
   # Callbacks
-  before_action :section, only: [:show, :preview, :edit, :update, :destroy]
   before_action :publication
   before_action :passkey
+
+  before_action :section, only: [:show, :preview, :edit, :update, :destroy]
   before_action :agents, only: [:show, :preview]
 
   def index
@@ -67,23 +68,12 @@ class SectionsController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
-  def section
-    # Find the child
-    @section = Section.find_by(slug: params[:id])
-
-    publication  = Publication.where(id: @section.publication_id).first
-    passkey      = Passkey.where(publication_id: publication.id, user_id: current_user.id).first
-    redirect_to root_path unless passkey
+  def publication
+    @publication = Publication.find_by(slug: params[:publication_id])
   end
 
-  def publication
-    @publication =
-      if params[:publication_id]
-        Publication.find_by(slug: params[:publication_id])
-      else
-        @section.publication
-      end
+  def section
+    @section = @publication.sections.find_by(slug: params[:id])
   end
 
   def agents

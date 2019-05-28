@@ -19,8 +19,8 @@
     - if @agents.presence
       .agent
         .agent-box.sortable{ "data-url": sortable_section_agents_path(@section) }
-          - @agents.each do |agent|
-            = render_agent(@section, agent)
+          - @assets.each do |asset|
+            = render_agent(@section, asset)
     - else
       = blankslate
     .content

@@ -14,7 +14,7 @@
         %span.icon
           = inline_svg "icons/swap_vert.svg"
     .section-center
-      = link_to section_path(section), class: "link blue wide" do
+      = link_to publication_section_path(@publication, section), class: "link blue wide" do
         = section.title
   .section-bottom
     %p.small.left.auto

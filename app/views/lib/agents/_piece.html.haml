@@ -5,16 +5,19 @@
     .agent-top
       = link_to "#", class: "altai-off link medium handle" do
         Sort
-      %p.right.right.auto
+      %p.right.auto
         %strong Type:
         Text
     .agent-middle.toggle
       = asset.try(:body)
     .agent-bottom
+      %p.left.auto
+        %strong Label:
+        = asset.try(:label)
       .secondary-actions
         .secondary-actions-box
           .secondary-actions-item
-            = link_to article_piece_path(@article, asset), method: :delete, data: { confirm: "Are you sure?" }, class: "link small red hover-underline" do
+            = link_to custom_piece_path(@section, asset), method: :delete, data: { confirm: "Are you sure?" }, class: "link small red hover-underline" do
               Destroy
           .secondary-actions-item
-            = link_to "Edit Asset", edit_article_piece_path(@article, asset), class: "button small yellow"
+            = link_to "Edit Asset", custom_edit_piece_path(@section, asset), class: "button small yellow"

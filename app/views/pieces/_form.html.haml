@@ -7,6 +7,11 @@
       %legend Text
     .form-row
       .field
+        = form.label :label
+        .input
+          = form.text_field :label
+    .form-row
+      .field
         = form.label :body
         .textarea
           = form.rich_text_area :body

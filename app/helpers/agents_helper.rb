@@ -2,11 +2,11 @@
 
 module AgentsHelper
   # Render agent
-  def render_agent(asset)
+  def render_agent(parent, asset)
     if asset.agent.piece?
-      render "lib/agents/text", asset: asset
+      render "lib/agents/piece", parent: parent, asset: asset
     elsif asset.agent.picture?
-      render "lib/agents/picture", asset: asset
+      render "lib/agents/picture", parent: parent, asset: asset
     else
       "Oops! Something went wrong."
     end
