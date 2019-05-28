@@ -1,9 +1,6 @@
 # frozen_string_literal: true
 
 class VideosController < ApplicationController
-  # Concerns
-  include Acts
-
   # Callbacks
   before_action :article
   before_action :video, only: [:show, :edit, :update, :destroy]

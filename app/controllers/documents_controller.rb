@@ -1,9 +1,6 @@
 # frozen_string_literal: true
 
 class DocumentsController < ApplicationController
-  # Concerns
-  include Acts
-
   # Callbacks
   before_action :set_article
   before_action :set_document, only: [:show, :edit, :update, :destroy]
