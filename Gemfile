@@ -59,7 +59,7 @@ gem "skylight"
 # gem "active_model_serializers", "~> 0.10"
 
 # JSON API(jsonapi.org) serializer that works with rails and can be used to serialize any kind of ruby objects
-gem "fast_jsonapi", "~> 1.5"
+# gem "fast_jsonapi", "~> 1.5"
 
 group :development, :test do
   # Call "byebug" anywhere in the code to stop execution and get a debugger console
