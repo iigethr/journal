@@ -2,3 +2,12 @@ plugins:
   rubocop:
     enabled: true
     channel: rubocop-0-67
+    exclude_patterns:
+      - app/serializers/**/*
+      - bin/**/*
+      - db/**/*
+      - spec/**/*
+      - spec-backup/**/*
+      - vendor/**/*
+      - vendor/**/*
+      - node_modules/**/*
