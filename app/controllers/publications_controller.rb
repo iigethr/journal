@@ -4,7 +4,6 @@ class PublicationsController < ApplicationController
   # Concerns
   # --------
   include Passkeys
-  include Publications
 
   # Callbacks
   # ---------
@@ -70,10 +69,16 @@ class PublicationsController < ApplicationController
 
   def create
     @publication = Publication.new(publication_params)
-    order_list(@publication)
 
     if @publication.save
-      create_passkey(current_user, @publication)
+      Passkey.create(
+        active: true,
+        user_id: current_user.id,
+        publication_id: @publication.id,
+        role: "owner",
+        email: current_user.email
+      )
+
       flash[:notice] = "Publication was successfully created."
       redirect_to publication_path(@publication)
     else

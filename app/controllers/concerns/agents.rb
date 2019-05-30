@@ -3,7 +3,6 @@
 module Agents
   extend ActiveSupport::Concern
   included do
-    # Create agent
     def create_agent(parent, object)
       order = Agent.pluck(:position).compact
       order << 0

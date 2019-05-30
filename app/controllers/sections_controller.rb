@@ -58,9 +58,13 @@ class SectionsController < ApplicationController
     @section = Section.new(section_params)
 
     if @section.save
-      create_union(@section)
+      Union.create(
+        member_type: @section.class.name,
+        member_id: @section.id
+      )
+
       flash[:notice] = "Section was successfully created."
-      redirect_to section_path(@section)
+      redirect_to publication_section_path(@publication, @section)
     else
       render :new
     end

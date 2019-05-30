@@ -2,8 +2,15 @@
 
 module SortablePosition
   extend ActiveSupport::Concern
+
+  def set_position
+    klass = self.class.name
+    order = klass.classify.constantize.pluck(:position).compact
+    order << 0
+    self.position = (order.min - 1)
+  end
+
   module ClassMethods
-    # Sort Position
     def sort_position(params)
       params.each_with_index do |id, index|
         object = where(id: id)

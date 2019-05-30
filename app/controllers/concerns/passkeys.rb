@@ -10,15 +10,5 @@ module Passkeys
       flash[:alert] = "Oops. Something went wrong!"
       redirect_to publications_path
     end
-
-    def create_passkey(user, publication)
-      Passkey.create(
-        active: true,
-        user_id: user.id,
-        publication_id: publication.id,
-        role: "owner",
-        email: user.email
-      )
-    end
   end
 end

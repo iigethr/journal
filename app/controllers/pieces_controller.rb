@@ -35,7 +35,13 @@ class PiecesController < AgentsController
     @piece = Piece.new(piece_params)
 
     if @piece.save
-      create_agent(@parent, @piece)
+      @agent = Agent.new(
+        union_id: @parent.union.id,
+        act_type: @piece.class.name,
+        act_id: @piece.id
+      )
+      @agent.save
+
       flash[:notice] = "Piece was successfully created."
       redirect_to parent_url(@parent)
     else

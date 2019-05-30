@@ -2,18 +2,25 @@
 
 class Section < ApplicationRecord
   # Concerns
-  # Sortable position
+  # ----------------------------------------------------
+
   include SortablePosition
 
   # Relationships
-  # Publication
+  # ----------------------------------------------------
+
   belongs_to :publication
-  # Unions
   has_one :union, as: :member, dependent: :destroy
   accepts_nested_attributes_for :union
 
   # Validations
+  # ----------------------------------------------------
+
   validates :title, presence: true
+
+  # Callbacks
+  # ----------------------------------------------------
+  before_create :set_position
 
   # Class Methods
 end

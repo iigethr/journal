@@ -27,4 +27,6 @@ class Publication < ApplicationRecord
   # Active storage
   has_one_attached :cover
   has_one_attached :thumb
+
+  before_create :set_position
 end
