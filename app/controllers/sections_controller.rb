@@ -33,14 +33,11 @@ class SectionsController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @section.update(section_params)
-        format.html { redirect_to @section, notice: "Section was successfully updated." }
-        format.json { render :show, status: :ok, location: @section }
-      else
-        format.html { render :edit }
-        format.json { render json: @section.errors, status: :unprocessable_entity }
-      end
+    if @section.update(section_params)
+      flash[:notice] = "Section was successfully updated."
+      redirect_to publication_section_path(@publication, @section)
+    else
+      render :edit
     end
   end
 

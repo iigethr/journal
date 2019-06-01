@@ -2,17 +2,13 @@
 
 .container-top
   = breadcrumbs(root_path)
-  .primary-actions
-    .primary-actions-box
-      .primary-actions-item
-        = link_to "New Publication", new_publication_path, class: "button purple"
 .container-middle
   .board-medium.altai-center
-    .content
-      .content-box
-        .content-item
-          %h3.lighter Publications
-    .publication
-      .publication-box.sortable{ "data-url": sortable_publications_path }
-        = render partial: "publication", collection: @publications
+    = render partial: "forefront"
+    - if @publications.presence
+      .publication
+        .publication-box.sortable{ "data-url": sortable_publications_path }
+          = render partial: "publication", collection: @publications
+    - else
+      = blankslate
 .container-bottom

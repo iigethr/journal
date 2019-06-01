@@ -1,0 +1,26 @@
+/* Forefront */
+
+.forefront
+  .forefront-box
+    .forefront-item
+      %h3.text-center Sections
+      %p.small.text-center
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        %br Donec ullamcorper nulla non metus auctor fringilla.
+      .separator.double-extra-small
+      .forefront-inner
+        .forefront-inner-box.altai-center
+          .forefront-inner-item
+            = link_to publications_path, class: "link small green underline" do
+              All
+          .forefront-inner-item
+            = link_to publications_path, class: "link small green underline" do
+              Published
+          .forefront-inner-item
+            = link_to publications_path, class: "link small green underline" do
+              Unpublished
+      .separator.double-extra-small
+      .forefront-inner
+        .forefront-inner-box.altai-center
+          .forefront-inner-item
+            = link_to "Create a new section", new_publication_section_path(@publication), class: "button extra-large blue"

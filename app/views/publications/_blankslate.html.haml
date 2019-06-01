@@ -1,0 +1,26 @@
+/* Blankslate */
+
+.blankslate
+  .blankslate-box
+    .blankslate-item
+      %h3.text-center Publications
+      %p.small.text-center
+        Nullam id dolor id nibh ultricies vehicula ut id elit. Nulla vitae elit libero, a pharetra augue.
+        %br Donec id elit non mi porta gravida at eget metus.
+      .separator.double-extra-small
+      .blankslate-inner
+        .blankslate-inner-box.altai-center
+          .blankslate-inner-item
+            = link_to publications_path, class: "link small green underline" do
+              All
+          .blankslate-inner-item
+            = link_to publications_path, class: "link small green underline" do
+              Published
+          .blankslate-inner-item
+            = link_to publications_path, class: "link small green underline" do
+              Unpublished
+      .separator.double-extra-small
+      .blankslate-inner
+        .blankslate-inner-box.altai-center
+          .blankslate-inner-item
+            = link_to "Create a new publication", new_publication_path, class: "button extra-large blue"

@@ -1,13 +1,7 @@
 /* Show */
 
 .container-top
-  .wrap.wide
-    = breadcrumbs(publication_sections_path(@section.publication.slug))
-  .wrap.wide
-    .content
-      .content-box
-        .content-item
-          %h3.lighter Section
+  = breadcrumbs(publication_sections_path(@section.publication.slug))
 .container-middle.altai-center
   .board-double-extra-small
     = render "aside_navigation", section: @section
@@ -15,7 +9,7 @@
     .content
       .content-box
         .content-item
-          %h1.lighter= @section.title
+          %h3.lighter= @section.title
     - if @agents.presence
       .agent
         .agent-box.sortable{ "data-url": sortable_section_agents_path(@section) }
@@ -23,8 +17,5 @@
             = render_agent(@section, asset)
     - else
       = blankslate
-    .content
-      .content-box
-        .content-item
-          = danger_zone("Section", section_path(@section))
 .container-bottom
+  = danger_zone("Section", publication_section_path(@publication, @section))

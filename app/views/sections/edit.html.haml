@@ -2,15 +2,8 @@
 
 .container-top
   .wrap.wide
-    = breadcrumbs(publication_sections_path(@section.publication.slug))
-  .wrap.wide
-    .content
-      .content-box
-        .content-item
-          %h2.lighter Section
+    = breadcrumbs(publication_section_path(@section.publication.slug, @section))
 .container-middle.altai-center
-  .board-double-extra-small
-    = render "aside_navigation", section: @section
   .board-medium
     - if params[:main] == "true"
       = render "form", parent: @publication, object: @section

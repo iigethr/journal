@@ -12,15 +12,20 @@ $class: "aside-navigation";
   width: 100%;
   .#{$class}-box {
     @include border-box;
+    @include border-corner(4px);
     background-color: $gray-000;
+    border: 1px solid $gray-100;
     float: left;
-    padding: 16px;
+    padding: 14px;
     width: 100%;
     .#{$class}-item {
       @include border-box;
       float: left;
       padding: 4px;
       width: 100%;
+      &.border-bottom {
+        border-bottom: 1px dashed $gray-200;
+      }
     }
   }
 }

@@ -2,10 +2,9 @@
 
 .session
   .session-box
-    - if user_signed_in?
-      .session-item
-        = link_to profile_path do
-          = current_user.profile.name
-      .session-item
-        = link_to destroy_user_session_path, method: :delete do
-          Logout
+    .session-item
+      = link_to profile_path do
+        = current_user.profile.name
+    .session-item
+      = link_to destroy_user_session_path, method: :delete do
+        Logout

@@ -1,14 +1,4 @@
 GIT
-  remote: https://github.com/iigethr/mies.git
-  revision: 0619c595d10d64e8672c3a80e2e8ff571e3c6be1
-  specs:
-    mies (0.0.1.alpha)
-      autoprefixer-rails
-      inline_svg
-      sassc-rails
-      sprockets
-
-GIT
   remote: https://github.com/stympy/faker.git
   revision: 14617c4ef7b89998e98e833ad5d11760e03d9bad
   branch: master
@@ -20,6 +10,15 @@ GIT
       tty-pager (~> 0.12.0)
       tty-screen (~> 0.6.5)
       tty-tree (~> 0.2.0)
+
+PATH
+  remote: /Users/tonydefaria/Box Sync/iigethr/gems/mies
+  specs:
+    mies (0.0.1.alpha)
+      autoprefixer-rails
+      inline_svg
+      sassc-rails
+      sprockets
 
 GEM
   remote: https://rubygems.org/
@@ -326,7 +325,7 @@ GEM
       rspec-mocks (~> 3.8)
       rspec-support (~> 3.8)
     rspec-support (3.8.0)
-    rubocop (0.70.0)
+    rubocop (0.71.0)
       jaro_winkler (~> 1.5.1)
       parallel (~> 1.10)
       parser (>= 2.6)

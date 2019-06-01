@@ -1,22 +1,22 @@
 /* Publication */
 
 .publication-item{ id: "publication_#{publication.id}" }
-  .publication-top
-    %p.left.auto
-      %strong Published:
-      = publication.published?
-    %p.right.auto
-      %strong Role:
-      = @passkey.role
-  .publication-middle
-    .publication-left
-      = link_to "#", class: "altai-off link handle" do
-        %span.icon
+  .publication-wrapper
+    .publication-top
+      = link_to "#", class: "altai-off link small handle" do
+        Sort Position
+        %span.icon.left
           = inline_svg "icons/swap_vert.svg"
-    .publication-center
+      %p.small.right.auto
+        %strong Role:
+        = @passkey.role
+    .publication-middle
       = link_to publication_path(publication), class: "link blue wide" do
-        = publication.title
-  .publication-bottom
-    %p.small.left.auto
-      %strong Created:
-      = publication.created_at.strftime("%B %d, %Y")
+        = (publication.title).truncate(56)
+    .publication-bottom
+      %p.small.left.auto
+        %strong Created:
+        = publication.created_at.strftime("%B %d, %Y")
+      %p.small.right.auto
+        %strong Published:
+        = publication.published?

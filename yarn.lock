@@ -1005,6 +1005,13 @@ altai_sortable@^1.0.7:
     jquery "^3.0"
     jquery-ui "^1.0"
 
+altai_toggle@^1.0.20:
+  version "1.0.20"
+  resolved "https://registry.yarnpkg.com/altai_toggle/-/altai_toggle-1.0.20.tgz#79e524121c89837733e3fad22c3c06357b9acbfd"
+  integrity sha512-Yw1PPmX4vi6OBxCIVLfd244xLI0yTX2IA5VifgkEUQ8eB0KTQgsxCgrPeL6Ebe+t/o3YDQbwS+fYKVfNzP4Xkw==
+  dependencies:
+    jquery "^3.0"
+
 amdefine@>=0.0.4:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
