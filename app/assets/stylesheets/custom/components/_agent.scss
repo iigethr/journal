@@ -16,27 +16,32 @@ $class: "agent";
     .#{$class}-item {
       @include border-box;
       float: left;
-      padding: 8px;
+      padding: 6px;
       width: 100%;
+      .#{$class}-wrap {
+        @include border-box;
+        @include border-corner(4px);
+        background-color: $gray-000;
+        border: 1px solid $gray-100;
+        float: left;
+        width: 100%;
+      }
       .#{$class}-top {
         @include border-box;
-        background-color: $gray-100;
         float: left;
-        padding: 8px;
+        padding: 16px;
         width: 100%;
       }
       .#{$class}-middle {
         @include border-box;
-        background-color: $gray-100;
         float: left;
         padding: 0 16px;
         width: 100%;
       }
       .#{$class}-bottom {
         @include border-box;
-        background-color: $gray-100;
         float: left;
-        padding: 8px;
+        padding: 16px;
         width: 100%;
       }
     }

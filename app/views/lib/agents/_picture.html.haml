@@ -2,29 +2,24 @@
 
 - if asset.presence
   .agent-item{ id: "agent_#{asset.agent.id}" }
-    .agent-top
-      = link_to "#", class: "altai-off link medium handle" do
-        Sort
-      %p.right.right.auto
-        %strong Type:
-        Picture
-    .agent-middle.toggle
-      %figure.left.altai-center
-        = image_tag asset.upload.representation(resize_to_limit: [ 960, 540 ])
-        %figcaption
-          - if caption = asset.try(:caption)
-            %span= caption
-          - else
-            %span= asset.upload.filename
-            %span= number_to_human_size asset.upload.byte_size
-    .agent-bottom
-      %p.left.auto
-        %strong Label:
-        = asset.try(:label)
-      .secondary-actions
-        .secondary-actions-box
-          .secondary-actions-item
-            = link_to custom_picture_path(parent, asset), method: :delete, data: { confirm: "Are you sure?" }, class: "link small red hover-underline" do
-              Destroy
-          .secondary-actions-item
-            = link_to "Edit Asset", custom_edit_picture_path(parent, asset), class: "button small yellow"
+    .agent-wrap
+      .agent-top
+        = link_to "#", class: "altai-off link small handle" do
+          Sort Position
+          %span.icon.left
+            = inline_svg "icons/swap_vert.svg"
+        %p.small.right.auto
+          %strong Type:
+          Picture
+      .agent-middle.toggle
+        %figure.left.altai-center
+          = image_tag asset.upload.representation(resize_to_limit: [ 960, 540 ])
+          %figcaption
+            - if caption = asset.try(:caption)
+              %span= caption
+            - else
+              %span= asset.upload.filename
+              %span= number_to_human_size asset.upload.byte_size
+      .agent-bottom
+        = link_to "Destroy", custom_picture_path(parent, asset), method: :delete, data: { confirm: "Are you sure?" }, class: "button small left red"
+        = link_to "Edit Asset", custom_edit_picture_path(parent, asset), class: "button small right yellow"

@@ -1,23 +1,18 @@
-/* Text */
+/* Piece */
 
 - if asset.presence
   .agent-item{ id: "agent_#{asset.agent.id}" }
-    .agent-top
-      = link_to "#", class: "altai-off link medium handle" do
-        Sort
-      %p.right.auto
-        %strong Type:
-        Text
-    .agent-middle.toggle
-      = asset.try(:body)
-    .agent-bottom
-      %p.left.auto
-        %strong Label:
-        = asset.try(:label)
-      .secondary-actions
-        .secondary-actions-box
-          .secondary-actions-item
-            = link_to custom_piece_path(@section, asset), method: :delete, data: { confirm: "Are you sure?" }, class: "link small red hover-underline" do
-              Destroy
-          .secondary-actions-item
-            = link_to "Edit Asset", custom_edit_piece_path(@section, asset), class: "button small yellow"
+    .agent-wrap
+      .agent-top
+        = link_to "#", class: "altai-off link small handle" do
+          Sort Position
+          %span.icon.left
+            = inline_svg "icons/swap_vert.svg"
+        %p.small.right.auto
+          %strong Type:
+          Text
+      .agent-middle.toggle
+        = asset.try(:body)
+      .agent-bottom
+        = link_to "Destroy", custom_piece_path(@section, asset), method: :delete, data: { confirm: "Are you sure?" }, class: "button small left red"
+        = link_to "Edit Asset", custom_edit_piece_path(@section, asset), class: "button small right yellow"

@@ -46,8 +46,8 @@ gem "haml-rails", "~> 2.0"
 gem "sassc-rails", "~> 2.0"
 
 # Load Mies
-# gem "mies", "0.0.1.alpha", github: "iigethr/mies"
-gem "mies", "0.0.1.alpha", path: "/Users/tonydefaria/Box Sync/iigethr/gems/mies"
+gem "mies", "0.0.1.alpha", github: "iigethr/mies"
+# gem "mies", "0.0.1.alpha", path: "/Users/tonydefaria/Box Sync/iigethr/gems/mies"
 
 # Presenting names of people in full, familiar, abbreviated, and initialized forms.
 gem "name_of_person", "~> 1.0"
