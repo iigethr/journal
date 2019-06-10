@@ -91,7 +91,7 @@ group :test do
   gem "database_cleaner", "~> 1.7"
   gem "faker", github: "stympy/faker", branch: "master"
   gem "selenium-webdriver"
-  gem "shoulda-matchers", "~> 4.0"
+  gem "shoulda-matchers", "~> 4.1"
   gem "simplecov", require: false
 end
 
