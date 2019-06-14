@@ -115,7 +115,7 @@ GEM
       activesupport (>= 3.0.0)
       uniform_notifier (~> 1.11)
     byebug (11.0.1)
-    capybara (3.22.0)
+    capybara (3.24.0)
       addressable
       mini_mime (>= 0.1.3)
       nokogiri (~> 1.8)
@@ -456,7 +456,7 @@ DEPENDENCIES
   bootsnap (>= 1.1.0)
   bullet (~> 6.0)
   byebug
-  capybara (~> 3.21)
+  capybara (~> 3.24)
   chromedriver-helper
   codeclimate-test-reporter (~> 1.0, >= 1.0.9)
   coffeelint
