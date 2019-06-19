@@ -43,7 +43,7 @@ gem "sprockets"
 gem "haml", "~> 5.0"
 gem "haml-rails", "~> 2.0"
 # Use SCSS for stylesheets
-gem "sassc-rails", "~> 2.0"
+gem "sassc-rails", "~> 2.1"
 
 # Load Mies
 gem "mies", "0.0.1.alpha", github: "iigethr/mies"
