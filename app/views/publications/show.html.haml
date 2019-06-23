@@ -21,3 +21,25 @@
           = link_to "Sections", publication_sections_path(@publication), class: "button blue"
 .container-bottom
   = danger_zone("Publication", publication_path(@publication))
+
+.page-header
+  .page-header-box
+    .page-header-block
+      .page-header-top
+        .text.extra-small.bold.blue-500-cl Publication
+        %h2.lighter
+          = @publication.title
+        .page-header-menu
+          .page-header-menu-box
+            .page-header-menu-block
+              = link_to "Metadata", root_path, class: "link left underline"
+            .page-header-menu-block
+              = link_to "Icon", root_path, class: "link left underline"
+            .page-header-menu-block
+              = link_to "Thumb", root_path, class: "link underline"
+            .page-header-menu-block
+              = link_to "Cover", root_path, class: "link underline"
+      .page-header-middle
+        .text
+          Maecenas sed diam eget risus varius blandit sit amet non magna. Cras mattis consectetur purus sit amet fermentum. Curabitur blandit tempus porttitor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
+      .separator.small.solid

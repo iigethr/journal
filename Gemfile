@@ -46,8 +46,9 @@ gem "haml-rails", "~> 2.0"
 gem "sassc-rails", "~> 2.0"
 
 # Load Mies
-gem "mies", "0.0.1.alpha", github: "iigethr/mies"
+# gem "mies", "0.0.1.alpha", github: "iigethr/mies"
 # gem "mies", "0.0.1.alpha", path: "/Users/tonydefaria/Box Sync/iigethr/gems/mies"
+gem "tadao", "0.0.1.alpha", path: "/Users/tonydefaria/Box Sync/iigethr/gems/tadao"
 
 # Presenting names of people in full, familiar, abbreviated, and initialized forms.
 gem "name_of_person", "~> 1.0"
@@ -101,7 +102,9 @@ gem "bootsnap", ">= 1.1.0", require: false
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+# Distributes the V8 JavaScript engine in binary and source forms in order to support fast builds of The Ruby Racer.
 gem "libv8"
+
 # Linters
 gem "coffeelint", require: false
 gem "haml_lint", require: false

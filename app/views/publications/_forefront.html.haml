@@ -2,25 +2,20 @@
 
 .forefront
   .forefront-box
-    .forefront-item
-      %h3.text-center Publications
-      %p.small.text-center
-        Nullam id dolor id nibh ultricies vehicula ut id elit. Nulla vitae elit libero, a pharetra augue.
-        %br Donec id elit non mi porta gravida at eget metus.
-      .separator.double-extra-small
-      .forefront-inner
-        .forefront-inner-box.altai-center
-          .forefront-inner-item
-            = link_to publications_path, class: "link small green underline" do
-              All
-          .forefront-inner-item
-            = link_to publications_path, class: "link small green underline" do
-              Published
-          .forefront-inner-item
-            = link_to publications_path, class: "link small green underline" do
-              Unpublished
-      .separator.double-extra-small
-      .forefront-inner
-        .forefront-inner-box.altai-center
-          .forefront-inner-item
-            = link_to "Create a new publication", new_publication_path, class: "button extra-large blue"
+    .forefront-block
+      .forefront-top
+        %h2.lighter.text-center
+          Publications
+        .forefront-menu.altai-center
+          .forefront-menu-box
+            .forefront-menu-block
+              = link_to "All", publications_path, class: "link extra-small underline"
+            .forefront-menu-block
+              = link_to "Published", publications_path, class: "link extra-small underline"
+            .forefront-menu-block
+              = link_to "Unpublished", publications_path, class: "link extra-small underline"
+      .forefront-middle
+        %p.small.text-center
+          Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
+      .forefront-bottom
+        = link_to "Create a New Publication", new_publication_path, class: "button altai-center"

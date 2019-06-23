@@ -3,12 +3,10 @@
 .container-top
   = breadcrumbs(root_path)
 .container-middle
-  .board-medium.altai-center
+  .artboard-medium.altai-center
     = render partial: "forefront"
     - if @publications.presence
       .publication
         .publication-box.sortable{ "data-url": sortable_publications_path }
           = render partial: "publication", collection: @publications
-    - else
-      = blankslate
 .container-bottom
