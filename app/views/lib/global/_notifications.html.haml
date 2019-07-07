@@ -1,15 +1,12 @@
 /* Notifications */
 
-- if alert || notice
-  .universal
-    .universal-box
-      .universal-item
-        .notifications.toggle-notifications
-          .notifications-box
-            .notifications-item
-              %p.text-center
-                - if alert
-                  = alert
-                - elsif notice
-                  = notice
-              = link_to "Close", "#", class: "altai-off link underline small green-dark altai-center toggle-notifications-btn"
+#clear-notifications.universal{ "data-controller": "notifications" }
+  .universal-box
+    .universal-item
+      .notifications.toggle-notifications
+        .notifications-box
+          .notifications-item
+            %p{ class: "text-center #{key}" }
+              = key
+              = value
+            = link_to "[Close]", "#", class: "link-xxs"

@@ -4,7 +4,8 @@
 %html{ lang: "en-GB", prefix: "og: http://ogp.me/ns#" }
   = render partial: "lib/global/head"
   %body{ "data-controller": "application" }
-    = render partial: "lib/global/notifications"
+    - flash.each do |key, value|
+      = render partial: "lib/global/notifications", locals: { key: key, value: value }
     = render partial: "lib/global/header"
     = render partial: "lib/global/main"
     = render partial: "lib/global/footer"
