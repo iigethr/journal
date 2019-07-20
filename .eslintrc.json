@@ -19,7 +19,6 @@
         "FunctionExpression": false
       }
     }],
-    "quotes": ["error", "double"],
-    "object-curly-spacing": ["error", "always"]
+    "quotes": ["error", "double"]
   }
 }

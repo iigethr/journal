@@ -1059,6 +1059,11 @@ alphanum-sort@^1.0.0:
   resolved "https://registry.yarnpkg.com/alphanum-sort/-/alphanum-sort-1.0.2.tgz#97a1119649b211ad33691d9f9f486a8ec9fbe0a3"
   integrity sha1-l6ERlkmyEa0zaR2fn0hqjsn74KM=
 
+altai_alignments@0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/altai_alignments/-/altai_alignments-0.0.1.tgz#f0d3cc5177ba4c41296078d70eae32a65a5ba9cd"
+  integrity sha512-lbOI+5BuUucpZaNC6X1EmigWx9EuU0ahH9v8HS19bvL7jQh09ay13hfs5bSd6dKyiV/64ZGLDNuHhXOYXWbPHA==
+
 amdefine@>=0.0.4:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
@@ -6552,6 +6557,11 @@ sort-keys@^1.0.0:
   integrity sha1-RBttTTRnmPG05J6JIK37oOVD+a0=
   dependencies:
     is-plain-obj "^1.0.0"
+
+sortablejs@^1.10.0-rc3:
+  version "1.10.0-rc3"
+  resolved "https://registry.yarnpkg.com/sortablejs/-/sortablejs-1.10.0-rc3.tgz#2fe63463a38b5cd12ec914fc3e03583048496f42"
+  integrity sha512-uw8vZqwI3nkIeAqdrP6N/GDxFW3dY7yz3/rK0GLLoe8aJ2RZALmo6mAwOi+uA7RYuqfz2lm7AACr4ms6gXcb6w==
 
 source-list-map@^2.0.0:
   version "2.0.1"

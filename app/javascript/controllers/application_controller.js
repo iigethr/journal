@@ -1,23 +1,8 @@
-import { Controller } from "stimulus";
+import {Controller} from "stimulus";
+import altaiAlignments from "altai_alignments";
 
 export default class extends Controller {
   connect() {
-    const elements = document.querySelectorAll("div.center-h");
-    if (elements) {
-      elements.forEach( (element) => {
-        console.log(element);
-        // centerHParent
-        const centerHParent = document.createElement("div");
-        centerHParent.setAttribute("class", "center-h-parent");
-        // centerHChild
-        const centerHChild = document.createElement("div");
-        centerHChild.setAttribute("class", "center-h-child");
-        // Insert centerHParent
-        element.parentNode.insertBefore(centerHParent, element);
-        // Append
-        centerHParent.appendChild(centerHChild);
-        centerHChild.appendChild(element);
-      });
-    }
+    altaiAlignments();
   }
 }
