@@ -2,7 +2,7 @@
 
 .container-top
   = breadcrumbs(publication_path(@publication))
-.container-middle.altai-center
+.container-middle.center-h
   .board-medium
     - if params[:main] == "true"
       = render "form", publication: @publication

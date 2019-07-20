@@ -12,7 +12,7 @@
           %strong Type:
           Picture
       .agent-middle.toggle
-        %figure.left.altai-center
+        %figure.left.center-h
           = image_tag asset.upload.representation(resize_to_limit: [ 960, 540 ])
           %figcaption
             - if caption = asset.try(:caption)

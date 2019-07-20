@@ -3,7 +3,7 @@
 .container-top
   .wrap.wide
     = breadcrumbs(publication_section_path(@section.publication.slug, @section))
-.container-middle.altai-center
+.container-middle.center-h
   .board-medium
     - if params[:main] == "true"
       = render "form", parent: @publication, object: @section

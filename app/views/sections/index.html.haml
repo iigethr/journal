@@ -3,13 +3,13 @@
 .container-top
   = breadcrumbs(publication_path(@publication))
 .container-middle
-  .board-medium.altai-center
+  .board-medium.center-h
     .content
       .content-box
         .content-item
           .wide.left
             %h4.text-center Publication
-          = link_to "#{@publication.title}", publication_path(@publication), class: "altai-center link small purple bold text-center underline"
+          = link_to "#{@publication.title}", publication_path(@publication), class: "center-h link small purple bold text-center underline"
     .separator.double-extra-small
     = render partial: "forefront"
     - if @sections.presence

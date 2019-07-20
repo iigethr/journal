@@ -7,7 +7,7 @@
   //     .primary-actions-item
   //       = link_to "Table of Contents", toc_publication_path(@publication), class: "button extra-large blue"
 .container-middle
-  .board-large.altai-center
+  .board-large.center-h
     // Content Block
     .content
       .content-box
@@ -18,7 +18,7 @@
             %p= @publication.description
         - if @publication.cover.presence
           .content-item
-            = image_tag url_for(@publication.cover), class: "altai-center"
+            = image_tag url_for(@publication.cover), class: "center-h"
 
     // Preview Block
     - if @articles.presence
