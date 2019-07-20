@@ -1,12 +1,12 @@
 /* Notifications */
 
-#clear-notifications.universal{ "data-controller": "notifications" }
+.universal
   .universal-box
     .universal-item
-      .notifications.toggle-notifications
+      .notifications{ "data-controller": "notifications" }
         .notifications-box
           .notifications-item
             %p{ class: "text-center #{key}" }
               = key
               = value
-            = link_to "[Close]", "#", class: "link-xxs"
+            = link_to "[Close]", "#", class: "link-xxs center-h"

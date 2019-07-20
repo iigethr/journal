@@ -1,11 +1,9 @@
-/*jshint esversion: 6 */
-
 import { Controller } from "stimulus";
 
 export default class extends Controller {
   connect() {
     const elements = document.querySelectorAll("div.center-h");
-    if (elements !== null) {
+    if (elements) {
       elements.forEach( (element) => {
         console.log(element);
         // centerHParent
