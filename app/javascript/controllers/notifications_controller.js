@@ -1,4 +1,5 @@
 import {Controller} from "stimulus";
+import zahaVisibilities from "@iigethr/zaha_visibilities";
 
 export default class extends Controller {
   connect() {
@@ -9,5 +10,6 @@ export default class extends Controller {
         element.style.visibility = "hidden";
       }
     });
+    zahaVisibilities.hideOnClick("hide-trigger", "notifications");
   }
 }

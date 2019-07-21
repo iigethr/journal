@@ -1,8 +1,8 @@
 import {Controller} from "stimulus";
-import altaiAlignments from "altai_alignments";
+import zahaAlignments from "@iigethr/zaha_alignments";
 
 export default class extends Controller {
   connect() {
-    altaiAlignments();
+    zahaAlignments.centerH();
   }
 }
