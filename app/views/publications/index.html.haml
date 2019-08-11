@@ -7,6 +7,7 @@
     = render partial: "forefront"
     - if @publications.presence
       .publication
-        .publication-box.sortable{ "data-url": sortable_publications_path }
-          = render partial: "publication", collection: @publications
+        .sortable.publication-box{ "data-url": sortable_publications_path }
+          - @publications.each do |publication|
+            = render "publication", publication: publication
 .container-bottom
