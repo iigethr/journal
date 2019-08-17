@@ -1,20 +1,21 @@
 GIT
-  remote: https://github.com/stympy/faker.git
-  revision: 7d37acf5ae1bbfa5a25ccea785ebcdfb0be0f377
-  branch: master
-  specs:
-    faker (2.1.2)
-      i18n (>= 0.8)
-
-PATH
-  remote: /Users/tonydefaria/Box Sync/iigethr/gems/tadao
+  remote: https://github.com/iigethr/tadao.git
+  revision: 17dde5edf7b0ee6cad3d9bba79a93874696d295b
   specs:
     tadao (0.0.1.alpha)
       autoprefixer-rails
       inline_svg
-      rails (~> 6.0.0.rc1)
+      rails
       sassc-rails
       sprockets
+
+GIT
+  remote: https://github.com/stympy/faker.git
+  revision: 840cf10c8f2d42d8348a874d2500a617ae635a9c
+  branch: master
+  specs:
+    faker (2.1.2)
+      i18n (>= 0.8)
 
 GEM
   remote: https://rubygems.org/
@@ -81,8 +82,8 @@ GEM
     autoprefixer-rails (9.6.1)
       execjs
     aws-eventstream (1.0.3)
-    aws-partitions (1.199.0)
-    aws-sdk-core (3.62.0)
+    aws-partitions (1.203.0)
+    aws-sdk-core (3.63.0)
       aws-eventstream (~> 1.0, >= 1.0.2)
       aws-partitions (~> 1.0)
       aws-sigv4 (~> 1.1)
@@ -199,7 +200,7 @@ GEM
     i18n (1.6.0)
       concurrent-ruby (~> 1.0)
     ice_nine (0.11.2)
-    image_processing (1.9.2)
+    image_processing (1.9.3)
       mini_magick (>= 4.9.5, < 5)
       ruby-vips (>= 2.0.13, < 3)
     inline_svg (1.5.2)
@@ -242,7 +243,7 @@ GEM
     net-http-persistent (2.9.4)
     net-http-pipeline (1.0.1)
     nio4r (2.4.0)
-    nokogiri (1.10.3)
+    nokogiri (1.10.4)
       mini_portile2 (~> 2.4.0)
     orm_adapter (0.5.0)
     parallel (1.17.0)

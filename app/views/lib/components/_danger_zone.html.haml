@@ -1,11 +1,11 @@
 /* Danger zone */
 
-.separator.large
+.separator-m
 .danger-zone.white-bg
   .danger-zone-box
-    .danger-zone-item
-      %h3.text-center Danger Zone
-      %p.text-center Once deleted, it will be gone forever. Please be certain.
-      .separator.double-extra-small
-      = link_to path, method: :delete, data: { confirm: "Are you sure?" }, class: "button large red center-h" do
+    .danger-zone-block
+      %h3.text-center.red-700-cl Danger Zone
+      %p.text-center.red-500-cl Once deleted, it will be gone forever. Please be certain.
+      .separator-xxs
+      = link_to path, method: :delete, data: { confirm: "Are you sure?" }, class: "button-l red center-h" do
         Destroy this #{label}

@@ -4,19 +4,20 @@
   .forefront-box
     .forefront-block
       .forefront-top
-        %h2.lighter.text-center
+        %h1.font-xxl.lighter.text-center
           Publications
+        .separator-xs
         .forefront-menu.center-h
           .forefront-menu-box
             .forefront-menu-block
-              = link_to "All", publications_path, class: "link extra-small underline"
+              = link_to "All", publications_path, class: "link-s underline"
             .forefront-menu-block
-              = link_to "Published", publications_path, class: "link extra-small underline"
+              = link_to "Published", publications_path, class: "link-s underline"
             .forefront-menu-block
-              = link_to "Unpublished", publications_path, class: "link extra-small underline"
+              = link_to "Unpublished", publications_path, class: "link-s underline"
       .forefront-middle
         %p.small.text-center
           Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
       .forefront-bottom
         .center-h
-          = link_to "Create a New Publication", new_publication_path, class: "button"
+          = link_to "Create a New Publication", new_publication_path, class: "button-xxl"

@@ -3,7 +3,7 @@
 .container-top
   = breadcrumbs(publication_path(@publication))
 .container-middle.center-h
-  .board-medium
+  .artboard-m
     - if params[:main] == "true"
       = render "form", publication: @publication
     - elsif params[:cover] == "true"
