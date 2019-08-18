@@ -1,3 +1,7 @@
+dist: trusty
+
+sudo: required
+
 env:
   global:
     - CC_TEST_REPORTER_ID=d5da423f019d821eee552ff26ab55cc7b71965b0a27af0350942702d9114dc6f
@@ -11,9 +15,6 @@ cache:
 
 rvm:
   - 2.6.2
-
-dist: trusty  # necessary for postgres 10 workaround
-sudo: required
 
 services:
   - postgresql
