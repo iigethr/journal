@@ -251,7 +251,8 @@ GEM
       ast (~> 2.4.0)
     pg (1.1.4)
     psych (3.1.0)
-    puma (3.12.1)
+    puma (4.1.0)
+      nio4r (~> 2.0)
     pusher-client (0.6.2)
       json
       websocket (~> 1.0)
@@ -453,7 +454,7 @@ DEPENDENCIES
   mini_racer
   name_of_person (~> 1.0)
   pg (>= 1.0, < 2.0)
-  puma (~> 3.12)
+  puma (~> 4.1)
   rails (= 6.0.0.rc1)
   reek
   rspec-rails (~> 4.0.0.beta2)
