@@ -437,7 +437,7 @@ DEPENDENCIES
   codeclimate-test-reporter (~> 1.0, >= 1.0.9)
   coffeelint
   database_cleaner (~> 1.7)
-  devise (~> 4.6, >= 4.6.2)
+  devise (~> 4.7)
   factory_bot_rails (~> 5.0, >= 5.0.2)
   faker!
   haml (~> 5.0)
