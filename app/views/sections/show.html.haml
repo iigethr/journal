@@ -1,7 +1,7 @@
 /* Show */
 
 .container-top
-  = breadcrumbs(publication_sections_path(@section.publication.slug))
+  = breadcrumbs(journal_sections_path(@section.journal.slug))
 .container-middle.center-h
   .board-double-extra-small
     = render "aside_navigation", section: @section
@@ -18,4 +18,4 @@
     - else
       = blankslate
 .container-bottom
-  = danger_zone("Section", publication_section_path(@publication, @section))
+  = danger_zone("Section", journal_section_path(@journal, @section))

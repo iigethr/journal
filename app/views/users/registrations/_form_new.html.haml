@@ -19,6 +19,7 @@
         = form.label :email
         .input
           = form.email_field :email
+
     .form-row
       .field
         = form.label :password do
@@ -29,14 +30,17 @@
               characters minimum
         .input
           = form.password_field :password, autocomplete: "new-password"
+
     .form-row
       .field
         = form.label :password_confirmation
         .input
           = form.password_field :password_confirmation, autocomplete: "new-password"
+
     .form-row
       .field
-        .submit.left
-          = form.button "Sign up", data: { disable_with: "Connecting..." }, class: "button extra-large blue wide"
+        .submit
+          = form.button "Sign up", data: { disable_with: "Connecting..." }, class: "button-xl wide"
+
     .field-row
       = render "users/shared/links"

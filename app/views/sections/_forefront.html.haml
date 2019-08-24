@@ -11,16 +11,16 @@
       .forefront-inner
         .forefront-inner-box.center-h
           .forefront-inner-item
-            = link_to publications_path, class: "link small green underline" do
+            = link_to journals_path, class: "link small green underline" do
               All
           .forefront-inner-item
-            = link_to publications_path, class: "link small green underline" do
+            = link_to journals_path, class: "link small green underline" do
               Published
           .forefront-inner-item
-            = link_to publications_path, class: "link small green underline" do
+            = link_to journals_path, class: "link small green underline" do
               Unpublished
       .separator.double-extra-small
       .forefront-inner
         .forefront-inner-box.center-h
           .forefront-inner-item
-            = link_to "Create a new section", new_publication_section_path(@publication), class: "button extra-large blue"
+            = link_to "Create a new section", new_journal_section_path(@journal), class: "button extra-large blue"

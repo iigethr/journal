@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-class CreatePublications < ActiveRecord::Migration[6.0]
+class CreateJournals < ActiveRecord::Migration[6.0]
   def change
-    create_table :publications do |t|
+    create_table :journals do |t|
       t.string      :slug, default: "", null: false, unique: true, index: true
       t.string      :title
       t.text        :description

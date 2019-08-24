@@ -51,8 +51,8 @@ class VideosController < ApplicationController
   def article
     @article = Article.find_by(slug: params[:article_id])
     # Childs parent
-    publication = Publication.where(id: @article.publication_id).first
-    redirect_to root_path if publication.user_id != current_user.id
+    journal = Journal.where(id: @article.journal_id).first
+    redirect_to root_path if journal.user_id != current_user.id
   end
 
   def video

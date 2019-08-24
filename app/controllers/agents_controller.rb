@@ -16,7 +16,7 @@ class AgentsController < ApplicationController
   # Callbacks
   # ---------
 
-  before_action :publication
+  before_action :journal
   before_action :passkey
   before_action :parent
   before_action :agents
@@ -39,13 +39,13 @@ class AgentsController < ApplicationController
 
   private
 
-  def publication
-    @publication =
-      if (params[:publication_id] && params[:article_id]) || (params[:publication_id] && params[:section_id])
-        Publication.find_by(slug: params[:publication_id])
+  def journal
+    @journal =
+      if (params[:journal_id] && params[:article_id]) || (params[:journal_id] && params[:section_id])
+        journal.find_by(slug: params[:journal_id])
       else
         parent
-        @parent.publication
+        @parent.journal
       end
   end
 

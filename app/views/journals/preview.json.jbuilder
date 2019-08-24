@@ -2,17 +2,17 @@
 
 # Preview
 
-json.publication do
-  # Publication
-  json.slug         @publication.slug
-  json.title        @publication.title
-  json.description  @publication.description
-  json.published    @publication.published
-  json.created_at   @publication.created_at
-  json.updated_at   @publication.updated_at
+json.journal do
+  # Journal
+  json.slug         @journal.slug
+  json.title        @journal.title
+  json.description  @journal.description
+  json.published    @journal.published
+  json.created_at   @journal.created_at
+  json.updated_at   @journal.updated_at
   # Access Tokens
-  json.access_id    @publication.access_id
-  json.access_token @publication.access_token
+  json.access_id    @journal.access_id
+  json.access_token @journal.access_token
 
   # Articles
   json.articles @articles do |article|

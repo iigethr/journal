@@ -4,9 +4,9 @@ module ParentsHelper
   # Parent url
   def parent_url(parent)
     if params[:article_id]
-      publication_article_path(parent.publication, parent)
+      journal_article_path(parent.journal, parent)
     elsif params[:section_id]
-      publication_section_path(parent.publication, parent)
+      journal_section_path(parent.journal, parent)
     end
   end
 end

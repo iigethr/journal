@@ -1,20 +1,20 @@
 /* Index */
 
 .container-top
-  = breadcrumbs(publication_path(@publication))
+  = breadcrumbs(journal_path(@journal))
   .primary-actions
     .primary-actions-box
       .primary-actions-item
-        = link_to "New Article", new_publication_article_path(@publication), class: "button purple"
+        = link_to "New Article", new_journal_article_path(@journal), class: "button purple"
 .container-middle
   .board-medium.center-h
     .content
       .content-box
         .content-item
-          = link_to publication_path(@publication), class: "link purple wide bold" do
-            = @publication.title
+          = link_to journal_path(@journal), class: "link purple wide bold" do
+            = @journal.title
           %h3.left.lighter Articles
     .article
-      .article-box.sortable{ "data-url": sortable_publication_articles_path(@publication) }
-        = render partial: "article", collection: @articles, locals: { publication: @publication }
+      .article-box.sortable{ "data-url": sortable_journal_articles_path(@journal) }
+        = render partial: "article", collection: @articles, locals: { journal: @journal }
 .container-bottom

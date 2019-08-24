@@ -62,14 +62,14 @@ ActiveRecord::Schema.define(version: 2019_04_06_154647) do
 
   create_table "articles", force: :cascade do |t|
     t.string "slug", default: "", null: false
-    t.bigint "publication_id", null: false
+    t.bigint "journal_id", null: false
     t.string "title"
     t.text "description"
     t.boolean "published", default: false
     t.integer "position"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["publication_id"], name: "index_articles_on_publication_id"
+    t.index ["journal_id"], name: "index_articles_on_journal_id"
     t.index ["slug"], name: "index_articles_on_slug"
   end
 
@@ -93,17 +93,32 @@ ActiveRecord::Schema.define(version: 2019_04_06_154647) do
     t.index ["slug"], name: "index_galleries_on_slug"
   end
 
+  create_table "journals", force: :cascade do |t|
+    t.string "slug", default: "", null: false
+    t.string "title"
+    t.text "description"
+    t.boolean "published", default: false
+    t.integer "position"
+    t.string "access_id", default: "", null: false
+    t.string "access_token", default: "", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["access_id"], name: "index_journals_on_access_id"
+    t.index ["access_token"], name: "index_journals_on_access_token"
+    t.index ["slug"], name: "index_journals_on_slug"
+  end
+
   create_table "passkeys", force: :cascade do |t|
     t.string "slug", default: "", null: false
     t.bigint "user_id", null: false
-    t.bigint "publication_id", null: false
+    t.bigint "journal_id", null: false
     t.boolean "active", default: false
     t.string "role", default: "collaborator"
     t.string "email"
     t.string "token"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["publication_id"], name: "index_passkeys_on_publication_id"
+    t.index ["journal_id"], name: "index_passkeys_on_journal_id"
     t.index ["slug"], name: "index_passkeys_on_slug"
     t.index ["user_id"], name: "index_passkeys_on_user_id"
   end
@@ -140,31 +155,16 @@ ActiveRecord::Schema.define(version: 2019_04_06_154647) do
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
-  create_table "publications", force: :cascade do |t|
-    t.string "slug", default: "", null: false
-    t.string "title"
-    t.text "description"
-    t.boolean "published", default: false
-    t.integer "position"
-    t.string "access_id", default: "", null: false
-    t.string "access_token", default: "", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["access_id"], name: "index_publications_on_access_id"
-    t.index ["access_token"], name: "index_publications_on_access_token"
-    t.index ["slug"], name: "index_publications_on_slug"
-  end
-
   create_table "sections", force: :cascade do |t|
     t.string "slug", default: "", null: false
-    t.bigint "publication_id", null: false
+    t.bigint "journal_id", null: false
     t.string "title"
     t.text "description"
     t.boolean "published", default: false
     t.integer "position"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["publication_id"], name: "index_sections_on_publication_id"
+    t.index ["journal_id"], name: "index_sections_on_journal_id"
     t.index ["slug"], name: "index_sections_on_slug"
   end
 
@@ -215,9 +215,9 @@ ActiveRecord::Schema.define(version: 2019_04_06_154647) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "agents", "unions"
-  add_foreign_key "articles", "publications"
-  add_foreign_key "passkeys", "publications"
+  add_foreign_key "articles", "journals"
+  add_foreign_key "passkeys", "journals"
   add_foreign_key "passkeys", "users"
   add_foreign_key "profiles", "users"
-  add_foreign_key "sections", "publications"
+  add_foreign_key "sections", "journals"
 end

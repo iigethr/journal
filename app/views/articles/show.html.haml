@@ -2,7 +2,7 @@
 
 .container-top
   .wrap.wide
-    = breadcrumbs(publication_articles_path(@article.publication.slug))
+    = breadcrumbs(journal_articles_path(@article.journal.slug))
   .wrap.wide
     .content
       .content-box
@@ -17,11 +17,11 @@
         .content-item
           %h1.lighter= @article.title
     .agent
-      .agent-box.sortable{ "data-url": sortable_publication_article_agents_path(@publication, @article) }
+      .agent-box.sortable{ "data-url": sortable_journal_article_agents_path(@journal, @article) }
         - @assets.each do |asset|
           = render_agent(asset)
     .content
       .content-box
         .content-item
-          = danger_zone("Article", publication_article_path(@publication, @article))
+          = danger_zone("Article", journal_article_path(@journal, @article))
 .container-bottom

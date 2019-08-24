@@ -14,7 +14,7 @@
         %span.icon
           = inline_svg "icons/swap_vert.svg"
     .section-center
-      = link_to publication_section_path(@publication, section), class: "link blue" do
+      = link_to journal_section_path(@journal, section), class: "link blue" do
         = section.title.truncate(24)
   .section-bottom
     %p.small.left.auto

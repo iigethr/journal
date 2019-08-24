@@ -57,8 +57,8 @@ Rails.application.routes.draw do
   # Profiles
   resource :profile, only: [:show, :edit, :update]
 
-  # Publications
-  resources :publications do
+  # Journals
+  resources :journals do
     articles
     sections
     member do

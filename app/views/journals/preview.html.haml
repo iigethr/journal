@@ -1,24 +1,24 @@
 /* Show */
 
 .container-top
-  = breadcrumbs(publication_path(@publication))
+  = breadcrumbs(journal_path(@journal))
   // .primary-actions
   //   .primary-actions-box
   //     .primary-actions-item
-  //       = link_to "Table of Contents", toc_publication_path(@publication), class: "button extra-large blue"
+  //       = link_to "Table of Contents", toc_journal_path(@journal), class: "button extra-large blue"
 .container-middle
   .board-large.center-h
     // Content Block
     .content
       .content-box
         .content-item
-          %h1= @publication.title
-        - if @publication.description.presence
+          %h1= @journal.title
+        - if @journal.description.presence
           .content-item
-            %p= @publication.description
-        - if @publication.cover.presence
+            %p= @journal.description
+        - if @journal.cover.presence
           .content-item
-            = image_tag url_for(@publication.cover), class: "center-h"
+            = image_tag url_for(@journal.cover), class: "center-h"
 
     // Preview Block
     - if @articles.presence

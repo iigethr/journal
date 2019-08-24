@@ -1,17 +1,17 @@
 /* Show */
 
 .container-top
-  = breadcrumbs(preview_publication_path(@publication))
+  = breadcrumbs(preview_journal_path(@journal))
 .container-middle
   .board-large.center-h
     .content
       .content-box
         .content-item
-          %h1= @publication.title
+          %h1= @journal.title
         .separator.small
     .toc-navigation
       .toc-navigation-box
         - @articles.each do |article|
           .toc-navigation-item
-            = link_to article.title, preview_publication_path(@publication, anchor: "#{article.slug}"), class: "link small blue wide"
+            = link_to article.title, preview_journal_path(@journal, anchor: "#{article.slug}"), class: "link small blue wide"
 .container-bottom

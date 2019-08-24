@@ -1,0 +1,15 @@
+/* Index */
+
+.container-top
+  = breadcrumbs(root_path)
+.container-middle
+  .artboard-medium.center-h
+    = render partial: "forefront"
+    - if @journals.presence
+      .journal
+        .sortable.journal-box{ "data-url": sortable_journals_path }
+          - @journals.each do |journal|
+            = render "journal", journal: journal
+    - else
+      = render "blankslate"
+.container-bottom

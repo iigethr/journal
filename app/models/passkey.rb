@@ -4,17 +4,17 @@ class Passkey < ApplicationRecord
   # User
   belongs_to :user, optional: true
   # Organization
-  belongs_to :publication
+  belongs_to :journal
 
   # Validations
-  validates :user_id, uniqueness: { scope: :publication_id }, allow_blank: true
+  validates :user_id, uniqueness: { scope: :journal_id }, allow_blank: true
 
   # Callbacks
   has_secure_token :token
 
   # Unlock
-  def self.unlock(user, publication)
-    find_by(user_id: user.id, publication_id: publication.id)
+  def self.unlock(user, journal)
+    find_by(user_id: user.id, journal_id: journal.id)
   end
 
   # Search

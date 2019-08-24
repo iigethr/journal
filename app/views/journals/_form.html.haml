@@ -1,11 +1,11 @@
 /* Form */
 
-= form_with model: publication, local: true do |form|
-  = errors(publication)
+= form_with model: journal, local: true do |form|
+  = errors(journal)
   %fieldset
     - if params[:action] == "new" || params[:action] == "create"
       .form-row
-        %legend New Publication
+        %legend New Journal
     .form-row
       .field
         = form.label :title

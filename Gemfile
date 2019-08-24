@@ -11,7 +11,7 @@ gem "mini_racer", platforms: :ruby
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails"
 # gem "rails", "~> 5.2.2"
-gem "rails", "6.0.0.rc1"
+gem "rails", "6.0.0"
 # Use postgresql as the database for Active Record
 gem "pg", ">= 1.0", "< 2.0"
 # Use Puma as the app server
@@ -46,8 +46,8 @@ gem "haml-rails", "~> 2.0"
 gem "sassc-rails", "~> 2.0"
 
 # Load Mies
-gem "tadao", "0.0.1.alpha", github: "iigethr/tadao"
-# gem "tadao", "0.0.1.alpha", path: "/Users/tonydefaria/Box Sync/iigethr/gems/tadao"
+# gem "tadao", "0.0.1.alpha", github: "iigethr/tadao"
+gem "tadao", "0.0.1.alpha", path: "/Users/tonydefaria/Box Sync/iigethr/gems/tadao"
 
 # Presenting names of people in full, familiar, abbreviated, and initialized forms.
 gem "name_of_person", "~> 1.0"
@@ -111,4 +111,6 @@ gem "reek", require: false
 gem "rubocop", require: false
 gem "rubocop-performance", require: false
 gem "scss_lint", require: false
-gem "bundler", "~> 2.0", ">= 2.0.2", require: false
+
+# Bundler
+gem "bundler", "2.0.2", require: false

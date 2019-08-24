@@ -1,0 +1,19 @@
+/* Journal */
+
+.sortable-item.journal-block{ id: "journal_#{journal.id}" }
+  .journal-wrap
+    .journal-top
+      .text.extra-small.right.auto
+        %strong Role:
+        = @passkey.role
+    .journal-middle
+      = link_to journal_path(journal), class: "link blue" do
+        = (journal.title).truncate(56)
+    .journal-bottom
+      .text.extra-small.left.auto
+        %strong Created:
+        = journal.created_at.strftime("%B %d, %Y")
+      .text.extra-small.right.auto
+        %strong Published:
+        = journal.published?
+        = journal.position

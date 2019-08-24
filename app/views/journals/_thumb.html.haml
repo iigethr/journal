@@ -1,14 +1,14 @@
 /* Form */
 
-= form_with model: publication, local: true do |form|
-  = errors(publication)
+= form_with model: journal, local: true do |form|
+  = errors(journal)
   %fieldset
     - if resource.presence
       .form-row
         .field.col-medium-1-1
           = image_tag url_for(resource), class: "center-h"
         .field.col-medium-2-1.center-h
-          = link_to destroy_thumb_publication_path(publication, resource), method: :delete, data: { confirm: "Are you sure?" }, class: "button large red wide" do
+          = link_to destroy_thumb_journal_path(journal, resource), method: :delete, data: { confirm: "Are you sure?" }, class: "button large red wide" do
             Remove Thumb
     - unless resource.presence
       .form-row

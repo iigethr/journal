@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Publication < ApplicationRecord
+class Journal < ApplicationRecord
   # Tokens
   has_secure_token :access_id
   has_secure_token :access_token

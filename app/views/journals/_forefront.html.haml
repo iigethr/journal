@@ -1,0 +1,21 @@
+/* Forefront */
+
+.forefront
+  .forefront-box
+    .forefront-block
+      .forefront-top
+        %h1.font-xl.lighter.text-center
+          Journals
+        .forefront-menu.center-h
+          .forefront-menu-box
+            .forefront-menu-block
+              = link_to "All", journals_path, class: "link-s underline"
+            .forefront-menu-block
+              = link_to "Published", journals_path, class: "link-s underline"
+            .forefront-menu-block
+              = link_to "Unpublished", journals_path, class: "link-s underline"
+      .forefront-middle
+        %p.font-m.text-center
+          NOTE: Provide a description of what "Journals" is all about. It should also have a link (open new tab) to the support page.
+      .forefront-bottom
+        = link_to "Create a New Journal", new_journal_path, class: "button-xxl center-h"

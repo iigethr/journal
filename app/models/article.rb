@@ -6,8 +6,8 @@ class Article < ApplicationRecord
   include SortablePosition
 
   # Relationships
-  # Publication
-  belongs_to :publication
+  # Journal
+  belongs_to :journal
   # Unions
   has_one :union, as: :member, dependent: :destroy
   accepts_nested_attributes_for :union

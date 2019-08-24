@@ -1,0 +1,15 @@
+/* Edit */
+
+.container-top
+  = breadcrumbs(journal_path(@journal))
+.container-middle.center-h
+  .artboard-m
+    - if params[:main] == "true"
+      = render "form", journal: @journal
+    - elsif params[:cover] == "true"
+      = render "cover", journal: @journal, resource: @journal.cover
+    - elsif params[:thumb] == "true"
+      = render "thumb", journal: @journal, resource: @journal.thumb
+    - else
+      = render "form", journal: @journal
+.container-bottom

@@ -5,9 +5,9 @@
     .aside-navigation-item.border-bottom
       %h4 Section
     .aside-navigation-item
-      = link_to "Edit", edit_publication_section_path(@publication, section), class: "link blue"
+      = link_to "Edit", edit_journal_section_path(@journal, section), class: "link blue"
     .aside-navigation-item
-      = link_to "Preview", preview_publication_section_path(@publication, section), class: "link blue"
+      = link_to "Preview", preview_journal_section_path(@journal, section), class: "link blue"
 
 .aside-navigation
   .aside-navigation-box
@@ -17,6 +17,6 @@
       .aside-navigation-item
         = link_to "Toggle", "#", class: "altai-off toggle-btn", class: "altai-off toggle-btn link blue"
     .aside-navigation-item
-      = link_to "Text", new_publication_section_piece_path(@publication, section), class: "link blue"
+      = link_to "Text", new_journal_section_piece_path(@journal, section), class: "link blue"
     .aside-navigation-item
-      = link_to "Image", new_publication_section_picture_path(@publication, section), class: "link blue"
+      = link_to "Image", new_journal_section_picture_path(@journal, section), class: "link blue"

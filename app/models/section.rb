@@ -9,7 +9,7 @@ class Section < ApplicationRecord
   # Relationships
   # ----------------------------------------------------
 
-  belongs_to :publication
+  belongs_to :journal
   has_one :union, as: :member, dependent: :destroy
   accepts_nested_attributes_for :union
 

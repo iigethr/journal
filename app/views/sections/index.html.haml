@@ -1,19 +1,19 @@
 /* Index */
 
 .container-top
-  = breadcrumbs(publication_path(@publication))
+  = breadcrumbs(journal_path(@journal))
 .container-middle
   .board-medium.center-h
     .content
       .content-box
         .content-item
           .wide.left
-            %h4.font-m.text-center Publication
-          = link_to "#{@publication.title}", publication_path(@publication), class: "center-h link small purple bold text-center underline"
+            %h4.font-m.text-center Journal
+          = link_to "#{@journal.title}", journal_path(@journal), class: "center-h link small purple bold text-center underline"
     .separator.double-extra-small
     = render partial: "forefront"
     - if @sections.presence
       .section
-        .section-box.sortable{ "data-url": sortable_publication_sections_path(@publication) }
+        .section-box.sortable{ "data-url": sortable_journal_sections_path(@journal) }
           = render partial: "section", collection: @sections
 .container-bottom

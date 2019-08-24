@@ -1,8 +1,8 @@
 /* Edit */
 
 .container-top
-  = breadcrumbs(publication_article_path(@publication, @article))
+  = breadcrumbs(journal_article_path(@journal, @article))
 .container-middle.center-h
   .board-medium
-    = render "form", parent: @publication, object: @article
+    = render "form", parent: @journal, object: @article
 .container-bottom

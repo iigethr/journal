@@ -8,18 +8,18 @@ class SectionsController < ApplicationController
   include Unions
 
   # Callbacks
-  before_action :publication
+  before_action :journal
   before_action :passkey
 
   before_action :section, only: [:show, :preview, :edit, :update, :destroy]
   before_action :agents, only: [:show, :preview]
 
   def index
-    @sections = @publication.sections.order(position: :asc)
+    @sections = @journal.sections.order(position: :asc)
   end
 
   def sortable
-    @publication.sections.sort_position(params[:section])
+    @journal.sections.sort_position(params[:section])
     head :ok
   end
 
@@ -35,7 +35,7 @@ class SectionsController < ApplicationController
   def update
     if @section.update(section_params)
       flash[:notice] = "Section was successfully updated."
-      redirect_to publication_section_path(@publication, @section)
+      redirect_to journal_section_path(@journal, @section)
     else
       render :edit
     end
@@ -44,7 +44,7 @@ class SectionsController < ApplicationController
   def destroy
     @section.destroy
     flash[:notice] = "Section was successfully destroyed."
-    redirect_to publication_sections_path(publication)
+    redirect_to journal_sections_path(journal)
   end
 
   def new
@@ -61,7 +61,7 @@ class SectionsController < ApplicationController
       )
 
       flash[:notice] = "Section was successfully created."
-      redirect_to publication_section_path(@publication, @section)
+      redirect_to journal_section_path(@journal, @section)
     else
       render :new
     end
@@ -69,12 +69,12 @@ class SectionsController < ApplicationController
 
   private
 
-  def publication
-    @publication = Publication.find_by(slug: params[:publication_id])
+  def journal
+    @journal = Journal.find_by(slug: params[:journal_id])
   end
 
   def section
-    @section = @publication.sections.find_by(slug: params[:id])
+    @section = @journal.sections.find_by(slug: params[:id])
   end
 
   def agents
@@ -92,6 +92,6 @@ class SectionsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def section_params
-    params.require(:section).permit(:slug, :publication_id, :title, :description, :published, :position)
+    params.require(:section).permit(:slug, :journal_id, :title, :description, :published, :position)
   end
 end

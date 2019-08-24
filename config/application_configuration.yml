@@ -1,7 +1,7 @@
 # Application configuration
 
 default: &default
-  title: "JOURNAL"
+  title: "OPEN JOURNAL"
   description: "Spread the Word from One Source to the World."
   twitter_username: "@iigethr"
 

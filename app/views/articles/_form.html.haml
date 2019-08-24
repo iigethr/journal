@@ -3,7 +3,7 @@
 = form_with model: [parent, object], local: true do |form|
   = errors(object)
   - if params[:action] == "new" || params[:action] == "create"
-    = form.hidden_field :publication_id, value: @publication.id
+    = form.hidden_field :journal_id, value: @journal.id
   %fieldset
     - if params[:action] == "new" || params[:action] == "create"
       .form-row

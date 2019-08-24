@@ -1,34 +1,34 @@
 /* Show */
 
 .container-top
-  = breadcrumbs(publications_path)
+  = breadcrumbs(journals_path)
 .container-middle
   .board-double-extra-small
-    = render "aside_navigation", publication: @publication
+    = render "aside_navigation", journal: @journal
   .board-medium
     .content
       .content-box
-        - if @publication.title.presence
+        - if @journal.title.presence
           .content-item
-            %h3.lighter= @publication.title
-        - if @publication.description.presence
+            %h3.lighter= @journal.title
+        - if @journal.description.presence
           .content-item
-            = @publication.description
+            = @journal.description
 
     .primary-actions
       .primary-actions-box
         .primary-actions-item
-          = link_to "Sections", publication_sections_path(@publication), class: "button blue"
+          = link_to "Sections", journal_sections_path(@journal), class: "button blue"
 .container-bottom
-  = danger_zone("Publication", publication_path(@publication))
+  = danger_zone("Journal", journal_path(@journal))
 
 .page-header
   .page-header-box
     .page-header-block
       .page-header-top
-        .text.extra-small.bold.blue-500-cl Publication
+        .text.extra-small.bold.blue-500-cl Journal
         %h2.lighter
-          = @publication.title
+          = @journal.title
         .page-header-menu
           .page-header-menu-box
             .page-header-menu-block

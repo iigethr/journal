@@ -8,7 +8,7 @@ class ArticlesController < ApplicationController
   include Unions
 
   # Callbacks
-  before_action :publication
+  before_action :journal
   before_action :passkey
 
   before_action :article, only: [:show, :edit, :update, :destroy, :preview]
@@ -18,28 +18,28 @@ class ArticlesController < ApplicationController
   layout "application_preview", only: [:preview]
 
   def index
-    @articles = @publication.articles.order(position: :asc)
+    @articles = @journal.articles.order(position: :asc)
   end
 
   def sortable
-    @publication.articles.sort_position(params[:article])
+    @journal.articles.sort_position(params[:article])
     head :ok
   end
 
   def new
-    @article = @publication.articles.new
+    @article = @journal.articles.new
   end
 
   def create
-    order = @publication.articles.pluck(:position).compact
-    @article = @publication.articles.new(article_params)
+    order = @journal.articles.pluck(:position).compact
+    @article = @journal.articles.new(article_params)
     order << 0
     @article.position = (order.min - 1)
 
     if @article.save
       create_union(@article)
       flash[:notice] = "Article was successfully created."
-      redirect_to publication_article_path(@publication, @article)
+      redirect_to journal_article_path(@journal, @article)
     else
       render :new
     end
@@ -57,7 +57,7 @@ class ArticlesController < ApplicationController
   def update
     if @article.update(article_params)
       flash[:notice] = "Article was successfully updated."
-      redirect_to publication_article_path(@publication, @article)
+      redirect_to journal_article_path(@journal, @article)
     else
       render :edit
     end
@@ -66,17 +66,17 @@ class ArticlesController < ApplicationController
   def destroy
     @article.destroy
     flash[:notice] = "Article was successfully destroyed."
-    redirect_to publication_articles_path(@publication)
+    redirect_to journal_articles_path(@journal)
   end
 
   private
 
-  def publication
-    @publication = Publication.find_by(slug: params[:publication_id])
+  def journal
+    @journal = journal.find_by(slug: params[:journal_id])
   end
 
   def article
-    @article = @publication.articles.find_by(slug: params[:id])
+    @article = @journal.articles.find_by(slug: params[:id])
   end
 
   def agents
@@ -94,7 +94,7 @@ class ArticlesController < ApplicationController
 
   def article_params
     params.require(:article).permit(
-      :publication_id,
+      :journal_id,
       :title,
       :description,
       :published,
